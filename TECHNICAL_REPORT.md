@@ -39,7 +39,7 @@ Exact-gold string overlap on the submitted patches is **3 / 300** (not a gold du
 
 ## Open source / reproducibility
 
-- Code and packs: https://github.com/msmourao/LifeGraph (branch `submit/516-sweep-one-full-assets`)
+- Artifacts: https://github.com/msmourao/LifeGraph (branch `submit/516-sweep-one-full-assets`)
 - Experiments PR: https://github.com/SWE-bench/experiments/pull/516
 
 ## Contact
