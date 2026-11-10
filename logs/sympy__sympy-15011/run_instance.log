@@ -1,0 +1,109 @@
+2026-11-10 00:24:28,712 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:24:36,525 - INFO - Creating container for sympy__sympy-15011...
+2026-11-10 00:24:36,806 - INFO - Container for sympy__sympy-15011 created: 8504a462c4fad6e10e7144c79a2dbda42c7ba775125c57f206acd0e1bdf43f0d
+2026-11-10 00:24:37,060 - INFO - Container for sympy__sympy-15011 started: 8504a462c4fad6e10e7144c79a2dbda42c7ba775125c57f206acd0e1bdf43f0d
+2026-11-10 00:24:37,062 - INFO - Intermediate patch for sympy__sympy-15011 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15011\patch.diff, now applying to container...
+2026-11-10 00:24:37,403 - INFO - >>>>> Applied Patch:
+Checking patch sympy/utilities/lambdify.py...
+Applied patch sympy/utilities/lambdify.py cleanly.
+
+2026-11-10 00:24:38,467 - INFO - Git diff before:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f..8145fbb61 100755
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -700,14 +700,13 @@ def _is_safe_ident(cls, ident):
+             return isinstance(ident, str) and cls._safe_ident_re.match(ident) \
+                 and not (keyword.iskeyword(ident) or ident == 'None')
+ 
+-
+     def _preprocess(self, args, expr):
+         """Preprocess args, expr to replace arguments that do not map
+         to valid Python identifiers.
+ 
+         Returns string form of args, and updated expr.
+         """
+-        from sympy import Dummy, Symbol, Function, flatten
++        from sympy import Dummy, Symbol, MatrixSymbol, Function, flatten
+         from sympy.matrices import DeferredVector
+ 
+         dummify = self._dummify
+@@ -725,7 +724,7 @@ def _preprocess(self, args, expr):
+                 argstrs.append(nested_argstrs)
+             elif isinstance(arg, DeferredVector):
+                 argstrs.append(str(arg))
+-            elif isinstance(arg, Symbol):
++            elif isinstance(arg, Symbol) or isinstance(arg, MatrixSymbol):
+                 argrep = self._argrepr(arg)
+ 
+                 if dummify or not self._is_safe_ident(argrep):
+@@ -739,7 +738,14 @@ def _preprocess(self, args, expr):
+                 argstrs.append(self._argrepr(dummy))
+                 expr = self._subexpr(expr, {arg: dummy})
+             else:
+-                argstrs.append(str(arg))
++                argrep = self._argrepr(arg)
++
++                if dummify:
++                    dummy = Dummy()
++                    argstrs.append(self._argrepr(dummy))
++                    expr = self._subexpr(expr, {arg: dummy})
++                else:
++                    argstrs.append(str(arg))
+ 
+         return argstrs, expr
+2026-11-10 00:24:38,468 - INFO - Eval script for sympy__sympy-15011 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15011\eval.sh; copying to container...
+2026-11-10 00:24:50,530 - INFO - Test runtime: 11.86 seconds
+2026-11-10 00:24:50,532 - INFO - Test output for sympy__sympy-15011 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15011\test_output.txt
+2026-11-10 00:24:50,655 - INFO - Git diff after:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f..8145fbb61 100755
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -700,14 +700,13 @@ def _is_safe_ident(cls, ident):
+             return isinstance(ident, str) and cls._safe_ident_re.match(ident) \
+                 and not (keyword.iskeyword(ident) or ident == 'None')
+ 
+-
+     def _preprocess(self, args, expr):
+         """Preprocess args, expr to replace arguments that do not map
+         to valid Python identifiers.
+ 
+         Returns string form of args, and updated expr.
+         """
+-        from sympy import Dummy, Symbol, Function, flatten
++        from sympy import Dummy, Symbol, MatrixSymbol, Function, flatten
+         from sympy.matrices import DeferredVector
+ 
+         dummify = self._dummify
+@@ -725,7 +724,7 @@ def _preprocess(self, args, expr):
+                 argstrs.append(nested_argstrs)
+             elif isinstance(arg, DeferredVector):
+                 argstrs.append(str(arg))
+-            elif isinstance(arg, Symbol):
++            elif isinstance(arg, Symbol) or isinstance(arg, MatrixSymbol):
+                 argrep = self._argrepr(arg)
+ 
+                 if dummify or not self._is_safe_ident(argrep):
+@@ -739,7 +738,14 @@ def _preprocess(self, args, expr):
+                 argstrs.append(self._argrepr(dummy))
+                 expr = self._subexpr(expr, {arg: dummy})
+             else:
+-                argstrs.append(str(arg))
++                argrep = self._argrepr(arg)
++
++                if dummify:
++                    dummy = Dummy()
++                    argstrs.append(self._argrepr(dummy))
++                    expr = self._subexpr(expr, {arg: dummy})
++                else:
++                    argstrs.append(str(arg))
+ 
+         return argstrs, expr
+2026-11-10 00:24:50,655 - INFO - Grading answer for sympy__sympy-15011...
+2026-11-10 00:24:50,674 - INFO - report: {'sympy__sympy-15011': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_curly_matrix_symbol'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_no_args', 'test_single_arg', 'test_list_args', 'test_nested_args', 'test_str_args', 'test_own_namespace_1', 'test_own_namespace_2', 'test_own_module', 'test_bad_args', 'test_atoms', 'test_sympy_lambda', 'test_math_lambda', 'test_mpmath_lambda', 'test_number_precision', 'test_mpmath_precision', 'test_math_transl', 'test_mpmath_transl', 'test_exponentiation', 'test_sqrt', 'test_trig', 'test_vector_simple', 'test_vector_discontinuous', 'test_trig_symbolic', 'test_trig_float', 'test_docs', 'test_math', 'test_sin', 'test_matrix', 'test_issue9474', 'test_integral', 'test_sym_single_arg', 'test_sym_list_args', 'test_sym_integral', 'test_namespace_order', 'test_namespace_type', 'test_imps', 'test_imps_errors', 'test_imps_wrong_args', 'test_lambdify_imps', 'test_dummification', 'test_python_keywords', 'test_lambdify_docstring', 'test_special_printers', 'test_true_false', 'test_issue_2790', 'test_issue_12092', 'test_ITE', 'test_Min_Max', 'test_issue_12173', 'test_sinc_mpmath', 'test_lambdify_dummy_arg', 'test_lambdify_mixed_symbol_dummy_args', 'test_lambdify_inspect'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15011: resolved: True
+2026-11-10 00:24:50,676 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15011.lg516logs-batch-12...
+2026-11-10 00:25:05,988 - INFO - Container sweb.eval.sympy__sympy-15011.lg516logs-batch-12 stopped successfully.
+2026-11-10 00:25:05,988 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15011.lg516logs-batch-12...
+2026-11-10 00:25:06,086 - INFO - Container sweb.eval.sympy__sympy-15011.lg516logs-batch-12 removed successfully.

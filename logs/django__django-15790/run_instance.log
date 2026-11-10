@@ -1,0 +1,85 @@
+2026-11-09 21:18:05,707 - INFO - Image not found locally, attempting to pull...
+2026-11-09 21:18:23,924 - INFO - Creating container for django__django-15790...
+2026-11-09 21:18:25,688 - INFO - Container for django__django-15790 created: ba219106e97d9c62d5d8cdf4d315abd5bb37faea40a47295ccc3f8579604d1cb
+2026-11-09 21:18:26,219 - INFO - Container for django__django-15790 started: ba219106e97d9c62d5d8cdf4d315abd5bb37faea40a47295ccc3f8579604d1cb
+2026-11-09 21:18:26,221 - INFO - Intermediate patch for django__django-15790 written to logs\run_evaluation\lg516logs-batch-04\lifegraph-path2-sweep-one-full\django__django-15790\patch.diff, now applying to container...
+2026-11-09 21:18:26,511 - INFO - >>>>> Applied Patch:
+Checking patch django/core/checks/templates.py...
+Applied patch django/core/checks/templates.py cleanly.
+
+2026-11-09 21:18:27,875 - INFO - Git diff before:
+diff --git a/django/core/checks/templates.py b/django/core/checks/templates.py
+index 5214276987..692ec98203 100755
+--- a/django/core/checks/templates.py
++++ b/django/core/checks/templates.py
+@@ -50,15 +50,15 @@ def check_string_if_invalid_is_string(app_configs, **kwargs):
+ @register(Tags.templates)
+ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+     errors = []
+-    libraries = defaultdict(list)
++    libraries = defaultdict(set)
+ 
+     for conf in settings.TEMPLATES:
+         custom_libraries = conf.get("OPTIONS", {}).get("libraries", {})
+         for module_name, module_path in custom_libraries.items():
+-            libraries[module_name].append(module_path)
++            libraries[module_name].add(module_path)
+ 
+     for module_name, module_path in get_template_tag_modules():
+-        libraries[module_name].append(module_path)
++        libraries[module_name].add(module_path)
+ 
+     for library_name, items in libraries.items():
+         if len(items) > 1:
+@@ -66,7 +66,7 @@ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+                 Error(
+                     E003.msg.format(
+                         repr(library_name),
+-                        ", ".join(repr(item) for item in items),
++                        ", ".join(repr(item) for item in sorted(items)),
+                     ),
+                     id=E003.id,
+                 )
+2026-11-09 21:18:27,877 - INFO - Eval script for django__django-15790 written to logs\run_evaluation\lg516logs-batch-04\lifegraph-path2-sweep-one-full\django__django-15790\eval.sh; copying to container...
+2026-11-09 21:18:44,246 - INFO - Test runtime: 16.20 seconds
+2026-11-09 21:18:44,259 - INFO - Test output for django__django-15790 written to logs\run_evaluation\lg516logs-batch-04\lifegraph-path2-sweep-one-full\django__django-15790\test_output.txt
+2026-11-09 21:18:44,391 - INFO - Git diff after:
+diff --git a/django/core/checks/templates.py b/django/core/checks/templates.py
+index 5214276987..692ec98203 100755
+--- a/django/core/checks/templates.py
++++ b/django/core/checks/templates.py
+@@ -50,15 +50,15 @@ def check_string_if_invalid_is_string(app_configs, **kwargs):
+ @register(Tags.templates)
+ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+     errors = []
+-    libraries = defaultdict(list)
++    libraries = defaultdict(set)
+ 
+     for conf in settings.TEMPLATES:
+         custom_libraries = conf.get("OPTIONS", {}).get("libraries", {})
+         for module_name, module_path in custom_libraries.items():
+-            libraries[module_name].append(module_path)
++            libraries[module_name].add(module_path)
+ 
+     for module_name, module_path in get_template_tag_modules():
+-        libraries[module_name].append(module_path)
++        libraries[module_name].add(module_path)
+ 
+     for library_name, items in libraries.items():
+         if len(items) > 1:
+@@ -66,7 +66,7 @@ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+                 Error(
+                     E003.msg.format(
+                         repr(library_name),
+-                        ", ".join(repr(item) for item in items),
++                        ", ".join(repr(item) for item in sorted(items)),
+                     ),
+                     id=E003.id,
+                 )
+2026-11-09 21:18:44,392 - INFO - Grading answer for django__django-15790...
+2026-11-09 21:18:44,423 - INFO - report: {'django__django-15790': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_template_tags_same_library_in_installed_apps_libraries (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['Error if template loaders are specified and APP_DIRS is True.', 'test_app_dirs_removed (check_framework.test_templates.CheckTemplateSettingsAppDirsTest)', 'test_loaders_removed (check_framework.test_templates.CheckTemplateSettingsAppDirsTest)', 'test_string_if_invalid_both_are_strings (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_first_is_string (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_not_specified (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_not_string (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_template_tags_with_different_library_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_different_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_library_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_library_name_and_module_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15790: resolved: True
+2026-11-09 21:18:44,425 - INFO - Attempting to stop container sweb.eval.django__django-15790.lg516logs-batch-04...
+2026-11-09 21:18:59,854 - INFO - Container sweb.eval.django__django-15790.lg516logs-batch-04 stopped successfully.
+2026-11-09 21:18:59,855 - INFO - Attempting to remove container sweb.eval.django__django-15790.lg516logs-batch-04...
+2026-11-09 21:19:00,026 - INFO - Container sweb.eval.django__django-15790.lg516logs-batch-04 removed successfully.

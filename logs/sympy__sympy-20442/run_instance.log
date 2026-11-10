@@ -1,0 +1,67 @@
+2026-11-10 00:42:30,759 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:42:39,408 - INFO - Creating container for sympy__sympy-20442...
+2026-11-10 00:42:39,704 - INFO - Container for sympy__sympy-20442 created: 29f1f9f4badac74e4914b7764bd3523bc5c4ef048a86325fe0b29a0d7d9ec2d2
+2026-11-10 00:42:39,920 - INFO - Container for sympy__sympy-20442 started: 29f1f9f4badac74e4914b7764bd3523bc5c4ef048a86325fe0b29a0d7d9ec2d2
+2026-11-10 00:42:39,922 - INFO - Intermediate patch for sympy__sympy-20442 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-20442\patch.diff, now applying to container...
+2026-11-10 00:42:40,182 - INFO - >>>>> Applied Patch:
+Checking patch sympy/physics/units/util.py...
+Applied patch sympy/physics/units/util.py cleanly.
+
+2026-11-10 00:42:40,828 - INFO - Git diff before:
+diff --git a/sympy/physics/units/util.py b/sympy/physics/units/util.py
+index b03ed4cd88..150dc05111 100755
+--- a/sympy/physics/units/util.py
++++ b/sympy/physics/units/util.py
+@@ -4,6 +4,7 @@
+ 
+ from sympy import Add, Mul, Pow, Tuple, sympify
+ from sympy.core.compatibility import reduce, Iterable, ordered
++from sympy.matrices.common import NonInvertibleMatrixError
+ from sympy.physics.units.dimensions import Dimension
+ from sympy.physics.units.prefixes import Prefix
+ from sympy.physics.units.quantities import Quantity
+@@ -30,7 +31,11 @@ def _get_conversion_matrix_for_expr(expr, target_units, unit_system):
+     camat = Matrix([[dimension_system.get_dimensional_dependencies(i, mark_dimensionless=True).get(j, 0) for i in target_dims] for j in canon_dim_units])
+     exprmat = Matrix([dim_dependencies.get(k, 0) for k in canon_dim_units])
+ 
+-    res_exponents = camat.solve_least_squares(exprmat, method=None)
++    try:
++        res_exponents = camat.solve(exprmat)
++    except NonInvertibleMatrixError:
++        return None
++
+     return res_exponents
+2026-11-10 00:42:40,829 - INFO - Eval script for sympy__sympy-20442 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-20442\eval.sh; copying to container...
+2026-11-10 00:42:47,176 - INFO - Test runtime: 6.23 seconds
+2026-11-10 00:42:47,178 - INFO - Test output for sympy__sympy-20442 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-20442\test_output.txt
+2026-11-10 00:42:47,265 - INFO - Git diff after:
+diff --git a/sympy/physics/units/util.py b/sympy/physics/units/util.py
+index b03ed4cd88..150dc05111 100755
+--- a/sympy/physics/units/util.py
++++ b/sympy/physics/units/util.py
+@@ -4,6 +4,7 @@
+ 
+ from sympy import Add, Mul, Pow, Tuple, sympify
+ from sympy.core.compatibility import reduce, Iterable, ordered
++from sympy.matrices.common import NonInvertibleMatrixError
+ from sympy.physics.units.dimensions import Dimension
+ from sympy.physics.units.prefixes import Prefix
+ from sympy.physics.units.quantities import Quantity
+@@ -30,7 +31,11 @@ def _get_conversion_matrix_for_expr(expr, target_units, unit_system):
+     camat = Matrix([[dimension_system.get_dimensional_dependencies(i, mark_dimensionless=True).get(j, 0) for i in target_dims] for j in canon_dim_units])
+     exprmat = Matrix([dim_dependencies.get(k, 0) for k in canon_dim_units])
+ 
+-    res_exponents = camat.solve_least_squares(exprmat, method=None)
++    try:
++        res_exponents = camat.solve(exprmat)
++    except NonInvertibleMatrixError:
++        return None
++
+     return res_exponents
+2026-11-10 00:42:47,266 - INFO - Grading answer for sympy__sympy-20442...
+2026-11-10 00:42:47,280 - INFO - report: {'sympy__sympy-20442': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_convert_to'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_str_repr', 'test_eq', 'test_Quantity_definition', 'test_abbrev', 'test_print', 'test_Quantity_eq', 'test_add_sub', 'test_quantity_abs', 'test_check_unit_consistency', 'test_mul_div', 'test_units', 'test_issue_quart', 'test_issue_5565', 'test_find_unit', 'test_Quantity_derivative', 'test_quantity_postprocessing', 'test_factor_and_dimension', 'test_dimensional_expr_of_derivative', 'test_get_dimensional_expr_with_function', 'test_binary_information', 'test_conversion_with_2_nonstandard_dimensions', 'test_eval_subs', 'test_issue_14932', 'test_issue_14547'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-20442: resolved: True
+2026-11-10 00:42:47,281 - INFO - Attempting to stop container sweb.eval.sympy__sympy-20442.lg516logs-batch-13...
+2026-11-10 00:43:02,562 - INFO - Container sweb.eval.sympy__sympy-20442.lg516logs-batch-13 stopped successfully.
+2026-11-10 00:43:02,562 - INFO - Attempting to remove container sweb.eval.sympy__sympy-20442.lg516logs-batch-13...
+2026-11-10 00:43:02,675 - INFO - Container sweb.eval.sympy__sympy-20442.lg516logs-batch-13 removed successfully.

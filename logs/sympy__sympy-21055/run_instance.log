@@ -1,0 +1,103 @@
+2026-11-10 00:44:12,596 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:44:31,273 - INFO - Creating container for sympy__sympy-21055...
+2026-11-10 00:44:31,777 - INFO - Container for sympy__sympy-21055 created: 607422eddab1861d87ec9200c4737660a80211d23af08cb56da494f4a78f6bd0
+2026-11-10 00:44:32,299 - INFO - Container for sympy__sympy-21055 started: 607422eddab1861d87ec9200c4737660a80211d23af08cb56da494f4a78f6bd0
+2026-11-10 00:44:32,300 - INFO - Intermediate patch for sympy__sympy-21055 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-21055\patch.diff, now applying to container...
+2026-11-10 00:44:32,801 - INFO - >>>>> Applied Patch:
+Checking patch sympy/assumptions/refine.py...
+Applied patch sympy/assumptions/refine.py cleanly.
+
+2026-11-10 00:44:34,393 - INFO - Git diff before:
+diff --git a/sympy/assumptions/refine.py b/sympy/assumptions/refine.py
+index e1f97190c0..99a5f2ec97 100755
+--- a/sympy/assumptions/refine.py
++++ b/sympy/assumptions/refine.py
+@@ -297,6 +297,28 @@ def refine_im(expr, assumptions):
+         return - S.ImaginaryUnit * arg
+     return _refine_reim(expr, assumptions)
+ 
++def refine_arg(expr, assumptions):
++    """
++    Handler for complex argument
++
++    Explanation
++    ===========
++
++    >>> from sympy.assumptions.refine import refine_arg
++    >>> from sympy import Q, arg
++    >>> from sympy.abc import x
++    >>> refine_arg(arg(x), Q.positive(x))
++    0
++    >>> refine_arg(arg(x), Q.negative(x))
++    pi
++    """
++    rg = expr.args[0]
++    if ask(Q.positive(rg), assumptions):
++        return S.Zero
++    if ask(Q.negative(rg), assumptions):
++        return S.Pi
++    return None
++
+ 
+ def _refine_reim(expr, assumptions):
+     # Helper function for refine_re & refine_im
+@@ -379,6 +401,7 @@ def refine_matrixelement(expr, assumptions):
+     'atan2': refine_atan2,
+     're': refine_re,
+     'im': refine_im,
++    'arg': refine_arg,
+     'sign': refine_sign,
+     'MatrixElement': refine_matrixelement
+ }  # type: Dict[str, Callable[[Expr, Boolean], Expr]]
+2026-11-10 00:44:34,395 - INFO - Eval script for sympy__sympy-21055 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-21055\eval.sh; copying to container...
+2026-11-10 00:44:49,704 - INFO - Test runtime: 14.98 seconds
+2026-11-10 00:44:49,706 - INFO - Test output for sympy__sympy-21055 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-21055\test_output.txt
+2026-11-10 00:44:49,791 - INFO - Git diff after:
+diff --git a/sympy/assumptions/refine.py b/sympy/assumptions/refine.py
+index e1f97190c0..99a5f2ec97 100755
+--- a/sympy/assumptions/refine.py
++++ b/sympy/assumptions/refine.py
+@@ -297,6 +297,28 @@ def refine_im(expr, assumptions):
+         return - S.ImaginaryUnit * arg
+     return _refine_reim(expr, assumptions)
+ 
++def refine_arg(expr, assumptions):
++    """
++    Handler for complex argument
++
++    Explanation
++    ===========
++
++    >>> from sympy.assumptions.refine import refine_arg
++    >>> from sympy import Q, arg
++    >>> from sympy.abc import x
++    >>> refine_arg(arg(x), Q.positive(x))
++    0
++    >>> refine_arg(arg(x), Q.negative(x))
++    pi
++    """
++    rg = expr.args[0]
++    if ask(Q.positive(rg), assumptions):
++        return S.Zero
++    if ask(Q.negative(rg), assumptions):
++        return S.Pi
++    return None
++
+ 
+ def _refine_reim(expr, assumptions):
+     # Helper function for refine_re & refine_im
+@@ -379,6 +401,7 @@ def refine_matrixelement(expr, assumptions):
+     'atan2': refine_atan2,
+     're': refine_re,
+     'im': refine_im,
++    'arg': refine_arg,
+     'sign': refine_sign,
+     'MatrixElement': refine_matrixelement
+ }  # type: Dict[str, Callable[[Expr, Boolean], Expr]]
+2026-11-10 00:44:49,791 - INFO - Grading answer for sympy__sympy-21055...
+2026-11-10 00:44:49,811 - INFO - report: {'sympy__sympy-21055': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_arg'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Abs', 'test_pow1', 'test_pow2', 'test_exp', 'test_Piecewise', 'test_atan2', 'test_re', 'test_im', 'test_complex', 'test_sign', 'test_func_args', 'test_eval_refine', 'test_refine_issue_12724'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-21055: resolved: True
+2026-11-10 00:44:49,813 - INFO - Attempting to stop container sweb.eval.sympy__sympy-21055.lg516logs-batch-14...
+2026-11-10 00:45:05,117 - INFO - Container sweb.eval.sympy__sympy-21055.lg516logs-batch-14 stopped successfully.
+2026-11-10 00:45:05,117 - INFO - Attempting to remove container sweb.eval.sympy__sympy-21055.lg516logs-batch-14...
+2026-11-10 00:45:05,229 - INFO - Container sweb.eval.sympy__sympy-21055.lg516logs-batch-14 removed successfully.

@@ -1,0 +1,55 @@
+2026-11-10 00:25:06,098 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:25:13,900 - INFO - Creating container for sympy__sympy-15345...
+2026-11-10 00:25:14,229 - INFO - Container for sympy__sympy-15345 created: a2c190bf2e07405ed44412ab0b437e099020ec26f42ca05495f839305e06a70f
+2026-11-10 00:25:14,530 - INFO - Container for sympy__sympy-15345 started: a2c190bf2e07405ed44412ab0b437e099020ec26f42ca05495f839305e06a70f
+2026-11-10 00:25:14,533 - INFO - Intermediate patch for sympy__sympy-15345 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15345\patch.diff, now applying to container...
+2026-11-10 00:25:14,840 - INFO - >>>>> Applied Patch:
+Checking patch sympy/printing/mathematica.py...
+Applied patch sympy/printing/mathematica.py cleanly.
+
+2026-11-10 00:25:15,626 - INFO - Git diff before:
+diff --git a/sympy/printing/mathematica.py b/sympy/printing/mathematica.py
+index ea7e3a2d9..573ee73a8 100755
+--- a/sympy/printing/mathematica.py
++++ b/sympy/printing/mathematica.py
+@@ -101,6 +101,12 @@ def _print_Function(self, expr):
+                     return "%s[%s]" % (mfunc, self.stringify(expr.args, ", "))
+         return expr.func.__name__ + "[%s]" % self.stringify(expr.args, ", ")
+ 
++    def _print_Max(self, expr):
++        return "%s[%s]" % (expr.func.__name__, self.stringify(expr.args, ", "))
++
++    def _print_Min(self, expr):
++        return "%s[%s]" % (expr.func.__name__, self.stringify(expr.args, ", "))
++
+     def _print_Integral(self, expr):
+         if len(expr.variables) == 1 and not expr.limits[0][1:]:
+             args = [expr.args[0], expr.variables[0]]
+2026-11-10 00:25:15,628 - INFO - Eval script for sympy__sympy-15345 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15345\eval.sh; copying to container...
+2026-11-10 00:25:22,344 - INFO - Test runtime: 6.50 seconds
+2026-11-10 00:25:22,346 - INFO - Test output for sympy__sympy-15345 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15345\test_output.txt
+2026-11-10 00:25:22,443 - INFO - Git diff after:
+diff --git a/sympy/printing/mathematica.py b/sympy/printing/mathematica.py
+index ea7e3a2d9..573ee73a8 100755
+--- a/sympy/printing/mathematica.py
++++ b/sympy/printing/mathematica.py
+@@ -101,6 +101,12 @@ def _print_Function(self, expr):
+                     return "%s[%s]" % (mfunc, self.stringify(expr.args, ", "))
+         return expr.func.__name__ + "[%s]" % self.stringify(expr.args, ", ")
+ 
++    def _print_Max(self, expr):
++        return "%s[%s]" % (expr.func.__name__, self.stringify(expr.args, ", "))
++
++    def _print_Min(self, expr):
++        return "%s[%s]" % (expr.func.__name__, self.stringify(expr.args, ", "))
++
+     def _print_Integral(self, expr):
+         if len(expr.variables) == 1 and not expr.limits[0][1:]:
+             args = [expr.args[0], expr.variables[0]]
+2026-11-10 00:25:22,443 - INFO - Grading answer for sympy__sympy-15345...
+2026-11-10 00:25:22,459 - INFO - report: {'sympy__sympy-15345': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_Function'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Integer', 'test_Rational', 'test_Pow', 'test_Mul', 'test_constants', 'test_containers', 'test_Integral', 'test_Derivative'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15345: resolved: True
+2026-11-10 00:25:22,462 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15345.lg516logs-batch-12...
+2026-11-10 00:25:37,785 - INFO - Container sweb.eval.sympy__sympy-15345.lg516logs-batch-12 stopped successfully.
+2026-11-10 00:25:37,785 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15345.lg516logs-batch-12...
+2026-11-10 00:25:37,908 - INFO - Container sweb.eval.sympy__sympy-15345.lg516logs-batch-12 removed successfully.

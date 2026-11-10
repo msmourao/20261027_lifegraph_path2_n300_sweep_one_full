@@ -1,0 +1,68 @@
+2026-11-09 23:34:02,411 - INFO - Creating container for scikit-learn__scikit-learn-13496...
+2026-11-09 23:34:02,525 - INFO - Container for scikit-learn__scikit-learn-13496 created: cba6bd6978a1c356cc78653663813239ddec0f5828c8521547cfd22dd7d5752b
+2026-11-09 23:34:02,812 - INFO - Container for scikit-learn__scikit-learn-13496 started: cba6bd6978a1c356cc78653663813239ddec0f5828c8521547cfd22dd7d5752b
+2026-11-09 23:34:02,814 - INFO - Intermediate patch for scikit-learn__scikit-learn-13496 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13496\patch.diff, now applying to container...
+2026-11-09 23:34:03,090 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/ensemble/iforest.py...
+Applied patch sklearn/ensemble/iforest.py cleanly.
+
+2026-11-09 23:34:03,923 - INFO - Git diff before:
+diff --git a/sklearn/ensemble/iforest.py b/sklearn/ensemble/iforest.py
+index 8a1bd3625..20fc0d803 100755
+--- a/sklearn/ensemble/iforest.py
++++ b/sklearn/ensemble/iforest.py
+@@ -173,7 +173,8 @@ class IsolationForest(BaseBagging, OutlierMixin):
+                  n_jobs=None,
+                  behaviour='old',
+                  random_state=None,
+-                 verbose=0):
++                 verbose=0,
++                 warm_start=False):
+         super().__init__(
+             base_estimator=ExtraTreeRegressor(
+                 max_features=1,
+@@ -187,7 +188,8 @@ class IsolationForest(BaseBagging, OutlierMixin):
+             max_features=max_features,
+             n_jobs=n_jobs,
+             random_state=random_state,
+-            verbose=verbose)
++            verbose=verbose,
++            warm_start=warm_start)
+ 
+         self.behaviour = behaviour
+         self.contamination = contamination
+2026-11-09 23:34:03,925 - INFO - Eval script for scikit-learn__scikit-learn-13496 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13496\eval.sh; copying to container...
+2026-11-09 23:34:26,399 - INFO - Test runtime: 22.35 seconds
+2026-11-09 23:34:26,402 - INFO - Test output for scikit-learn__scikit-learn-13496 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13496\test_output.txt
+2026-11-09 23:34:26,575 - INFO - Git diff after:
+diff --git a/sklearn/ensemble/iforest.py b/sklearn/ensemble/iforest.py
+index 8a1bd3625..20fc0d803 100755
+--- a/sklearn/ensemble/iforest.py
++++ b/sklearn/ensemble/iforest.py
+@@ -173,7 +173,8 @@ class IsolationForest(BaseBagging, OutlierMixin):
+                  n_jobs=None,
+                  behaviour='old',
+                  random_state=None,
+-                 verbose=0):
++                 verbose=0,
++                 warm_start=False):
+         super().__init__(
+             base_estimator=ExtraTreeRegressor(
+                 max_features=1,
+@@ -187,7 +188,8 @@ class IsolationForest(BaseBagging, OutlierMixin):
+             max_features=max_features,
+             n_jobs=n_jobs,
+             random_state=random_state,
+-            verbose=verbose)
++            verbose=verbose,
++            warm_start=warm_start)
+ 
+         self.behaviour = behaviour
+         self.contamination = contamination
+2026-11-09 23:34:26,575 - INFO - Grading answer for scikit-learn__scikit-learn-13496...
+2026-11-09 23:34:26,656 - INFO - report: {'scikit-learn__scikit-learn-13496': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/ensemble/tests/test_iforest.py::test_iforest_warm_start'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/ensemble/tests/test_iforest.py::test_iforest', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_sparse', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_error', 'sklearn/ensemble/tests/test_iforest.py::test_recalculate_max_depth', 'sklearn/ensemble/tests/test_iforest.py::test_max_samples_attribute', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_parallel_regression', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_performance', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_works[0.25]', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_works[auto]', 'sklearn/ensemble/tests/test_iforest.py::test_max_samples_consistency', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_subsampled_features', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_average_path_length', 'sklearn/ensemble/tests/test_iforest.py::test_score_samples', 'sklearn/ensemble/tests/test_iforest.py::test_deprecation', 'sklearn/ensemble/tests/test_iforest.py::test_behaviour_param', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_chunks_works1[0.25-3]', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_chunks_works1[auto-2]', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_chunks_works2[0.25-3]', 'sklearn/ensemble/tests/test_iforest.py::test_iforest_chunks_works2[auto-2]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-13496: resolved: True
+2026-11-09 23:34:26,662 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-13496.lg516logs-batch-09...
+2026-11-09 23:34:42,543 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13496.lg516logs-batch-09 stopped successfully.
+2026-11-09 23:34:42,543 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-13496.lg516logs-batch-09...
+2026-11-09 23:34:42,684 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13496.lg516logs-batch-09 removed successfully.

@@ -1,0 +1,45 @@
+2026-11-09 23:45:20,027 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:47:39,147 - INFO - Creating container for sphinx-doc__sphinx-11445...
+2026-11-09 23:47:47,065 - INFO - Container for sphinx-doc__sphinx-11445 created: 885ada9a0a55e686c6af501c3272c2508b6001e70165282f0d35181b585c29ef
+2026-11-09 23:47:50,931 - INFO - Container for sphinx-doc__sphinx-11445 started: 885ada9a0a55e686c6af501c3272c2508b6001e70165282f0d35181b585c29ef
+2026-11-09 23:47:50,939 - INFO - Intermediate patch for sphinx-doc__sphinx-11445 written to logs\run_evaluation\lg516logs-batch-10\lifegraph-path2-sweep-one-full\sphinx-doc__sphinx-11445\patch.diff, now applying to container...
+2026-11-09 23:47:52,228 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/util/rst.py...
+Applied patch sphinx/util/rst.py cleanly.
+
+2026-11-09 23:47:54,510 - INFO - Git diff before:
+diff --git a/sphinx/util/rst.py b/sphinx/util/rst.py
+index 7a1538325..5f5d9fa0e 100755
+--- a/sphinx/util/rst.py
++++ b/sphinx/util/rst.py
+@@ -25,7 +25,7 @@ except ImportError:
+ 
+ logger = logging.getLogger(__name__)
+ 
+-docinfo_re = re.compile(':\\w+:.*?')
++docinfo_re = re.compile(':\\w+:\\s')
+ symbols_re = re.compile(r'([!-\-/:-@\[-`{-~])')  # symbols without dot(0x2e)
+ SECTIONING_CHARS = ['=', '-', '~']
+2026-11-09 23:47:54,522 - INFO - Eval script for sphinx-doc__sphinx-11445 written to logs\run_evaluation\lg516logs-batch-10\lifegraph-path2-sweep-one-full\sphinx-doc__sphinx-11445\eval.sh; copying to container...
+2026-11-09 23:48:09,823 - INFO - Test runtime: 15.03 seconds
+2026-11-09 23:48:09,826 - INFO - Test output for sphinx-doc__sphinx-11445 written to logs\run_evaluation\lg516logs-batch-10\lifegraph-path2-sweep-one-full\sphinx-doc__sphinx-11445\test_output.txt
+2026-11-09 23:48:09,936 - INFO - Git diff after:
+diff --git a/sphinx/util/rst.py b/sphinx/util/rst.py
+index 7a1538325..5f5d9fa0e 100755
+--- a/sphinx/util/rst.py
++++ b/sphinx/util/rst.py
+@@ -25,7 +25,7 @@ except ImportError:
+ 
+ logger = logging.getLogger(__name__)
+ 
+-docinfo_re = re.compile(':\\w+:.*?')
++docinfo_re = re.compile(':\\w+:\\s')
+ symbols_re = re.compile(r'([!-\-/:-@\[-`{-~])')  # symbols without dot(0x2e)
+ SECTIONING_CHARS = ['=', '-', '~']
+2026-11-09 23:48:09,937 - INFO - Grading answer for sphinx-doc__sphinx-11445...
+2026-11-09 23:48:09,956 - INFO - report: {'sphinx-doc__sphinx-11445': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_with_newline', 'tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_without_newline'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_util_rst.py::test_escape', 'tests/test_util_rst.py::test_append_epilog', 'tests/test_util_rst.py::test_prepend_prolog', 'tests/test_util_rst.py::test_prepend_prolog_with_CR', 'tests/test_util_rst.py::test_prepend_prolog_without_CR', 'tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections', 'tests/test_util_rst.py::test_textwidth', 'tests/test_util_rst.py::test_heading'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-11445: resolved: True
+2026-11-09 23:48:09,957 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-11445.lg516logs-batch-10...
+2026-11-09 23:48:25,261 - INFO - Container sweb.eval.sphinx-doc__sphinx-11445.lg516logs-batch-10 stopped successfully.
+2026-11-09 23:48:25,262 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-11445.lg516logs-batch-10...
+2026-11-09 23:48:25,357 - INFO - Container sweb.eval.sphinx-doc__sphinx-11445.lg516logs-batch-10 removed successfully.

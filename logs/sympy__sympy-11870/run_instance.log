@@ -1,0 +1,107 @@
+2026-11-09 23:58:56,353 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:59:06,722 - INFO - Creating container for sympy__sympy-11870...
+2026-11-09 23:59:07,101 - INFO - Container for sympy__sympy-11870 created: a4e4672ff86d2d33061b06339a194a60d82caa96f85c970faf8b868a3e7da2d3
+2026-11-09 23:59:07,424 - INFO - Container for sympy__sympy-11870 started: a4e4672ff86d2d33061b06339a194a60d82caa96f85c970faf8b868a3e7da2d3
+2026-11-09 23:59:07,425 - INFO - Intermediate patch for sympy__sympy-11870 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-11870\patch.diff, now applying to container...
+2026-11-09 23:59:07,764 - INFO - >>>>> Applied Patch:
+Checking patch sympy/core/mul.py...
+Checking patch sympy/functions/elementary/trigonometric.py...
+Applied patch sympy/core/mul.py cleanly.
+Applied patch sympy/functions/elementary/trigonometric.py cleanly.
+
+2026-11-09 23:59:08,427 - INFO - Git diff before:
+diff --git a/sympy/core/mul.py b/sympy/core/mul.py
+index 2e12ddc60..e62b01ca6 100755
+--- a/sympy/core/mul.py
++++ b/sympy/core/mul.py
+@@ -1674,6 +1674,22 @@ def as_ordered_factors(self, order=None):
+     def _sorted_args(self):
+         return tuple(self.as_ordered_factors())
+ 
++    def _eval_rewrite_as_sinc(self, *args):
++        from sympy.functions.elementary.trigonometric import sinc
++        recip = []
++        other = []
++        for factor in args:
++            if factor.is_Pow and factor.exp == S.NegativeOne:
++                recip.append(factor.base)
++            else:
++                other.append(factor)
++        if len(other) != 1 or not recip or other[0].func.__name__ != 'sin':
++            return None
++        argument = other[0].args[0]
++        if self.func(*recip) == argument:
++            return sinc(argument)
++        return None
++
+ 
+ def prod(a, start=1):
+     """Return product of elements of a. Start with int 1 so if only
+diff --git a/sympy/functions/elementary/trigonometric.py b/sympy/functions/elementary/trigonometric.py
+index b2a3f3d6a..c8ee137f8 100755
+--- a/sympy/functions/elementary/trigonometric.py
++++ b/sympy/functions/elementary/trigonometric.py
+@@ -1817,7 +1817,9 @@ def _eval_rewrite_as_jn(self, arg):
+         return jn(0, arg)
+ 
+     def _eval_rewrite_as_sin(self, arg):
+-        return sin(arg) / arg
++        from sympy.core.relational import Ne
++        from sympy.functions.elementary.piecewise import Piecewise
++        return Piecewise((sin(arg) / arg, Ne(arg, S.Zero)), (S.One, True))
+ 
+ 
+ ###############################################################################
+2026-11-09 23:59:08,428 - INFO - Eval script for sympy__sympy-11870 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-11870\eval.sh; copying to container...
+2026-11-10 00:20:16,144 - INFO - Test runtime: 1_267.56 seconds
+2026-11-10 00:20:16,147 - INFO - Test output for sympy__sympy-11870 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-11870\test_output.txt
+2026-11-10 00:20:16,248 - INFO - Git diff after:
+diff --git a/sympy/core/mul.py b/sympy/core/mul.py
+index 2e12ddc60..e62b01ca6 100755
+--- a/sympy/core/mul.py
++++ b/sympy/core/mul.py
+@@ -1674,6 +1674,22 @@ def as_ordered_factors(self, order=None):
+     def _sorted_args(self):
+         return tuple(self.as_ordered_factors())
+ 
++    def _eval_rewrite_as_sinc(self, *args):
++        from sympy.functions.elementary.trigonometric import sinc
++        recip = []
++        other = []
++        for factor in args:
++            if factor.is_Pow and factor.exp == S.NegativeOne:
++                recip.append(factor.base)
++            else:
++                other.append(factor)
++        if len(other) != 1 or not recip or other[0].func.__name__ != 'sin':
++            return None
++        argument = other[0].args[0]
++        if self.func(*recip) == argument:
++            return sinc(argument)
++        return None
++
+ 
+ def prod(a, start=1):
+     """Return product of elements of a. Start with int 1 so if only
+diff --git a/sympy/functions/elementary/trigonometric.py b/sympy/functions/elementary/trigonometric.py
+index b2a3f3d6a..c8ee137f8 100755
+--- a/sympy/functions/elementary/trigonometric.py
++++ b/sympy/functions/elementary/trigonometric.py
+@@ -1817,7 +1817,9 @@ def _eval_rewrite_as_jn(self, arg):
+         return jn(0, arg)
+ 
+     def _eval_rewrite_as_sin(self, arg):
+-        return sin(arg) / arg
++        from sympy.core.relational import Ne
++        from sympy.functions.elementary.piecewise import Piecewise
++        return Piecewise((sin(arg) / arg, Ne(arg, S.Zero)), (S.One, True))
+ 
+ 
+ ###############################################################################
+2026-11-10 00:20:16,248 - INFO - Grading answer for sympy__sympy-11870...
+2026-11-10 00:20:16,287 - INFO - report: {'sympy__sympy-11870': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_sinc'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_sin', 'test_sin_cos', 'test_sin_series', 'test_sin_rewrite', 'test_sin_expansion', 'test_sin_AccumBounds', 'test_trig_symmetry', 'test_cos', 'test_issue_6190', 'test_cos_series', 'test_cos_rewrite', 'test_cos_expansion', 'test_cos_AccumBounds', 'test_tan', 'test_tan_series', 'test_tan_rewrite', 'test_tan_subs', 'test_tan_expansion', 'test_tan_AccumBounds', 'test_cot', 'test_cot_series', 'test_cot_rewrite', 'test_cot_subs', 'test_cot_expansion', 'test_cot_AccumBounds', 'test_asin', 'test_asin_series', 'test_asin_rewrite', 'test_acos', 'test_acos_series', 'test_acos_rewrite', 'test_atan', 'test_atan_rewrite', 'test_atan2', 'test_acot', 'test_acot_rewrite', 'test_attributes', 'test_sincos_rewrite', 'test_evenodd_rewrite', 'test_issue_4547', 'test_as_leading_term_issue_5272', 'test_leading_terms', 'test_atan2_expansion', 'test_aseries', 'test_issue_4420', 'test_inverses', 'test_real_imag', 'test_sec', 'test_sec_rewrite', 'test_csc', 'test_asec', 'test_asec_is_real', 'test_acsc', 'test_csc_rewrite', 'test_issue_8653', 'test_issue_9157', 'test_trig_period', 'test_issue_7171'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-11870: resolved: True
+2026-11-10 00:20:16,288 - INFO - Attempting to stop container sweb.eval.sympy__sympy-11870.lg516logs-batch-11...
+2026-11-10 00:20:31,582 - INFO - Container sweb.eval.sympy__sympy-11870.lg516logs-batch-11 stopped successfully.
+2026-11-10 00:20:31,582 - INFO - Attempting to remove container sweb.eval.sympy__sympy-11870.lg516logs-batch-11...
+2026-11-10 00:20:31,704 - INFO - Container sweb.eval.sympy__sympy-11870.lg516logs-batch-11 removed successfully.

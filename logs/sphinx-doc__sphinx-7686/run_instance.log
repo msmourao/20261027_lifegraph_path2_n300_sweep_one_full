@@ -1,0 +1,95 @@
+2026-11-09 23:48:25,369 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:49:59,807 - INFO - Creating container for sphinx-doc__sphinx-7686...
+2026-11-09 23:50:09,422 - INFO - Container for sphinx-doc__sphinx-7686 created: 59d552cad802b676e771d9556559d014b36a1b7ae14819a2f1ee36b400ed3ef1
+2026-11-09 23:50:11,499 - INFO - Container for sphinx-doc__sphinx-7686 started: 59d552cad802b676e771d9556559d014b36a1b7ae14819a2f1ee36b400ed3ef1
+2026-11-09 23:50:11,513 - INFO - Intermediate patch for sphinx-doc__sphinx-7686 written to logs\run_evaluation\lg516logs-batch-10\lifegraph-path2-sweep-one-full\sphinx-doc__sphinx-7686\patch.diff, now applying to container...
+2026-11-09 23:50:11,796 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/ext/autosummary/generate.py...
+Applied patch sphinx/ext/autosummary/generate.py cleanly.
+
+2026-11-09 23:50:12,401 - INFO - Git diff before:
+diff --git a/sphinx/ext/autosummary/generate.py b/sphinx/ext/autosummary/generate.py
+index a57c73fb7..3edcf5ab5 100755
+--- a/sphinx/ext/autosummary/generate.py
++++ b/sphinx/ext/autosummary/generate.py
+@@ -246,7 +246,31 @@ def generate_autosummary_content(name: str, obj: Any, parent: Any,
+     ns.update(context)
+ 
+     if doc.objtype == 'module':
+-        ns['members'] = dir(obj)
++        defined = set()
++        try:
++            analyzer = ModuleAnalyzer.for_module(name)
++            defined.update(analyzer.find_tags())
++            for namespace, attr_name in analyzer.find_attr_docs():
++                if namespace == '':
++                    defined.add(attr_name)
++        except PycodeError:
++            defined = set(dir(obj))
++        always = {'__builtins__', '__cached__', '__doc__', '__file__',
++                  '__name__', '__package__'}
++        members = []
++        for member_name in dir(obj):
++            if (not imported_members and member_name not in defined
++                    and member_name not in always):
++                continue
++            try:
++                member = safe_getattr(obj, member_name)
++            except AttributeError:
++                continue
++            documenter = get_documenter(app, member, obj)
++            if skip_member(member, member_name, documenter.objtype) is True:
++                continue
++            members.append(member_name)
++        ns['members'] = members
+         ns['functions'], ns['all_functions'] = \
+             get_members(obj, {'function'}, imported=imported_members)
+         ns['classes'], ns['all_classes'] = \
+2026-11-09 23:50:12,403 - INFO - Eval script for sphinx-doc__sphinx-7686 written to logs\run_evaluation\lg516logs-batch-10\lifegraph-path2-sweep-one-full\sphinx-doc__sphinx-7686\eval.sh; copying to container...
+2026-11-09 23:50:21,436 - INFO - Test runtime: 8.82 seconds
+2026-11-09 23:50:21,438 - INFO - Test output for sphinx-doc__sphinx-7686 written to logs\run_evaluation\lg516logs-batch-10\lifegraph-path2-sweep-one-full\sphinx-doc__sphinx-7686\test_output.txt
+2026-11-09 23:50:21,523 - INFO - Git diff after:
+diff --git a/sphinx/ext/autosummary/generate.py b/sphinx/ext/autosummary/generate.py
+index a57c73fb7..3edcf5ab5 100755
+--- a/sphinx/ext/autosummary/generate.py
++++ b/sphinx/ext/autosummary/generate.py
+@@ -246,7 +246,31 @@ def generate_autosummary_content(name: str, obj: Any, parent: Any,
+     ns.update(context)
+ 
+     if doc.objtype == 'module':
+-        ns['members'] = dir(obj)
++        defined = set()
++        try:
++            analyzer = ModuleAnalyzer.for_module(name)
++            defined.update(analyzer.find_tags())
++            for namespace, attr_name in analyzer.find_attr_docs():
++                if namespace == '':
++                    defined.add(attr_name)
++        except PycodeError:
++            defined = set(dir(obj))
++        always = {'__builtins__', '__cached__', '__doc__', '__file__',
++                  '__name__', '__package__'}
++        members = []
++        for member_name in dir(obj):
++            if (not imported_members and member_name not in defined
++                    and member_name not in always):
++                continue
++            try:
++                member = safe_getattr(obj, member_name)
++            except AttributeError:
++                continue
++            documenter = get_documenter(app, member, obj)
++            if skip_member(member, member_name, documenter.objtype) is True:
++                continue
++            members.append(member_name)
++        ns['members'] = members
+         ns['functions'], ns['all_functions'] = \
+             get_members(obj, {'function'}, imported=imported_members)
+         ns['classes'], ns['all_classes'] = \
+2026-11-09 23:50:21,523 - INFO - Grading answer for sphinx-doc__sphinx-7686...
+2026-11-09 23:50:21,550 - INFO - report: {'sphinx-doc__sphinx-7686': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_ext_autosummary.py::test_autosummary_generate_content_for_module', 'tests/test_ext_autosummary.py::test_autosummary_generate_content_for_module_skipped'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_ext_autosummary.py::test_mangle_signature', 'tests/test_ext_autosummary.py::test_escaping', 'tests/test_ext_autosummary.py::test_autosummary_generate', 'tests/test_ext_autosummary.py::test_autosummary_generate_overwrite1', 'tests/test_ext_autosummary.py::test_autosummary_generate_overwrite2', 'tests/test_ext_autosummary.py::test_autosummary_recursive', 'tests/test_ext_autosummary.py::test_autosummary_latex_table_colspec', 'tests/test_ext_autosummary.py::test_import_by_name', 'tests/test_ext_autosummary.py::test_autosummary_imported_members', 'tests/test_ext_autosummary.py::test_generate_autosummary_docs_property', 'tests/test_ext_autosummary.py::test_autosummary_skip_member', 'tests/test_ext_autosummary.py::test_autosummary_template', 'tests/test_ext_autosummary.py::test_empty_autosummary_generate', 'tests/test_ext_autosummary.py::test_invalid_autosummary_generate', 'tests/test_ext_autosummary.py::test_autogen'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-7686: resolved: True
+2026-11-09 23:50:21,551 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-7686.lg516logs-batch-10...
+2026-11-09 23:50:36,840 - INFO - Container sweb.eval.sphinx-doc__sphinx-7686.lg516logs-batch-10 stopped successfully.
+2026-11-09 23:50:36,840 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-7686.lg516logs-batch-10...
+2026-11-09 23:50:36,951 - INFO - Container sweb.eval.sphinx-doc__sphinx-7686.lg516logs-batch-10 removed successfully.

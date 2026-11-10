@@ -1,0 +1,115 @@
+2026-11-09 23:28:57,132 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:29:15,934 - INFO - Creating container for scikit-learn__scikit-learn-11040...
+2026-11-09 23:29:17,596 - INFO - Container for scikit-learn__scikit-learn-11040 created: 82d41fef496cf70f016b7638419380aa1e517aab5cc6247d02d15f159cd9963e
+2026-11-09 23:29:18,362 - INFO - Container for scikit-learn__scikit-learn-11040 started: 82d41fef496cf70f016b7638419380aa1e517aab5cc6247d02d15f159cd9963e
+2026-11-09 23:29:18,367 - INFO - Intermediate patch for scikit-learn__scikit-learn-11040 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-11040\patch.diff, now applying to container...
+2026-11-09 23:29:18,676 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/neighbors/base.py...
+Applied patch sklearn/neighbors/base.py cleanly.
+
+2026-11-09 23:29:19,180 - INFO - Git diff before:
+diff --git a/sklearn/neighbors/base.py b/sklearn/neighbors/base.py
+index 3e5e729c2..b7e72890f 100755
+--- a/sklearn/neighbors/base.py
++++ b/sklearn/neighbors/base.py
+@@ -222,6 +222,18 @@ class NeighborsBase(six.with_metaclass(ABCMeta, BaseEstimator)):
+         self._fit_method = self.algorithm
+         self._fit_X = X
+ 
++        if self.n_neighbors is not None:
++            if not isinstance(self.n_neighbors, (int, np.integer)):
++                raise TypeError(
++                    "n_neighbors does not take %s value, enter integer value"
++                    % type(self.n_neighbors)
++                )
++            if self.n_neighbors <= 0:
++                raise ValueError(
++                    "Expected n_neighbors > 0. Got %d" %
++                    self.n_neighbors
++                )
++
+         if self._fit_method == 'auto':
+             # A tree approach is better for small number of neighbors,
+             # and KDTree is generally faster when available
+@@ -323,10 +335,21 @@ class KNeighborsMixin(object):
+                [2]]...)
+ 
+         """
+-        check_is_fitted(self, "_fit_method")
+-
+         if n_neighbors is None:
+             n_neighbors = self.n_neighbors
++        if n_neighbors is not None:
++            if not isinstance(n_neighbors, (int, np.integer)):
++                raise TypeError(
++                    "n_neighbors does not take %s value, enter integer value"
++                    % type(n_neighbors)
++                )
++            if n_neighbors <= 0:
++                raise ValueError(
++                    "Expected n_neighbors > 0. Got %d" %
++                    n_neighbors
++                )
++
++        check_is_fitted(self, "_fit_method")
+ 
+         if X is not None:
+             query_is_train = False
+2026-11-09 23:29:19,183 - INFO - Eval script for scikit-learn__scikit-learn-11040 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-11040\eval.sh; copying to container...
+2026-11-09 23:29:26,831 - INFO - Test runtime: 6.45 seconds
+2026-11-09 23:29:26,833 - INFO - Test output for scikit-learn__scikit-learn-11040 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-11040\test_output.txt
+2026-11-09 23:29:26,916 - INFO - Git diff after:
+diff --git a/sklearn/neighbors/base.py b/sklearn/neighbors/base.py
+index 3e5e729c2..b7e72890f 100755
+--- a/sklearn/neighbors/base.py
++++ b/sklearn/neighbors/base.py
+@@ -222,6 +222,18 @@ class NeighborsBase(six.with_metaclass(ABCMeta, BaseEstimator)):
+         self._fit_method = self.algorithm
+         self._fit_X = X
+ 
++        if self.n_neighbors is not None:
++            if not isinstance(self.n_neighbors, (int, np.integer)):
++                raise TypeError(
++                    "n_neighbors does not take %s value, enter integer value"
++                    % type(self.n_neighbors)
++                )
++            if self.n_neighbors <= 0:
++                raise ValueError(
++                    "Expected n_neighbors > 0. Got %d" %
++                    self.n_neighbors
++                )
++
+         if self._fit_method == 'auto':
+             # A tree approach is better for small number of neighbors,
+             # and KDTree is generally faster when available
+@@ -323,10 +335,21 @@ class KNeighborsMixin(object):
+                [2]]...)
+ 
+         """
+-        check_is_fitted(self, "_fit_method")
+-
+         if n_neighbors is None:
+             n_neighbors = self.n_neighbors
++        if n_neighbors is not None:
++            if not isinstance(n_neighbors, (int, np.integer)):
++                raise TypeError(
++                    "n_neighbors does not take %s value, enter integer value"
++                    % type(n_neighbors)
++                )
++            if n_neighbors <= 0:
++                raise ValueError(
++                    "Expected n_neighbors > 0. Got %d" %
++                    n_neighbors
++                )
++
++        check_is_fitted(self, "_fit_method")
+ 
+         if X is not None:
+             query_is_train = False
+2026-11-09 23:29:26,917 - INFO - Grading answer for scikit-learn__scikit-learn-11040...
+2026-11-09 23:29:26,931 - INFO - report: {'scikit-learn__scikit-learn-11040': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/neighbors/tests/test_neighbors.py::test_n_neighbors_datatype'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/neighbors/tests/test_neighbors.py::test_unsupervised_kneighbors', 'sklearn/neighbors/tests/test_neighbors.py::test_unsupervised_inputs', 'sklearn/neighbors/tests/test_neighbors.py::test_precomputed', 'sklearn/neighbors/tests/test_neighbors.py::test_precomputed_cross_validation', 'sklearn/neighbors/tests/test_neighbors.py::test_unsupervised_radius_neighbors', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_classifier', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_classifier_float_labels', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_classifier_predict_proba', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_classifier', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_classifier_when_no_neighbors', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_classifier_outlier_labeling', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_classifier_zero_distance', 'sklearn/neighbors/tests/test_neighbors.py::test_neighbors_regressors_zero_distance', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_boundary_handling', 'sklearn/neighbors/tests/test_neighbors.py::test_RadiusNeighborsClassifier_multioutput', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_classifier_sparse', 'sklearn/neighbors/tests/test_neighbors.py::test_KNeighborsClassifier_multioutput', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_regressor', 'sklearn/neighbors/tests/test_neighbors.py::test_KNeighborsRegressor_multioutput_uniform_weight', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_regressor_multioutput', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_regressor', 'sklearn/neighbors/tests/test_neighbors.py::test_RadiusNeighborsRegressor_multioutput_with_uniform_weight', 'sklearn/neighbors/tests/test_neighbors.py::test_RadiusNeighborsRegressor_multioutput', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_regressor_sparse', 'sklearn/neighbors/tests/test_neighbors.py::test_neighbors_iris', 'sklearn/neighbors/tests/test_neighbors.py::test_neighbors_digits', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_graph', 'sklearn/neighbors/tests/test_neighbors.py::test_kneighbors_graph_sparse', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_graph', 'sklearn/neighbors/tests/test_neighbors.py::test_radius_neighbors_graph_sparse', 'sklearn/neighbors/tests/test_neighbors.py::test_neighbors_badargs', 'sklearn/neighbors/tests/test_neighbors.py::test_neighbors_metrics', 'sklearn/neighbors/tests/test_neighbors.py::test_callable_metric', 'sklearn/neighbors/tests/test_neighbors.py::test_valid_brute_metric_for_auto_algorithm', 'sklearn/neighbors/tests/test_neighbors.py::test_metric_params_interface', 'sklearn/neighbors/tests/test_neighbors.py::test_predict_sparse_ball_kd_tree', 'sklearn/neighbors/tests/test_neighbors.py::test_non_euclidean_kneighbors', 'sklearn/neighbors/tests/test_neighbors.py::test_k_and_radius_neighbors_train_is_not_query', 'sklearn/neighbors/tests/test_neighbors.py::test_k_and_radius_neighbors_X_None', 'sklearn/neighbors/tests/test_neighbors.py::test_k_and_radius_neighbors_duplicates', 'sklearn/neighbors/tests/test_neighbors.py::test_include_self_neighbors_graph', 'sklearn/neighbors/tests/test_neighbors.py::test_dtype_convert', 'sklearn/neighbors/tests/test_neighbors.py::test_sparse_metric_callable', 'sklearn/neighbors/tests/test_neighbors.py::test_pairwise_boolean_distance'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-11040: resolved: True
+2026-11-09 23:29:26,933 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-11040.lg516logs-batch-09...
+2026-11-09 23:29:45,798 - INFO - Container sweb.eval.scikit-learn__scikit-learn-11040.lg516logs-batch-09 stopped successfully.
+2026-11-09 23:29:45,798 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-11040.lg516logs-batch-09...
+2026-11-09 23:29:46,829 - INFO - Container sweb.eval.scikit-learn__scikit-learn-11040.lg516logs-batch-09 removed successfully.

@@ -1,0 +1,47 @@
+2026-11-09 20:40:46,184 - INFO - Image not found locally, attempting to pull...
+2026-11-09 20:41:02,708 - INFO - Creating container for django__django-12286...
+2026-11-09 20:41:12,112 - INFO - Container for django__django-12286 created: 26fb2789f72e0b8f8abe51309aee2813a7df66927b177c1bc3254f03ff97a578
+2026-11-09 20:41:12,361 - INFO - Container for django__django-12286 started: 26fb2789f72e0b8f8abe51309aee2813a7df66927b177c1bc3254f03ff97a578
+2026-11-09 20:41:12,362 - INFO - Intermediate patch for django__django-12286 written to logs\run_evaluation\lg516logs-batch-01\lifegraph-path2-sweep-one-full\django__django-12286\patch.diff, now applying to container...
+2026-11-09 20:41:12,611 - INFO - >>>>> Applied Patch:
+Checking patch django/core/checks/translation.py...
+Applied patch django/core/checks/translation.py cleanly.
+
+2026-11-09 20:41:14,057 - INFO - Git diff before:
+diff --git a/django/core/checks/translation.py b/django/core/checks/translation.py
+index 138ed07ff8..79dcadc2d4 100755
+--- a/django/core/checks/translation.py
++++ b/django/core/checks/translation.py
+@@ -56,6 +56,7 @@ def check_setting_languages_bidi(app_configs, **kwargs):
+ def check_language_settings_consistent(app_configs, **kwargs):
+     """Error if language settings are not consistent with each other."""
+     available_tags = {i for i, _ in settings.LANGUAGES} | {'en-us'}
+-    if settings.LANGUAGE_CODE not in available_tags:
++    generic = settings.LANGUAGE_CODE.split('-')[0]
++    if settings.LANGUAGE_CODE not in available_tags and generic not in available_tags:
+         return [E004]
+     return []
+2026-11-09 20:41:14,059 - INFO - Eval script for django__django-12286 written to logs\run_evaluation\lg516logs-batch-01\lifegraph-path2-sweep-one-full\django__django-12286\eval.sh; copying to container...
+2026-11-09 20:41:36,681 - INFO - Test runtime: 22.48 seconds
+2026-11-09 20:41:36,691 - INFO - Test output for django__django-12286 written to logs\run_evaluation\lg516logs-batch-01\lifegraph-path2-sweep-one-full\django__django-12286\test_output.txt
+2026-11-09 20:41:37,004 - INFO - Git diff after:
+diff --git a/django/core/checks/translation.py b/django/core/checks/translation.py
+index 138ed07ff8..79dcadc2d4 100755
+--- a/django/core/checks/translation.py
++++ b/django/core/checks/translation.py
+@@ -56,6 +56,7 @@ def check_setting_languages_bidi(app_configs, **kwargs):
+ def check_language_settings_consistent(app_configs, **kwargs):
+     """Error if language settings are not consistent with each other."""
+     available_tags = {i for i, _ in settings.LANGUAGES} | {'en-us'}
+-    if settings.LANGUAGE_CODE not in available_tags:
++    generic = settings.LANGUAGE_CODE.split('-')[0]
++    if settings.LANGUAGE_CODE not in available_tags and generic not in available_tags:
+         return [E004]
+     return []
+2026-11-09 20:41:37,004 - INFO - Grading answer for django__django-12286...
+2026-11-09 20:41:37,067 - INFO - report: {'django__django-12286': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_valid_variant_consistent_language_settings (check_framework.test_translation.TranslationCheckTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_inconsistent_language_settings (check_framework.test_translation.TranslationCheckTests)', 'test_invalid_language_code (check_framework.test_translation.TranslationCheckTests)', 'test_invalid_languages (check_framework.test_translation.TranslationCheckTests)', 'test_invalid_languages_bidi (check_framework.test_translation.TranslationCheckTests)', 'test_valid_language_code (check_framework.test_translation.TranslationCheckTests)', 'test_valid_languages (check_framework.test_translation.TranslationCheckTests)', 'test_valid_languages_bidi (check_framework.test_translation.TranslationCheckTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12286: resolved: True
+2026-11-09 20:41:37,071 - INFO - Attempting to stop container sweb.eval.django__django-12286.lg516logs-batch-01...
+2026-11-09 20:41:52,819 - INFO - Container sweb.eval.django__django-12286.lg516logs-batch-01 stopped successfully.
+2026-11-09 20:41:52,819 - INFO - Attempting to remove container sweb.eval.django__django-12286.lg516logs-batch-01...
+2026-11-09 20:41:53,040 - INFO - Container sweb.eval.django__django-12286.lg516logs-batch-01 removed successfully.

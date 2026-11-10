@@ -1,0 +1,63 @@
+2026-11-09 23:35:01,281 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:35:17,294 - INFO - Creating container for scikit-learn__scikit-learn-13584...
+2026-11-09 23:35:21,069 - INFO - Container for scikit-learn__scikit-learn-13584 created: 5413d2e8d70127e0453c4c914d6fcdb91c09b204e77abb02d4bc1da6214b9499
+2026-11-09 23:35:21,813 - INFO - Container for scikit-learn__scikit-learn-13584 started: 5413d2e8d70127e0453c4c914d6fcdb91c09b204e77abb02d4bc1da6214b9499
+2026-11-09 23:35:21,814 - INFO - Intermediate patch for scikit-learn__scikit-learn-13584 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13584\patch.diff, now applying to container...
+2026-11-09 23:35:22,279 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/utils/_pprint.py...
+Applied patch sklearn/utils/_pprint.py cleanly.
+
+2026-11-09 23:35:22,813 - INFO - Git diff before:
+diff --git a/sklearn/utils/_pprint.py b/sklearn/utils/_pprint.py
+index b8686dba5..456907302 100755
+--- a/sklearn/utils/_pprint.py
++++ b/sklearn/utils/_pprint.py
+@@ -94,9 +94,15 @@ def _changed_params(estimator):
+                         estimator.__init__)
+     init_params = signature(init_func).parameters
+     init_params = {name: param.default for name, param in init_params.items()}
++    import numpy as np
+     for k, v in params.items():
+-        if (v != init_params[k] and
+-                not (is_scalar_nan(init_params[k]) and is_scalar_nan(v))):
++        default = init_params[k]
++        if isinstance(v, np.ndarray) or isinstance(default, np.ndarray):
++            changed = not np.array_equal(v, default)
++        else:
++            changed = v != default
++        if (changed and
++                not (is_scalar_nan(default) and is_scalar_nan(v))):
+             filtered_params[k] = v
+     return filtered_params
+2026-11-09 23:35:22,819 - INFO - Eval script for scikit-learn__scikit-learn-13584 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13584\eval.sh; copying to container...
+2026-11-09 23:35:40,761 - INFO - Test runtime: 17.79 seconds
+2026-11-09 23:35:40,763 - INFO - Test output for scikit-learn__scikit-learn-13584 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13584\test_output.txt
+2026-11-09 23:35:40,875 - INFO - Git diff after:
+diff --git a/sklearn/utils/_pprint.py b/sklearn/utils/_pprint.py
+index b8686dba5..456907302 100755
+--- a/sklearn/utils/_pprint.py
++++ b/sklearn/utils/_pprint.py
+@@ -94,9 +94,15 @@ def _changed_params(estimator):
+                         estimator.__init__)
+     init_params = signature(init_func).parameters
+     init_params = {name: param.default for name, param in init_params.items()}
++    import numpy as np
+     for k, v in params.items():
+-        if (v != init_params[k] and
+-                not (is_scalar_nan(init_params[k]) and is_scalar_nan(v))):
++        default = init_params[k]
++        if isinstance(v, np.ndarray) or isinstance(default, np.ndarray):
++            changed = not np.array_equal(v, default)
++        else:
++            changed = v != default
++        if (changed and
++                not (is_scalar_nan(default) and is_scalar_nan(v))):
+             filtered_params[k] = v
+     return filtered_params
+2026-11-09 23:35:40,875 - INFO - Grading answer for scikit-learn__scikit-learn-13584...
+2026-11-09 23:35:40,923 - INFO - report: {'scikit-learn__scikit-learn-13584': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/utils/tests/test_pprint.py::test_changed_only', 'sklearn/utils/tests/test_pprint.py::test_pipeline', 'sklearn/utils/tests/test_pprint.py::test_deeply_nested', 'sklearn/utils/tests/test_pprint.py::test_gridsearch', 'sklearn/utils/tests/test_pprint.py::test_gridsearch_pipeline', 'sklearn/utils/tests/test_pprint.py::test_n_max_elements_to_show'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/utils/tests/test_pprint.py::test_basic', 'sklearn/utils/tests/test_pprint.py::test_length_constraint', 'sklearn/utils/tests/test_pprint.py::test_builtin_prettyprinter'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-13584: resolved: True
+2026-11-09 23:35:40,924 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-13584.lg516logs-batch-09...
+2026-11-09 23:35:56,415 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13584.lg516logs-batch-09 stopped successfully.
+2026-11-09 23:35:56,415 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-13584.lg516logs-batch-09...
+2026-11-09 23:35:56,780 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13584.lg516logs-batch-09 removed successfully.

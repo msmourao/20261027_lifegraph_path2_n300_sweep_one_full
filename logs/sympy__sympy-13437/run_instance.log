@@ -1,0 +1,61 @@
+2026-11-10 00:05:58,740 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:06:07,810 - INFO - Creating container for sympy__sympy-13437...
+2026-11-10 00:06:08,230 - INFO - Container for sympy__sympy-13437 created: c400789b2f8d57093949c09939079962184cde5e5f271659228b6ba50002d0d3
+2026-11-10 00:06:08,534 - INFO - Container for sympy__sympy-13437 started: c400789b2f8d57093949c09939079962184cde5e5f271659228b6ba50002d0d3
+2026-11-10 00:06:08,535 - INFO - Intermediate patch for sympy__sympy-13437 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-13437\patch.diff, now applying to container...
+2026-11-10 00:06:08,847 - INFO - >>>>> Applied Patch:
+Checking patch sympy/functions/combinatorial/numbers.py...
+Applied patch sympy/functions/combinatorial/numbers.py cleanly.
+
+2026-11-10 00:06:09,477 - INFO - Git diff before:
+diff --git a/sympy/functions/combinatorial/numbers.py b/sympy/functions/combinatorial/numbers.py
+index 896729ac8..9e2800dfb 100755
+--- a/sympy/functions/combinatorial/numbers.py
++++ b/sympy/functions/combinatorial/numbers.py
+@@ -434,6 +434,15 @@ def _bell_incomplete_poly(n, k, symbols):
+ 
+     @classmethod
+     def eval(cls, n, k_sym=None, symbols=None):
++        if n is S.Infinity:
++            if k_sym is None:
++                return S.Infinity
++            else:
++                raise ValueError("Bell polynomial is not defined")
++
++        if n.is_negative or n.is_integer is False:
++            raise ValueError("a non-negative integer expected")
++
+         if n.is_Integer and n.is_nonnegative:
+             if k_sym is None:
+                 return Integer(cls._bell(int(n)))
+2026-11-10 00:06:09,478 - INFO - Eval script for sympy__sympy-13437 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-13437\eval.sh; copying to container...
+2026-11-10 00:14:56,960 - INFO - Test runtime: 527.35 seconds
+2026-11-10 00:14:56,962 - INFO - Test output for sympy__sympy-13437 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-13437\test_output.txt
+2026-11-10 00:14:57,070 - INFO - Git diff after:
+diff --git a/sympy/functions/combinatorial/numbers.py b/sympy/functions/combinatorial/numbers.py
+index 896729ac8..9e2800dfb 100755
+--- a/sympy/functions/combinatorial/numbers.py
++++ b/sympy/functions/combinatorial/numbers.py
+@@ -434,6 +434,15 @@ def _bell_incomplete_poly(n, k, symbols):
+ 
+     @classmethod
+     def eval(cls, n, k_sym=None, symbols=None):
++        if n is S.Infinity:
++            if k_sym is None:
++                return S.Infinity
++            else:
++                raise ValueError("Bell polynomial is not defined")
++
++        if n.is_negative or n.is_integer is False:
++            raise ValueError("a non-negative integer expected")
++
+         if n.is_Integer and n.is_nonnegative:
+             if k_sym is None:
+                 return Integer(cls._bell(int(n)))
+2026-11-10 00:14:57,070 - INFO - Grading answer for sympy__sympy-13437...
+2026-11-10 00:14:57,092 - INFO - report: {'sympy__sympy-13437': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_bell'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_bernoulli', 'test_fibonacci', 'test_harmonic', 'test_harmonic_rational', 'test_harmonic_evalf', 'test_harmonic_rewrite_polygamma', 'test_harmonic_rewrite_sum', 'test_euler', 'test_euler_odd', 'test_euler_polynomials', 'test_euler_polynomial_rewrite', 'test_catalan', 'test_genocchi', 'test_nC_nP_nT', 'test_issue_8496'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13437: resolved: True
+2026-11-10 00:14:57,094 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13437.lg516logs-batch-11...
+2026-11-10 00:15:12,428 - INFO - Container sweb.eval.sympy__sympy-13437.lg516logs-batch-11 stopped successfully.
+2026-11-10 00:15:12,428 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13437.lg516logs-batch-11...
+2026-11-10 00:15:12,540 - INFO - Container sweb.eval.sympy__sympy-13437.lg516logs-batch-11 removed successfully.

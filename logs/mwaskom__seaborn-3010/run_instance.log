@@ -1,0 +1,53 @@
+2026-11-09 22:52:23,790 - INFO - Image not found locally, attempting to pull...
+2026-11-09 22:53:28,933 - INFO - Creating container for mwaskom__seaborn-3010...
+2026-11-09 22:53:32,372 - INFO - Container for mwaskom__seaborn-3010 created: 2ed3b092d7df038c9eeef370b7485570d06dca5cf345238a6f6cb00a08950113
+2026-11-09 22:53:33,294 - INFO - Container for mwaskom__seaborn-3010 started: 2ed3b092d7df038c9eeef370b7485570d06dca5cf345238a6f6cb00a08950113
+2026-11-09 22:53:33,295 - INFO - Intermediate patch for mwaskom__seaborn-3010 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\mwaskom__seaborn-3010\patch.diff, now applying to container...
+2026-11-09 22:53:33,700 - INFO - >>>>> Applied Patch:
+Checking patch seaborn/_stats/regression.py...
+Applied patch seaborn/_stats/regression.py cleanly.
+
+2026-11-09 22:53:33,872 - INFO - Git diff before:
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+index 7b7ddc8..9ec81a4 100755
+--- a/seaborn/_stats/regression.py
++++ b/seaborn/_stats/regression.py
+@@ -38,7 +38,10 @@ class PolyFit(Stat):
+ 
+     def __call__(self, data, groupby, orient, scales):
+ 
+-        return groupby.apply(data, self._fit_predict)
++        return (
++            groupby
++            .apply(data.dropna(subset=["x", "y"]), self._fit_predict)
++        )
+ 
+ 
+ @dataclass
+2026-11-09 22:53:33,874 - INFO - Eval script for mwaskom__seaborn-3010 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\mwaskom__seaborn-3010\eval.sh; copying to container...
+2026-11-09 22:53:39,351 - INFO - Test runtime: 5.35 seconds
+2026-11-09 22:53:39,352 - INFO - Test output for mwaskom__seaborn-3010 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\mwaskom__seaborn-3010\test_output.txt
+2026-11-09 22:53:39,435 - INFO - Git diff after:
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+index 7b7ddc8..9ec81a4 100755
+--- a/seaborn/_stats/regression.py
++++ b/seaborn/_stats/regression.py
+@@ -38,7 +38,10 @@ class PolyFit(Stat):
+ 
+     def __call__(self, data, groupby, orient, scales):
+ 
+-        return groupby.apply(data, self._fit_predict)
++        return (
++            groupby
++            .apply(data.dropna(subset=["x", "y"]), self._fit_predict)
++        )
+ 
+ 
+ @dataclass
+2026-11-09 22:53:39,435 - INFO - Grading answer for mwaskom__seaborn-3010...
+2026-11-09 22:53:39,453 - INFO - report: {'mwaskom__seaborn-3010': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/_stats/test_regression.py::TestPolyFit::test_missing_data'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/_stats/test_regression.py::TestPolyFit::test_no_grouper', 'tests/_stats/test_regression.py::TestPolyFit::test_one_grouper'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for mwaskom__seaborn-3010: resolved: True
+2026-11-09 22:53:39,455 - INFO - Attempting to stop container sweb.eval.mwaskom__seaborn-3010.lg516logs-batch-07...
+2026-11-09 22:53:55,375 - INFO - Container sweb.eval.mwaskom__seaborn-3010.lg516logs-batch-07 stopped successfully.
+2026-11-09 22:53:55,375 - INFO - Attempting to remove container sweb.eval.mwaskom__seaborn-3010.lg516logs-batch-07...
+2026-11-09 22:53:55,729 - INFO - Container sweb.eval.mwaskom__seaborn-3010.lg516logs-batch-07 removed successfully.

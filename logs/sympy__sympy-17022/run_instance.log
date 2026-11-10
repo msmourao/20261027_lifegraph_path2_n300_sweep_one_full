@@ -1,0 +1,57 @@
+2026-11-10 00:30:45,070 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:31:04,618 - INFO - Creating container for sympy__sympy-17022...
+2026-11-10 00:31:05,083 - INFO - Container for sympy__sympy-17022 created: 8fc1cca22a3f359d5d0849e217d2e7edb486f18e2b8687a05dffa5e8516a829e
+2026-11-10 00:31:05,578 - INFO - Container for sympy__sympy-17022 started: 8fc1cca22a3f359d5d0849e217d2e7edb486f18e2b8687a05dffa5e8516a829e
+2026-11-10 00:31:05,580 - INFO - Intermediate patch for sympy__sympy-17022 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-17022\patch.diff, now applying to container...
+2026-11-10 00:31:06,079 - INFO - >>>>> Applied Patch:
+Checking patch sympy/printing/pycode.py...
+Applied patch sympy/printing/pycode.py cleanly.
+
+2026-11-10 00:31:07,375 - INFO - Git diff before:
+diff --git a/sympy/printing/pycode.py b/sympy/printing/pycode.py
+index 6ec7bd891..662fa6c81 100755
+--- a/sympy/printing/pycode.py
++++ b/sympy/printing/pycode.py
+@@ -608,6 +608,13 @@ def _print_MatrixBase(self, expr):
+             func = self._module_format('numpy.array')
+         return "%s(%s)" % (func, self._print(expr.tolist()))
+ 
++    def _print_Identity(self, expr):
++        shape = expr.shape
++        if all([dim.is_Integer for dim in shape]):
++            return "%s(%s)" % (self._module_format('numpy.eye'), self._print(expr.shape[0]))
++        else:
++            raise NotImplementedError("Symbolic matrix dimensions are not yet supported for identity matrices")
++
+     def _print_BlockMatrix(self, expr):
+         return '{0}({1})'.format(self._module_format('numpy.block'),
+                                  self._print(expr.args[0].tolist()))
+2026-11-10 00:31:07,377 - INFO - Eval script for sympy__sympy-17022 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-17022\eval.sh; copying to container...
+2026-11-10 00:31:17,899 - INFO - Test runtime: 10.12 seconds
+2026-11-10 00:31:17,902 - INFO - Test output for sympy__sympy-17022 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-17022\test_output.txt
+2026-11-10 00:31:18,045 - INFO - Git diff after:
+diff --git a/sympy/printing/pycode.py b/sympy/printing/pycode.py
+index 6ec7bd891..662fa6c81 100755
+--- a/sympy/printing/pycode.py
++++ b/sympy/printing/pycode.py
+@@ -608,6 +608,13 @@ def _print_MatrixBase(self, expr):
+             func = self._module_format('numpy.array')
+         return "%s(%s)" % (func, self._print(expr.tolist()))
+ 
++    def _print_Identity(self, expr):
++        shape = expr.shape
++        if all([dim.is_Integer for dim in shape]):
++            return "%s(%s)" % (self._module_format('numpy.eye'), self._print(expr.shape[0]))
++        else:
++            raise NotImplementedError("Symbolic matrix dimensions are not yet supported for identity matrices")
++
+     def _print_BlockMatrix(self, expr):
+         return '{0}({1})'.format(self._module_format('numpy.block'),
+                                  self._print(expr.args[0].tolist()))
+2026-11-10 00:31:18,045 - INFO - Grading answer for sympy__sympy-17022...
+2026-11-10 00:31:18,068 - INFO - report: {'sympy__sympy-17022': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_NumPyPrinter'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_numpy_piecewise_regression', 'test_PythonCodePrinter', 'test_MpmathPrinter', 'test_SciPyPrinter', 'test_pycode_reserved_words', 'test_printmethod', 'test_codegen_ast_nodes', 'test_issue_14283'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-17022: resolved: True
+2026-11-10 00:31:18,070 - INFO - Attempting to stop container sweb.eval.sympy__sympy-17022.lg516logs-batch-13...
+2026-11-10 00:31:33,531 - INFO - Container sweb.eval.sympy__sympy-17022.lg516logs-batch-13 stopped successfully.
+2026-11-10 00:31:33,531 - INFO - Attempting to remove container sweb.eval.sympy__sympy-17022.lg516logs-batch-13...
+2026-11-10 00:31:33,734 - INFO - Container sweb.eval.sympy__sympy-17022.lg516logs-batch-13 removed successfully.

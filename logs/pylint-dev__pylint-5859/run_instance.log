@@ -1,0 +1,81 @@
+2026-11-09 23:10:40,732 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:12:43,898 - INFO - Creating container for pylint-dev__pylint-5859...
+2026-11-09 23:12:52,267 - INFO - Container for pylint-dev__pylint-5859 created: 33dc04a0c2f38411dbe9a98137882d768df088c02a55e3a98edbf82b8f2d14dc
+2026-11-09 23:12:53,268 - INFO - Container for pylint-dev__pylint-5859 started: 33dc04a0c2f38411dbe9a98137882d768df088c02a55e3a98edbf82b8f2d14dc
+2026-11-09 23:12:53,269 - INFO - Intermediate patch for pylint-dev__pylint-5859 written to logs\run_evaluation\lg516logs-batch-08\lifegraph-path2-sweep-one-full\pylint-dev__pylint-5859\patch.diff, now applying to container...
+2026-11-09 23:12:53,797 - INFO - >>>>> Applied Patch:
+Checking patch pylint/checkers/misc.py...
+Applied patch pylint/checkers/misc.py cleanly.
+
+2026-11-09 23:12:54,453 - INFO - Git diff before:
+diff --git a/pylint/checkers/misc.py b/pylint/checkers/misc.py
+index 69149e61..baec58fb 100755
+--- a/pylint/checkers/misc.py
++++ b/pylint/checkers/misc.py
+@@ -121,9 +121,9 @@ class EncodingChecker(BaseChecker):
+ 
+         notes = "|".join(re.escape(note) for note in self.config.notes)
+         if self.config.notes_rgx:
+-            regex_string = rf"#\s*({notes}|{self.config.notes_rgx})\b"
++            regex_string = rf"#\s*({notes}|{self.config.notes_rgx})(?=(:|\s|\Z))"
+         else:
+-            regex_string = rf"#\s*({notes})\b"
++            regex_string = rf"#\s*({notes})(?=(:|\s|\Z))"
+ 
+         self._fixme_pattern = re.compile(regex_string, re.I)
+2026-11-09 23:12:54,454 - INFO - Eval script for pylint-dev__pylint-5859 written to logs\run_evaluation\lg516logs-batch-08\lifegraph-path2-sweep-one-full\pylint-dev__pylint-5859\eval.sh; copying to container...
+2026-11-09 23:13:06,844 - INFO - Test runtime: 12.15 seconds
+2026-11-09 23:13:06,847 - INFO - Test output for pylint-dev__pylint-5859 written to logs\run_evaluation\lg516logs-batch-08\lifegraph-path2-sweep-one-full\pylint-dev__pylint-5859\test_output.txt
+2026-11-09 23:13:07,006 - INFO - Git diff after:
+diff --git a/pylint/checkers/misc.py b/pylint/checkers/misc.py
+index 69149e61..baec58fb 100755
+--- a/pylint/checkers/misc.py
++++ b/pylint/checkers/misc.py
+@@ -121,9 +121,9 @@ class EncodingChecker(BaseChecker):
+ 
+         notes = "|".join(re.escape(note) for note in self.config.notes)
+         if self.config.notes_rgx:
+-            regex_string = rf"#\s*({notes}|{self.config.notes_rgx})\b"
++            regex_string = rf"#\s*({notes}|{self.config.notes_rgx})(?=(:|\s|\Z))"
+         else:
+-            regex_string = rf"#\s*({notes})\b"
++            regex_string = rf"#\s*({notes})(?=(:|\s|\Z))"
+ 
+         self._fixme_pattern = re.compile(regex_string, re.I)
+2026-11-09 23:13:07,006 - INFO - Grading answer for pylint-dev__pylint-5859...
+2026-11-09 23:13:07,032 - INFO - report: {'pylint-dev__pylint-5859': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/checkers/unittest_misc.py::TestFixme::test_non_alphanumeric_codetag'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/checkers/unittest_misc.py::TestFixme::test_fixme_with_message', 'tests/checkers/unittest_misc.py::TestFixme::test_todo_without_message', 'tests/checkers/unittest_misc.py::TestFixme::test_xxx_without_space', 'tests/checkers/unittest_misc.py::TestFixme::test_xxx_middle', 'tests/checkers/unittest_misc.py::TestFixme::test_without_space_fixme', 'tests/checkers/unittest_misc.py::TestFixme::test_absent_codetag', 'tests/checkers/unittest_misc.py::TestFixme::test_other_present_codetag', 'tests/checkers/unittest_misc.py::TestFixme::test_issue_2321_should_not_trigger', 'tests/checkers/unittest_misc.py::TestFixme::test_issue_2321_should_trigger', 'tests/checkers/unittest_misc.py::TestFixme::test_dont_trigger_on_todoist'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pylint-dev__pylint-5859: resolved: True
+2026-11-09 23:13:07,033 - INFO - Attempting to stop container sweb.eval.pylint-dev__pylint-5859.lg516logs-batch-08...
+2026-11-09 23:13:37,060 - INFO - Failed to stop container sweb.eval.pylint-dev__pylint-5859.lg516logs-batch-08: Command '['docker', 'stop', '--time=15', '33dc04a0c2f38411dbe9a98137882d768df088c02a55e3a98edbf82b8f2d14dc']' timed out after 30 seconds. Trying to forcefully kill...
+2026-11-09 23:13:37,061 - INFO - Forcefully killing container sweb.eval.pylint-dev__pylint-5859.lg516logs-batch-08...
+2026-11-09 23:13:47,094 - INFO - Failed to forcefully kill container sweb.eval.pylint-dev__pylint-5859.lg516logs-batch-08: Command '['docker', 'kill', '33dc04a0c2f38411dbe9a98137882d768df088c02a55e3a98edbf82b8f2d14dc']' timed out after 10 seconds
+Traceback (most recent call last):
+  File "C:\Users\msmou\source\repos\LifeGraph\artifacts\ops\csa-lora\.venv-swebench\Lib\site-packages\swebench\harness\docker_utils.py", line 69, in cleanup_container
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+  File "C:\Python314\Lib\subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 1664, in _communicate
+    raise TimeoutExpired(self.args, orig_timeout)
+subprocess.TimeoutExpired: Command '['docker', 'stop', '--time=15', '33dc04a0c2f38411dbe9a98137882d768df088c02a55e3a98edbf82b8f2d14dc']' timed out after 30 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\msmou\source\repos\LifeGraph\artifacts\ops\csa-lora\.venv-swebench\Lib\site-packages\swebench\harness\docker_utils.py", line 80, in cleanup_container
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+  File "C:\Python314\Lib\subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 1664, in _communicate
+    raise TimeoutExpired(self.args, orig_timeout)
+subprocess.TimeoutExpired: Command '['docker', 'kill', '33dc04a0c2f38411dbe9a98137882d768df088c02a55e3a98edbf82b8f2d14dc']' timed out after 10 seconds
+
+2026-11-09 23:13:47,094 - INFO - Attempting to remove container sweb.eval.pylint-dev__pylint-5859.lg516logs-batch-08...
+2026-11-09 23:13:53,925 - INFO - Container sweb.eval.pylint-dev__pylint-5859.lg516logs-batch-08 removed successfully.

@@ -1,0 +1,45 @@
+2026-11-09 20:31:25,740 - INFO - Image not found locally, attempting to pull...
+2026-11-09 20:31:38,179 - INFO - Creating container for django__django-11049...
+2026-11-09 20:31:38,750 - INFO - Container for django__django-11049 created: 0531f7f46d1cad30e9477ac68d4913ae149a3fb46df6dcfd8a697fd0dbe8feb2
+2026-11-09 20:31:39,100 - INFO - Container for django__django-11049 started: 0531f7f46d1cad30e9477ac68d4913ae149a3fb46df6dcfd8a697fd0dbe8feb2
+2026-11-09 20:31:39,102 - INFO - Intermediate patch for django__django-11049 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\django__django-11049\patch.diff, now applying to container...
+2026-11-09 20:31:39,470 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/fields/__init__.py...
+Applied patch django/db/models/fields/__init__.py cleanly.
+
+2026-11-09 20:31:40,545 - INFO - Git diff before:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index f32ce64629..71005490f3 100755
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -1587,7 +1587,7 @@ class DurationField(Field):
+     empty_strings_allowed = False
+     default_error_messages = {
+         'invalid': _("'%(value)s' value has an invalid format. It must be in "
+-                     "[DD] [HH:[MM:]]ss[.uuuuuu] format.")
++                     "[DD] [[HH:]MM:]ss[.uuuuuu] format.")
+     }
+     description = _("Duration")
+2026-11-09 20:31:40,546 - INFO - Eval script for django__django-11049 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\django__django-11049\eval.sh; copying to container...
+2026-11-09 20:31:49,479 - INFO - Test runtime: 8.82 seconds
+2026-11-09 20:31:49,484 - INFO - Test output for django__django-11049 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\django__django-11049\test_output.txt
+2026-11-09 20:31:49,567 - INFO - Git diff after:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index f32ce64629..71005490f3 100755
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -1587,7 +1587,7 @@ class DurationField(Field):
+     empty_strings_allowed = False
+     default_error_messages = {
+         'invalid': _("'%(value)s' value has an invalid format. It must be in "
+-                     "[DD] [HH:[MM:]]ss[.uuuuuu] format.")
++                     "[DD] [[HH:]MM:]ss[.uuuuuu] format.")
+     }
+     description = _("Duration")
+2026-11-09 20:31:49,567 - INFO - Grading answer for django__django-11049...
+2026-11-09 20:31:49,588 - INFO - report: {'django__django-11049': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_invalid_string (model_fields.test_durationfield.TestValidation)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_dumping (model_fields.test_durationfield.TestSerialization)', 'test_loading (model_fields.test_durationfield.TestSerialization)', 'test_formfield (model_fields.test_durationfield.TestFormField)', 'test_exact (model_fields.test_durationfield.TestQuerying)', 'test_gt (model_fields.test_durationfield.TestQuerying)', 'test_create_empty (model_fields.test_durationfield.TestSaveLoad)', 'test_fractional_seconds (model_fields.test_durationfield.TestSaveLoad)', 'test_simple_roundtrip (model_fields.test_durationfield.TestSaveLoad)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11049: resolved: True
+2026-11-09 20:31:49,589 - INFO - Attempting to stop container sweb.eval.django__django-11049.lg516logs-batch-00...
+2026-11-09 20:32:04,913 - INFO - Container sweb.eval.django__django-11049.lg516logs-batch-00 stopped successfully.
+2026-11-09 20:32:04,913 - INFO - Attempting to remove container sweb.eval.django__django-11049.lg516logs-batch-00...
+2026-11-09 20:32:05,083 - INFO - Container sweb.eval.django__django-11049.lg516logs-batch-00 removed successfully.

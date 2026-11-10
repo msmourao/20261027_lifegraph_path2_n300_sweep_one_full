@@ -1,0 +1,61 @@
+2026-11-10 00:49:42,762 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:49:53,015 - INFO - Creating container for sympy__sympy-24152...
+2026-11-10 00:49:53,407 - INFO - Container for sympy__sympy-24152 created: 08e14219d2cb244e7aa6dc86ebcc84b594e5db8d8df28f3d47341056741eb3a3
+2026-11-10 00:49:53,787 - INFO - Container for sympy__sympy-24152 started: 08e14219d2cb244e7aa6dc86ebcc84b594e5db8d8df28f3d47341056741eb3a3
+2026-11-10 00:49:53,789 - INFO - Intermediate patch for sympy__sympy-24152 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-24152\patch.diff, now applying to container...
+2026-11-10 00:49:54,197 - INFO - >>>>> Applied Patch:
+Checking patch sympy/physics/quantum/tensorproduct.py...
+Applied patch sympy/physics/quantum/tensorproduct.py cleanly.
+
+2026-11-10 00:49:55,706 - INFO - Git diff before:
+diff --git a/sympy/physics/quantum/tensorproduct.py b/sympy/physics/quantum/tensorproduct.py
+index 78accaf295..cc2e02f2ec 100755
+--- a/sympy/physics/quantum/tensorproduct.py
++++ b/sympy/physics/quantum/tensorproduct.py
+@@ -246,9 +246,12 @@ def _eval_expand_tensorproduct(self, **hints):
+             if isinstance(args[i], Add):
+                 for aa in args[i].args:
+                     tp = TensorProduct(*args[:i] + (aa,) + args[i + 1:])
+-                    if isinstance(tp, TensorProduct):
+-                        tp = tp._eval_expand_tensorproduct()
+-                    add_args.append(tp)
++                    c_part, nc_part = tp.args_cnc()
++                    # Check for TensorProduct object: is the one object in nc_part, if any:
++                    # (Note: any other object type to be expanded must be added here)
++                    if len(nc_part) == 1 and isinstance(nc_part[0], TensorProduct):
++                        nc_part = (nc_part[0]._eval_expand_tensorproduct(), )
++                    add_args.append(Mul(*c_part)*Mul(*nc_part))
+                 break
+ 
+         if add_args:
+2026-11-10 00:49:55,707 - INFO - Eval script for sympy__sympy-24152 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-24152\eval.sh; copying to container...
+2026-11-10 00:50:06,624 - INFO - Test runtime: 10.69 seconds
+2026-11-10 00:50:06,626 - INFO - Test output for sympy__sympy-24152 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-24152\test_output.txt
+2026-11-10 00:50:06,721 - INFO - Git diff after:
+diff --git a/sympy/physics/quantum/tensorproduct.py b/sympy/physics/quantum/tensorproduct.py
+index 78accaf295..cc2e02f2ec 100755
+--- a/sympy/physics/quantum/tensorproduct.py
++++ b/sympy/physics/quantum/tensorproduct.py
+@@ -246,9 +246,12 @@ def _eval_expand_tensorproduct(self, **hints):
+             if isinstance(args[i], Add):
+                 for aa in args[i].args:
+                     tp = TensorProduct(*args[:i] + (aa,) + args[i + 1:])
+-                    if isinstance(tp, TensorProduct):
+-                        tp = tp._eval_expand_tensorproduct()
+-                    add_args.append(tp)
++                    c_part, nc_part = tp.args_cnc()
++                    # Check for TensorProduct object: is the one object in nc_part, if any:
++                    # (Note: any other object type to be expanded must be added here)
++                    if len(nc_part) == 1 and isinstance(nc_part[0], TensorProduct):
++                        nc_part = (nc_part[0]._eval_expand_tensorproduct(), )
++                    add_args.append(Mul(*c_part)*Mul(*nc_part))
+                 break
+ 
+         if add_args:
+2026-11-10 00:50:06,721 - INFO - Grading answer for sympy__sympy-24152...
+2026-11-10 00:50:06,737 - INFO - report: {'sympy__sympy-24152': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_tensor_product_expand'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_sparse_matrices', 'test_tensor_product_dagger', 'test_tensor_product_abstract', 'test_tensor_product_commutator', 'test_tensor_product_simp', 'test_issue_5923'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-24152: resolved: True
+2026-11-10 00:50:06,738 - INFO - Attempting to stop container sweb.eval.sympy__sympy-24152.lg516logs-batch-14...
+2026-11-10 00:50:22,043 - INFO - Container sweb.eval.sympy__sympy-24152.lg516logs-batch-14 stopped successfully.
+2026-11-10 00:50:22,043 - INFO - Attempting to remove container sweb.eval.sympy__sympy-24152.lg516logs-batch-14...
+2026-11-10 00:50:22,152 - INFO - Container sweb.eval.sympy__sympy-24152.lg516logs-batch-14 removed successfully.

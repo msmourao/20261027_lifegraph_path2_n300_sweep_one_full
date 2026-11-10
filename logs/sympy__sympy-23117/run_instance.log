@@ -1,0 +1,109 @@
+2026-11-10 00:47:59,926 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:48:11,225 - INFO - Creating container for sympy__sympy-23117...
+2026-11-10 00:48:11,549 - INFO - Container for sympy__sympy-23117 created: 7af2f92f54a487eb98c5a516af859896f3b87098b3dca62988206519047122b0
+2026-11-10 00:48:11,798 - INFO - Container for sympy__sympy-23117 started: 7af2f92f54a487eb98c5a516af859896f3b87098b3dca62988206519047122b0
+2026-11-10 00:48:11,799 - INFO - Intermediate patch for sympy__sympy-23117 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-23117\patch.diff, now applying to container...
+2026-11-10 00:48:12,096 - INFO - >>>>> Applied Patch:
+Checking patch sympy/tensor/array/ndim_array.py...
+Applied patch sympy/tensor/array/ndim_array.py cleanly.
+
+2026-11-10 00:48:12,971 - INFO - Git diff before:
+diff --git a/sympy/tensor/array/ndim_array.py b/sympy/tensor/array/ndim_array.py
+index 6490a655a4..8e6cd143c4 100755
+--- a/sympy/tensor/array/ndim_array.py
++++ b/sympy/tensor/array/ndim_array.py
+@@ -145,10 +145,12 @@ def __new__(cls, iterable, shape=None, **kwargs):
+ 
+     def _parse_index(self, index):
+         if isinstance(index, (SYMPY_INTS, Integer)):
+-            raise ValueError("Only a tuple index is accepted")
++            if index >= self._loop_size:
++                raise ValueError("Only a tuple index is accepted")
++            return index
+ 
+         if self._loop_size == 0:
+-            raise ValueError("Index not valide with an empty array")
++            raise ValueError("Index not valid with an empty array")
+ 
+         if len(index) != self._rank:
+             raise ValueError('Wrong number of array axes')
+@@ -194,6 +196,9 @@ def f(pointer):
+             if not isinstance(pointer, Iterable):
+                 return [pointer], ()
+ 
++            if len(pointer) == 0:
++                return [], (0,)
++
+             result = []
+             elems, shapes = zip(*[f(i) for i in pointer])
+             if len(set(shapes)) != 1:
+@@ -567,11 +572,11 @@ def _check_special_bounds(cls, flat_list, shape):
+ 
+     def _check_index_for_getitem(self, index):
+         if isinstance(index, (SYMPY_INTS, Integer, slice)):
+-            index = (index, )
++            index = (index,)
+ 
+         if len(index) < self.rank():
+-            index = tuple([i for i in index] + \
+-                          [slice(None) for i in range(len(index), self.rank())])
++            index = tuple(index) + \
++                          tuple(slice(None) for i in range(len(index), self.rank()))
+ 
+         if len(index) > self.rank():
+             raise ValueError('Dimension of index greater than rank of array')
+2026-11-10 00:48:12,972 - INFO - Eval script for sympy__sympy-23117 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-23117\eval.sh; copying to container...
+2026-11-10 00:48:21,374 - INFO - Test runtime: 8.28 seconds
+2026-11-10 00:48:21,376 - INFO - Test output for sympy__sympy-23117 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-23117\test_output.txt
+2026-11-10 00:48:21,486 - INFO - Git diff after:
+diff --git a/sympy/tensor/array/ndim_array.py b/sympy/tensor/array/ndim_array.py
+index 6490a655a4..8e6cd143c4 100755
+--- a/sympy/tensor/array/ndim_array.py
++++ b/sympy/tensor/array/ndim_array.py
+@@ -145,10 +145,12 @@ def __new__(cls, iterable, shape=None, **kwargs):
+ 
+     def _parse_index(self, index):
+         if isinstance(index, (SYMPY_INTS, Integer)):
+-            raise ValueError("Only a tuple index is accepted")
++            if index >= self._loop_size:
++                raise ValueError("Only a tuple index is accepted")
++            return index
+ 
+         if self._loop_size == 0:
+-            raise ValueError("Index not valide with an empty array")
++            raise ValueError("Index not valid with an empty array")
+ 
+         if len(index) != self._rank:
+             raise ValueError('Wrong number of array axes')
+@@ -194,6 +196,9 @@ def f(pointer):
+             if not isinstance(pointer, Iterable):
+                 return [pointer], ()
+ 
++            if len(pointer) == 0:
++                return [], (0,)
++
+             result = []
+             elems, shapes = zip(*[f(i) for i in pointer])
+             if len(set(shapes)) != 1:
+@@ -567,11 +572,11 @@ def _check_special_bounds(cls, flat_list, shape):
+ 
+     def _check_index_for_getitem(self, index):
+         if isinstance(index, (SYMPY_INTS, Integer, slice)):
+-            index = (index, )
++            index = (index,)
+ 
+         if len(index) < self.rank():
+-            index = tuple([i for i in index] + \
+-                          [slice(None) for i in range(len(index), self.rank())])
++            index = tuple(index) + \
++                          tuple(slice(None) for i in range(len(index), self.rank()))
+ 
+         if len(index) > self.rank():
+             raise ValueError('Dimension of index greater than rank of array')
+2026-11-10 00:48:21,487 - INFO - Grading answer for sympy__sympy-23117...
+2026-11-10 00:48:21,508 - INFO - report: {'sympy__sympy-23117': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_17851'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_array_negative_indices', 'test_issue_18361', 'test_issue_20222'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-23117: resolved: True
+2026-11-10 00:48:21,509 - INFO - Attempting to stop container sweb.eval.sympy__sympy-23117.lg516logs-batch-14...
+2026-11-10 00:48:36,802 - INFO - Container sweb.eval.sympy__sympy-23117.lg516logs-batch-14 stopped successfully.
+2026-11-10 00:48:36,802 - INFO - Attempting to remove container sweb.eval.sympy__sympy-23117.lg516logs-batch-14...
+2026-11-10 00:48:36,902 - INFO - Container sweb.eval.sympy__sympy-23117.lg516logs-batch-14 removed successfully.

@@ -1,0 +1,51 @@
+2026-11-09 20:48:25,116 - INFO - Image not found locally, attempting to pull...
+2026-11-09 20:48:55,215 - INFO - Creating container for django__django-12983...
+2026-11-09 20:48:56,149 - INFO - Container for django__django-12983 created: d038799c671b6ed94cf6967c187362cefd8aa17c6c5031c3169f39f555006052
+2026-11-09 20:48:56,498 - INFO - Container for django__django-12983 started: d038799c671b6ed94cf6967c187362cefd8aa17c6c5031c3169f39f555006052
+2026-11-09 20:48:56,500 - INFO - Intermediate patch for django__django-12983 written to logs\run_evaluation\lg516logs-batch-02\lifegraph-path2-sweep-one-full\django__django-12983\patch.diff, now applying to container...
+2026-11-09 20:48:56,781 - INFO - >>>>> Applied Patch:
+Checking patch django/utils/text.py...
+Applied patch django/utils/text.py cleanly.
+
+2026-11-09 20:48:58,306 - INFO - Git diff before:
+diff --git a/django/utils/text.py b/django/utils/text.py
+index fb5f6298c4..b66407d6d2 100755
+--- a/django/utils/text.py
++++ b/django/utils/text.py
+@@ -402,8 +402,8 @@ def slugify(value, allow_unicode=False):
+         value = unicodedata.normalize('NFKC', value)
+     else:
+         value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+-    value = re.sub(r'[^\w\s-]', '', value.lower()).strip()
+-    return re.sub(r'[-\s]+', '-', value)
++    value = re.sub(r'[^\w\s-]', '', value.lower())
++    return re.sub(r'[-\s]+', '-', value).strip('-_')
+ 
+ 
+ def camel_case_to_spaces(value):
+2026-11-09 20:48:58,307 - INFO - Eval script for django__django-12983 written to logs\run_evaluation\lg516logs-batch-02\lifegraph-path2-sweep-one-full\django__django-12983\eval.sh; copying to container...
+2026-11-09 20:49:09,923 - INFO - Test runtime: 11.50 seconds
+2026-11-09 20:49:09,929 - INFO - Test output for django__django-12983 written to logs\run_evaluation\lg516logs-batch-02\lifegraph-path2-sweep-one-full\django__django-12983\test_output.txt
+2026-11-09 20:49:10,070 - INFO - Git diff after:
+diff --git a/django/utils/text.py b/django/utils/text.py
+index fb5f6298c4..b66407d6d2 100755
+--- a/django/utils/text.py
++++ b/django/utils/text.py
+@@ -402,8 +402,8 @@ def slugify(value, allow_unicode=False):
+         value = unicodedata.normalize('NFKC', value)
+     else:
+         value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+-    value = re.sub(r'[^\w\s-]', '', value.lower()).strip()
+-    return re.sub(r'[-\s]+', '-', value)
++    value = re.sub(r'[^\w\s-]', '', value.lower())
++    return re.sub(r'[-\s]+', '-', value).strip('-_')
+ 
+ 
+ def camel_case_to_spaces(value):
+2026-11-09 20:49:10,070 - INFO - Grading answer for django__django-12983...
+2026-11-09 20:49:10,098 - INFO - report: {'django__django-12983': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_slugify (utils_tests.test_text.TestUtilsText)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_compress_sequence (utils_tests.test_text.TestUtilsText)', 'test_format_lazy (utils_tests.test_text.TestUtilsText)', 'test_get_text_list (utils_tests.test_text.TestUtilsText)', 'test_get_valid_filename (utils_tests.test_text.TestUtilsText)', 'test_normalize_newlines (utils_tests.test_text.TestUtilsText)', 'test_phone2numeric (utils_tests.test_text.TestUtilsText)', 'test_smart_split (utils_tests.test_text.TestUtilsText)', 'test_truncate_chars (utils_tests.test_text.TestUtilsText)', 'test_truncate_chars_html (utils_tests.test_text.TestUtilsText)', 'test_truncate_html_words (utils_tests.test_text.TestUtilsText)', 'test_truncate_words (utils_tests.test_text.TestUtilsText)', 'test_unescape_entities (utils_tests.test_text.TestUtilsText)', 'test_unescape_entities_deprecated (utils_tests.test_text.TestUtilsText)', 'test_unescape_string_literal (utils_tests.test_text.TestUtilsText)', 'test_wrap (utils_tests.test_text.TestUtilsText)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12983: resolved: True
+2026-11-09 20:49:10,100 - INFO - Attempting to stop container sweb.eval.django__django-12983.lg516logs-batch-02...
+2026-11-09 20:49:25,551 - INFO - Container sweb.eval.django__django-12983.lg516logs-batch-02 stopped successfully.
+2026-11-09 20:49:25,552 - INFO - Attempting to remove container sweb.eval.django__django-12983.lg516logs-batch-02...
+2026-11-09 20:49:25,737 - INFO - Container sweb.eval.django__django-12983.lg516logs-batch-02 removed successfully.

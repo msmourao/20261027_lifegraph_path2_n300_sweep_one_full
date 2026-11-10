@@ -1,0 +1,63 @@
+2026-11-09 20:24:34,468 - INFO - Image not found locally, attempting to pull...
+2026-11-09 20:24:50,843 - INFO - Creating container for astropy__astropy-14182...
+2026-11-09 20:24:51,633 - INFO - Container for astropy__astropy-14182 created: e539a7a3d616c79e5878edc22d0eeeccfa15647c8c22d17a1db2ba11eab93ab8
+2026-11-09 20:24:52,076 - INFO - Container for astropy__astropy-14182 started: e539a7a3d616c79e5878edc22d0eeeccfa15647c8c22d17a1db2ba11eab93ab8
+2026-11-09 20:24:52,078 - INFO - Intermediate patch for astropy__astropy-14182 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\astropy__astropy-14182\patch.diff, now applying to container...
+2026-11-09 20:24:52,501 - INFO - >>>>> Applied Patch:
+Checking patch astropy/io/ascii/rst.py...
+Applied patch astropy/io/ascii/rst.py cleanly.
+
+2026-11-09 20:24:53,357 - INFO - Git diff before:
+diff --git a/astropy/io/ascii/rst.py b/astropy/io/ascii/rst.py
+index abdeba8ef..93505fbda 100755
+--- a/astropy/io/ascii/rst.py
++++ b/astropy/io/ascii/rst.py
+@@ -57,10 +57,13 @@ class RST(FixedWidth):
+     data_class = SimpleRSTData
+     header_class = SimpleRSTHeader
+ 
+-    def __init__(self):
+-        super().__init__(delimiter_pad=None, bookend=False)
++    def __init__(self, header_rows=None):
++        super().__init__(delimiter_pad=None, bookend=False, header_rows=header_rows)
++        if header_rows is not None:
++            self.data.start_line = len(header_rows) + 2
+ 
+     def write(self, lines):
+         lines = super().write(lines)
+-        lines = [lines[1]] + lines + [lines[1]]
++        idx = len(self.header.header_rows)
++        lines = [lines[idx]] + lines + [lines[idx]]
+         return lines
+2026-11-09 20:24:53,358 - INFO - Eval script for astropy__astropy-14182 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\astropy__astropy-14182\eval.sh; copying to container...
+2026-11-09 20:27:05,202 - INFO - Test runtime: 131.69 seconds
+2026-11-09 20:27:05,206 - INFO - Test output for astropy__astropy-14182 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\astropy__astropy-14182\test_output.txt
+2026-11-09 20:27:05,300 - INFO - Git diff after:
+diff --git a/astropy/io/ascii/rst.py b/astropy/io/ascii/rst.py
+index abdeba8ef..93505fbda 100755
+--- a/astropy/io/ascii/rst.py
++++ b/astropy/io/ascii/rst.py
+@@ -57,10 +57,13 @@ class RST(FixedWidth):
+     data_class = SimpleRSTData
+     header_class = SimpleRSTHeader
+ 
+-    def __init__(self):
+-        super().__init__(delimiter_pad=None, bookend=False)
++    def __init__(self, header_rows=None):
++        super().__init__(delimiter_pad=None, bookend=False, header_rows=header_rows)
++        if header_rows is not None:
++            self.data.start_line = len(header_rows) + 2
+ 
+     def write(self, lines):
+         lines = super().write(lines)
+-        lines = [lines[1]] + lines + [lines[1]]
++        idx = len(self.header.header_rows)
++        lines = [lines[idx]] + lines + [lines[idx]]
+         return lines
+2026-11-09 20:27:05,300 - INFO - Grading answer for astropy__astropy-14182...
+2026-11-09 20:27:05,321 - INFO - report: {'astropy__astropy-14182': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['astropy/io/ascii/tests/test_rst.py::test_rst_with_header_rows'], 'failure': []}, 'PASS_TO_PASS': {'success': ['astropy/io/ascii/tests/test_rst.py::test_read_normal', 'astropy/io/ascii/tests/test_rst.py::test_read_normal_names', 'astropy/io/ascii/tests/test_rst.py::test_read_normal_names_include', 'astropy/io/ascii/tests/test_rst.py::test_read_normal_exclude', 'astropy/io/ascii/tests/test_rst.py::test_read_unbounded_right_column', 'astropy/io/ascii/tests/test_rst.py::test_read_unbounded_right_column_header', 'astropy/io/ascii/tests/test_rst.py::test_read_right_indented_table', 'astropy/io/ascii/tests/test_rst.py::test_trailing_spaces_in_row_definition', 'astropy/io/ascii/tests/test_rst.py::test_write_normal'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for astropy__astropy-14182: resolved: True
+2026-11-09 20:27:05,322 - INFO - Attempting to stop container sweb.eval.astropy__astropy-14182.lg516logs-batch-00...
+2026-11-09 20:27:20,707 - INFO - Container sweb.eval.astropy__astropy-14182.lg516logs-batch-00 stopped successfully.
+2026-11-09 20:27:20,707 - INFO - Attempting to remove container sweb.eval.astropy__astropy-14182.lg516logs-batch-00...
+2026-11-09 20:27:20,925 - INFO - Container sweb.eval.astropy__astropy-14182.lg516logs-batch-00 removed successfully.

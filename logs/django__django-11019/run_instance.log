@@ -1,0 +1,333 @@
+2026-11-09 20:30:44,813 - INFO - Image not found locally, attempting to pull...
+2026-11-09 20:30:57,624 - INFO - Creating container for django__django-11019...
+2026-11-09 20:30:58,160 - INFO - Container for django__django-11019 created: 996612147bc128bc11182f92f707ce4fb44ac6e52e2938592b26383dce0cde5f
+2026-11-09 20:30:58,479 - INFO - Container for django__django-11019 started: 996612147bc128bc11182f92f707ce4fb44ac6e52e2938592b26383dce0cde5f
+2026-11-09 20:30:58,480 - INFO - Intermediate patch for django__django-11019 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\django__django-11019\patch.diff, now applying to container...
+2026-11-09 20:30:58,801 - INFO - >>>>> Applied Patch:
+Checking patch django/forms/widgets.py...
+Applied patch django/forms/widgets.py cleanly.
+
+2026-11-09 20:30:59,903 - INFO - Git diff before:
+diff --git a/django/forms/widgets.py b/django/forms/widgets.py
+index 02aa32b207..29be3d9d93 100755
+--- a/django/forms/widgets.py
++++ b/django/forms/widgets.py
+@@ -59,22 +59,15 @@ class Media:
+ 
+     @property
+     def _css(self):
+-        css = self._css_lists[0]
+-        # filter(None, ...) avoids calling merge with empty dicts.
+-        for obj in filter(None, self._css_lists[1:]):
+-            css = {
+-                medium: self.merge(css.get(medium, []), obj.get(medium, []))
+-                for medium in css.keys() | obj.keys()
+-            }
+-        return css
++        buckets = {}
++        for css in self._css_lists:
++            for medium, paths in css.items():
++                buckets.setdefault(medium, []).append(paths)
++        return {medium: self.merge(*paths) for medium, paths in buckets.items()}
+ 
+     @property
+     def _js(self):
+-        js = self._js_lists[0]
+-        # filter(None, ...) avoids calling merge() with empty lists.
+-        for obj in filter(None, self._js_lists[1:]):
+-            js = self.merge(js, obj)
+-        return js
++        return self.merge(*filter(None, self._js_lists))
+ 
+     def render(self):
+         return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
+@@ -115,39 +108,91 @@ class Media:
+         raise KeyError('Unknown media type "%s"' % name)
+ 
+     @staticmethod
+-    def merge(list_1, list_2):
+-        """
+-        Merge two lists while trying to keep the relative order of the elements.
+-        Warn if the lists have the same two elements in a different relative
+-        order.
++    def merge(*lists):
++        """Merge every original list at once.
+ 
+-        For static assets it can be important to have them included in the DOM
+-        in a certain order. In JavaScript you may not be able to reference a
+-        global or in CSS you might want to override a style.
++        An edge exists only between neighbors inside one list. A whole ready
++        frontier is emitted, in first-seen order, before nodes it unlocks.
++        A new neighbor edge that would close a cycle is dropped and warned.
+         """
+-        # Start with a copy of list_1.
+-        combined_list = list(list_1)
+-        last_insert_index = len(list_1)
+-        # Walk list_2 in reverse, inserting each element into combined_list if
+-        # it doesn't already exist.
+-        for path in reversed(list_2):
+-            try:
+-                # Does path already exist in the list?
+-                index = combined_list.index(path)
+-            except ValueError:
+-                # Add path to combined_list since it doesn't exist.
+-                combined_list.insert(last_insert_index, path)
+-            else:
+-                if index > last_insert_index:
+-                    warnings.warn(
+-                        'Detected duplicate Media files in an opposite order:\n'
+-                        '%s\n%s' % (combined_list[last_insert_index], combined_list[index]),
+-                        MediaOrderConflictWarning,
+-                    )
+-                # path already exists in the list. Update last_insert_index so
+-                # that the following elements are inserted in front of this one.
+-                last_insert_index = index
+-        return combined_list
++        cleaned = [list(lst) for lst in lists if lst]
++        if not cleaned:
++            return []
++        successors = {}
++        indegree = {}
++        first = []
++        seen = set()
++        conflicts = []
++
++        def touches(node):
++            if node not in seen:
++                seen.add(node)
++                first.append(node)
++                indegree[node] = 0
++                successors[node] = []
++
++        def reaches(start, goal):
++            stack = [start]
++            visited = set()
++            while stack:
++                node = stack.pop()
++                if node in visited:
++                    continue
++                visited.add(node)
++                for nxt in successors.get(node, ()):
++                    if nxt == goal:
++                        return True
++                    stack.append(nxt)
++            return False
++
++        for index, lst in enumerate(cleaned):
++            last = None
++            in_list = set()
++            for item in lst:
++                if item in in_list:
++                    continue
++                in_list.add(item)
++                touches(item)
++                if last is None or last == item:
++                    last = item
++                    continue
++                if reaches(item, last):
++                    for earlier_index, earlier in enumerate(cleaned[:index]):
++                        if item in earlier and last in earlier and earlier.index(item) < earlier.index(last):
++                            pair = (earlier_index, index)
++                            if pair not in conflicts:
++                                conflicts.append(pair)
++                            break
++                elif item not in successors[last]:
++                    successors[last].append(item)
++                    indegree[item] += 1
++                last = item
++        if conflicts:
++            parts = []
++            for left, right in conflicts:
++                parts.append(repr(cleaned[left]))
++                parts.append(repr(cleaned[right]))
++            warnings.warn(
++                "Detected duplicate Media files in an opposite order: %s" % ", ".join(parts),
++                MediaOrderConflictWarning,
++            )
++        ready = [node for node in first if indegree[node] == 0]
++        output = []
++        pending = set(first)
++        while ready:
++            unlocked = []
++            for node in ready:
++                output.append(node)
++                pending.discard(node)
++                for succ in successors[node]:
++                    indegree[succ] -= 1
++                    if indegree[succ] == 0:
++                        unlocked.append(succ)
++            unlocked_set = set(unlocked)
++            ready = [node for node in first if node in unlocked_set]
++        if pending:
++            output.extend(node for node in first if node in pending)
++        return output
+ 
+     def __add__(self, other):
+         combined = Media()
+2026-11-09 20:30:59,904 - INFO - Eval script for django__django-11019 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\django__django-11019\eval.sh; copying to container...
+2026-11-09 20:31:10,026 - INFO - Test runtime: 9.97 seconds
+2026-11-09 20:31:10,030 - INFO - Test output for django__django-11019 written to logs\run_evaluation\lg516logs-batch-00\lifegraph-path2-sweep-one-full\django__django-11019\test_output.txt
+2026-11-09 20:31:10,107 - INFO - Git diff after:
+diff --git a/django/forms/widgets.py b/django/forms/widgets.py
+index 02aa32b207..29be3d9d93 100755
+--- a/django/forms/widgets.py
++++ b/django/forms/widgets.py
+@@ -59,22 +59,15 @@ class Media:
+ 
+     @property
+     def _css(self):
+-        css = self._css_lists[0]
+-        # filter(None, ...) avoids calling merge with empty dicts.
+-        for obj in filter(None, self._css_lists[1:]):
+-            css = {
+-                medium: self.merge(css.get(medium, []), obj.get(medium, []))
+-                for medium in css.keys() | obj.keys()
+-            }
+-        return css
++        buckets = {}
++        for css in self._css_lists:
++            for medium, paths in css.items():
++                buckets.setdefault(medium, []).append(paths)
++        return {medium: self.merge(*paths) for medium, paths in buckets.items()}
+ 
+     @property
+     def _js(self):
+-        js = self._js_lists[0]
+-        # filter(None, ...) avoids calling merge() with empty lists.
+-        for obj in filter(None, self._js_lists[1:]):
+-            js = self.merge(js, obj)
+-        return js
++        return self.merge(*filter(None, self._js_lists))
+ 
+     def render(self):
+         return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
+@@ -115,39 +108,91 @@ class Media:
+         raise KeyError('Unknown media type "%s"' % name)
+ 
+     @staticmethod
+-    def merge(list_1, list_2):
+-        """
+-        Merge two lists while trying to keep the relative order of the elements.
+-        Warn if the lists have the same two elements in a different relative
+-        order.
++    def merge(*lists):
++        """Merge every original list at once.
+ 
+-        For static assets it can be important to have them included in the DOM
+-        in a certain order. In JavaScript you may not be able to reference a
+-        global or in CSS you might want to override a style.
++        An edge exists only between neighbors inside one list. A whole ready
++        frontier is emitted, in first-seen order, before nodes it unlocks.
++        A new neighbor edge that would close a cycle is dropped and warned.
+         """
+-        # Start with a copy of list_1.
+-        combined_list = list(list_1)
+-        last_insert_index = len(list_1)
+-        # Walk list_2 in reverse, inserting each element into combined_list if
+-        # it doesn't already exist.
+-        for path in reversed(list_2):
+-            try:
+-                # Does path already exist in the list?
+-                index = combined_list.index(path)
+-            except ValueError:
+-                # Add path to combined_list since it doesn't exist.
+-                combined_list.insert(last_insert_index, path)
+-            else:
+-                if index > last_insert_index:
+-                    warnings.warn(
+-                        'Detected duplicate Media files in an opposite order:\n'
+-                        '%s\n%s' % (combined_list[last_insert_index], combined_list[index]),
+-                        MediaOrderConflictWarning,
+-                    )
+-                # path already exists in the list. Update last_insert_index so
+-                # that the following elements are inserted in front of this one.
+-                last_insert_index = index
+-        return combined_list
++        cleaned = [list(lst) for lst in lists if lst]
++        if not cleaned:
++            return []
++        successors = {}
++        indegree = {}
++        first = []
++        seen = set()
++        conflicts = []
++
++        def touches(node):
++            if node not in seen:
++                seen.add(node)
++                first.append(node)
++                indegree[node] = 0
++                successors[node] = []
++
++        def reaches(start, goal):
++            stack = [start]
++            visited = set()
++            while stack:
++                node = stack.pop()
++                if node in visited:
++                    continue
++                visited.add(node)
++                for nxt in successors.get(node, ()):
++                    if nxt == goal:
++                        return True
++                    stack.append(nxt)
++            return False
++
++        for index, lst in enumerate(cleaned):
++            last = None
++            in_list = set()
++            for item in lst:
++                if item in in_list:
++                    continue
++                in_list.add(item)
++                touches(item)
++                if last is None or last == item:
++                    last = item
++                    continue
++                if reaches(item, last):
++                    for earlier_index, earlier in enumerate(cleaned[:index]):
++                        if item in earlier and last in earlier and earlier.index(item) < earlier.index(last):
++                            pair = (earlier_index, index)
++                            if pair not in conflicts:
++                                conflicts.append(pair)
++                            break
++                elif item not in successors[last]:
++                    successors[last].append(item)
++                    indegree[item] += 1
++                last = item
++        if conflicts:
++            parts = []
++            for left, right in conflicts:
++                parts.append(repr(cleaned[left]))
++                parts.append(repr(cleaned[right]))
++            warnings.warn(
++                "Detected duplicate Media files in an opposite order: %s" % ", ".join(parts),
++                MediaOrderConflictWarning,
++            )
++        ready = [node for node in first if indegree[node] == 0]
++        output = []
++        pending = set(first)
++        while ready:
++            unlocked = []
++            for node in ready:
++                output.append(node)
++                pending.discard(node)
++                for succ in successors[node]:
++                    indegree[succ] -= 1
++                    if indegree[succ] == 0:
++                        unlocked.append(succ)
++            unlocked_set = set(unlocked)
++            ready = [node for node in first if node in unlocked_set]
++        if pending:
++            output.extend(node for node in first if node in pending)
++        return output
+ 
+     def __add__(self, other):
+         combined = Media()
+2026-11-09 20:31:10,107 - INFO - Grading answer for django__django-11019...
+2026-11-09 20:31:10,127 - INFO - report: {'django__django-11019': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_combine_media (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_construction (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_form_media (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_deduplication (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_inheritance (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_inheritance_extends (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_property_parent_references (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_merge (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_merge_css_three_way (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_merge_js_three_way (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_merge_js_three_way2 (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_merge_warning (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_multi_widget (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', 'test_render_options (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', 'test_inline_media_only_inline (admin_inlines.tests.TestInlineMedia)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['Regression for #9362', 'test_html_safe (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_dsl (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_inheritance_from_property (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_inheritance_single_type (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_media_property (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_multi_media (forms_tests.tests.test_media.FormsMediaTestCase)', 'test_build_attrs (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', 'test_build_attrs_no_custom_class (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', 'test_build_attrs_not_required_field (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', 'test_build_attrs_required_field (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', 'test_get_url (admin_widgets.test_autocomplete_widget.AutocompleteMixinTests)', "Empty option isn't present if the field isn't required.", "Empty option is present if the field isn't required.", 'test_deleting_inline_with_protected_delete_does_not_validate (admin_inlines.tests.TestInlineProtectedOnDelete)', 'test_all_inline_media (admin_inlines.tests.TestInlineMedia)', 'test_inline_media_only_base (admin_inlines.tests.TestInlineMedia)', 'test_inline_add_fk_add_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_add_fk_noperm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_add_m2m_add_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_add_m2m_noperm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_fk_add_change_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_fk_add_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_fk_all_perms (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_fk_change_del_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_fk_change_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_fk_noperm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_m2m_add_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_m2m_change_perm (admin_inlines.tests.TestInlinePermissions)', 'test_inline_change_m2m_noperm (admin_inlines.tests.TestInlinePermissions)', 'Admin inline should invoke local callable when its name is listed in readonly_fields', 'test_can_delete (admin_inlines.tests.TestInline)', 'test_create_inlines_on_inherited_model (admin_inlines.tests.TestInline)', 'test_custom_form_tabular_inline_label (admin_inlines.tests.TestInline)', 'test_custom_form_tabular_inline_overridden_label (admin_inlines.tests.TestInline)', 'test_custom_get_extra_form (admin_inlines.tests.TestInline)', 'test_custom_min_num (admin_inlines.tests.TestInline)', 'test_custom_pk_shortcut (admin_inlines.tests.TestInline)', 'test_help_text (admin_inlines.tests.TestInline)', 'test_inline_editable_pk (admin_inlines.tests.TestInline)', "#18263 -- Make sure hidden fields don't get a column in tabular inlines", 'test_inline_nonauto_noneditable_inherited_pk (admin_inlines.tests.TestInline)', 'test_inline_nonauto_noneditable_pk (admin_inlines.tests.TestInline)', 'test_inline_primary (admin_inlines.tests.TestInline)', 'Inlines `show_change_link` for registered models when enabled.', 'Inlines `show_change_link` disabled for unregistered models.', 'test_localize_pk_shortcut (admin_inlines.tests.TestInline)', 'Autogenerated many-to-many inlines are displayed correctly (#13407)', 'test_min_num (admin_inlines.tests.TestInline)', "Admin inline `readonly_field` shouldn't invoke parent ModelAdmin callable", 'test_non_related_name_inline (admin_inlines.tests.TestInline)', 'Inlines without change permission shows field inputs on add form.', 'Bug #13174.', 'test_stacked_inline_edit_form_contains_has_original_class (admin_inlines.tests.TestInline)', 'test_tabular_inline_column_css_class (admin_inlines.tests.TestInline)', 'Inlines `show_change_link` disabled by default.', 'test_tabular_model_form_meta_readonly_field (admin_inlines.tests.TestInline)', 'test_tabular_non_field_errors (admin_inlines.tests.TestInline)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11019: resolved: True
+2026-11-09 20:31:10,128 - INFO - Attempting to stop container sweb.eval.django__django-11019.lg516logs-batch-00...
+2026-11-09 20:31:25,526 - INFO - Container sweb.eval.django__django-11019.lg516logs-batch-00 stopped successfully.
+2026-11-09 20:31:25,526 - INFO - Attempting to remove container sweb.eval.django__django-11019.lg516logs-batch-00...
+2026-11-09 20:31:25,728 - INFO - Container sweb.eval.django__django-11019.lg516logs-batch-00 removed successfully.

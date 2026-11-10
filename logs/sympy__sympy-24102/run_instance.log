@@ -1,0 +1,46 @@
+2026-11-10 00:49:13,868 - INFO - Creating container for sympy__sympy-24102...
+2026-11-10 00:49:13,976 - INFO - Container for sympy__sympy-24102 created: d431108a3175f0d890fd0f89cc442e63a6bcfb77c02f15058dc63c49287c5d66
+2026-11-10 00:49:14,167 - INFO - Container for sympy__sympy-24102 started: d431108a3175f0d890fd0f89cc442e63a6bcfb77c02f15058dc63c49287c5d66
+2026-11-10 00:49:14,168 - INFO - Intermediate patch for sympy__sympy-24102 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-24102\patch.diff, now applying to container...
+2026-11-10 00:49:14,383 - INFO - >>>>> Applied Patch:
+Checking patch sympy/parsing/mathematica.py...
+Applied patch sympy/parsing/mathematica.py cleanly.
+
+2026-11-10 00:49:15,602 - INFO - Git diff before:
+diff --git a/sympy/parsing/mathematica.py b/sympy/parsing/mathematica.py
+index 7ea14ce33a..7bfd5e4bb4 100755
+--- a/sympy/parsing/mathematica.py
++++ b/sympy/parsing/mathematica.py
+@@ -654,7 +654,7 @@ def _from_mathematica_to_tokens(self, code: str):
+             code_splits[i] = code_split
+ 
+         # Tokenize the input strings with a regular expression:
+-        token_lists = [tokenizer.findall(i) if isinstance(i, str) else [i] for i in code_splits]
++        token_lists = [tokenizer.findall(i) if isinstance(i, str) and i.isascii() else [i] for i in code_splits]
+         tokens = [j for i in token_lists for j in i]
+ 
+         # Remove newlines at the beginning
+2026-11-10 00:49:15,604 - INFO - Eval script for sympy__sympy-24102 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-24102\eval.sh; copying to container...
+2026-11-10 00:49:27,231 - INFO - Test runtime: 11.49 seconds
+2026-11-10 00:49:27,234 - INFO - Test output for sympy__sympy-24102 written to logs\run_evaluation\lg516logs-batch-14\lifegraph-path2-sweep-one-full\sympy__sympy-24102\test_output.txt
+2026-11-10 00:49:27,335 - INFO - Git diff after:
+diff --git a/sympy/parsing/mathematica.py b/sympy/parsing/mathematica.py
+index 7ea14ce33a..7bfd5e4bb4 100755
+--- a/sympy/parsing/mathematica.py
++++ b/sympy/parsing/mathematica.py
+@@ -654,7 +654,7 @@ def _from_mathematica_to_tokens(self, code: str):
+             code_splits[i] = code_split
+ 
+         # Tokenize the input strings with a regular expression:
+-        token_lists = [tokenizer.findall(i) if isinstance(i, str) else [i] for i in code_splits]
++        token_lists = [tokenizer.findall(i) if isinstance(i, str) and i.isascii() else [i] for i in code_splits]
+         tokens = [j for i in token_lists for j in i]
+ 
+         # Remove newlines at the beginning
+2026-11-10 00:49:27,335 - INFO - Grading answer for sympy__sympy-24102...
+2026-11-10 00:49:27,352 - INFO - report: {'sympy__sympy-24102': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_mathematica', 'test_parser_mathematica_tokenizer'], 'failure': []}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-24102: resolved: True
+2026-11-10 00:49:27,354 - INFO - Attempting to stop container sweb.eval.sympy__sympy-24102.lg516logs-batch-14...
+2026-11-10 00:49:42,653 - INFO - Container sweb.eval.sympy__sympy-24102.lg516logs-batch-14 stopped successfully.
+2026-11-10 00:49:42,653 - INFO - Attempting to remove container sweb.eval.sympy__sympy-24102.lg516logs-batch-14...
+2026-11-10 00:49:42,751 - INFO - Container sweb.eval.sympy__sympy-24102.lg516logs-batch-14 removed successfully.

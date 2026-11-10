@@ -1,0 +1,57 @@
+2026-11-09 23:24:25,279 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:25:43,652 - INFO - Creating container for pytest-dev__pytest-8365...
+2026-11-09 23:25:48,803 - INFO - Container for pytest-dev__pytest-8365 created: 34200175de11c01669063b6c16dd61d24fb80076ddf8e78858bcdb55be0ada25
+2026-11-09 23:25:49,121 - INFO - Container for pytest-dev__pytest-8365 started: 34200175de11c01669063b6c16dd61d24fb80076ddf8e78858bcdb55be0ada25
+2026-11-09 23:25:49,123 - INFO - Intermediate patch for pytest-dev__pytest-8365 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\pytest-dev__pytest-8365\patch.diff, now applying to container...
+2026-11-09 23:25:49,350 - INFO - >>>>> Applied Patch:
+Checking patch src/_pytest/tmpdir.py...
+Applied patch src/_pytest/tmpdir.py cleanly.
+
+2026-11-09 23:25:49,572 - INFO - Git diff before:
+diff --git a/src/_pytest/tmpdir.py b/src/_pytest/tmpdir.py
+index 29c7e19d7..47729ae5f 100755
+--- a/src/_pytest/tmpdir.py
++++ b/src/_pytest/tmpdir.py
+@@ -115,7 +115,12 @@ class TempPathFactory:
+             # use a sub-directory in the temproot to speed-up
+             # make_numbered_dir() call
+             rootdir = temproot.joinpath(f"pytest-of-{user}")
+-            rootdir.mkdir(exist_ok=True)
++            try:
++                rootdir.mkdir(exist_ok=True)
++            except OSError:
++                # getuser() likely returned illegal characters for the platform, use unknown back off mechanism
++                rootdir = temproot.joinpath("pytest-of-unknown")
++                rootdir.mkdir(exist_ok=True)
+             basetemp = make_numbered_dir_with_cleanup(
+                 prefix="pytest-", root=rootdir, keep=3, lock_timeout=LOCK_TIMEOUT
+             )
+2026-11-09 23:25:49,574 - INFO - Eval script for pytest-dev__pytest-8365 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\pytest-dev__pytest-8365\eval.sh; copying to container...
+2026-11-09 23:25:56,909 - INFO - Test runtime: 7.21 seconds
+2026-11-09 23:25:56,911 - INFO - Test output for pytest-dev__pytest-8365 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\pytest-dev__pytest-8365\test_output.txt
+2026-11-09 23:25:56,995 - INFO - Git diff after:
+diff --git a/src/_pytest/tmpdir.py b/src/_pytest/tmpdir.py
+index 29c7e19d7..47729ae5f 100755
+--- a/src/_pytest/tmpdir.py
++++ b/src/_pytest/tmpdir.py
+@@ -115,7 +115,12 @@ class TempPathFactory:
+             # use a sub-directory in the temproot to speed-up
+             # make_numbered_dir() call
+             rootdir = temproot.joinpath(f"pytest-of-{user}")
+-            rootdir.mkdir(exist_ok=True)
++            try:
++                rootdir.mkdir(exist_ok=True)
++            except OSError:
++                # getuser() likely returned illegal characters for the platform, use unknown back off mechanism
++                rootdir = temproot.joinpath("pytest-of-unknown")
++                rootdir.mkdir(exist_ok=True)
+             basetemp = make_numbered_dir_with_cleanup(
+                 prefix="pytest-", root=rootdir, keep=3, lock_timeout=LOCK_TIMEOUT
+             )
+2026-11-09 23:25:56,995 - INFO - Grading answer for pytest-dev__pytest-8365...
+2026-11-09 23:25:57,009 - INFO - report: {'pytest-dev__pytest-8365': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['testing/test_tmpdir.py::test_tmp_path_factory_handles_invalid_dir_characters'], 'failure': []}, 'PASS_TO_PASS': {'success': ['testing/test_tmpdir.py::TestTempdirHandler::test_mktemp', 'testing/test_tmpdir.py::TestTempdirHandler::test_tmppath_relative_basetemp_absolute', 'testing/test_tmpdir.py::test_get_user_uid_not_found', 'testing/test_tmpdir.py::TestNumberedDir::test_make', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_lock_create', 'testing/test_tmpdir.py::TestNumberedDir::test_lock_register_cleanup_removal', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_keep', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_locked', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_ignores_symlink', 'testing/test_tmpdir.py::TestNumberedDir::test_removal_accepts_lock', 'testing/test_tmpdir.py::TestRmRf::test_rm_rf', 'testing/test_tmpdir.py::TestRmRf::test_rm_rf_with_read_only_file', 'testing/test_tmpdir.py::TestRmRf::test_rm_rf_with_read_only_directory', 'testing/test_tmpdir.py::TestRmRf::test_on_rm_rf_error', 'testing/test_tmpdir.py::test_tmpdir_equals_tmp_path', 'testing/test_tmpdir.py::test_tmpdir_fixture', 'testing/test_tmpdir.py::TestConfigTmpdir::test_getbasetemp_custom_removes_old', 'testing/test_tmpdir.py::test_mktemp[mypath-True]', 'testing/test_tmpdir.py::test_mktemp[/mypath1-False]', 'testing/test_tmpdir.py::test_mktemp[./mypath1-True]', 'testing/test_tmpdir.py::test_mktemp[../mypath3-False]', 'testing/test_tmpdir.py::test_mktemp[../../mypath4-False]', 'testing/test_tmpdir.py::test_mktemp[mypath5/..-False]', 'testing/test_tmpdir.py::test_mktemp[mypath6/../mypath6-True]', 'testing/test_tmpdir.py::test_mktemp[mypath7/../mypath7/..-False]', 'testing/test_tmpdir.py::test_tmpdir_always_is_realpath', 'testing/test_tmpdir.py::test_tmp_path_always_is_realpath', 'testing/test_tmpdir.py::test_tmpdir_too_long_on_parametrization', 'testing/test_tmpdir.py::test_tmpdir_factory', 'testing/test_tmpdir.py::test_tmpdir_fallback_tox_env', 'testing/test_tmpdir.py::test_tmpdir_fallback_uid_not_found', 'testing/test_tmpdir.py::test_basetemp_with_read_only_files'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pytest-dev__pytest-8365: resolved: True
+2026-11-09 23:25:57,010 - INFO - Attempting to stop container sweb.eval.pytest-dev__pytest-8365.lg516logs-batch-09...
+2026-11-09 23:26:12,321 - INFO - Container sweb.eval.pytest-dev__pytest-8365.lg516logs-batch-09 stopped successfully.
+2026-11-09 23:26:12,321 - INFO - Attempting to remove container sweb.eval.pytest-dev__pytest-8365.lg516logs-batch-09...
+2026-11-09 23:26:12,437 - INFO - Container sweb.eval.pytest-dev__pytest-8365.lg516logs-batch-09 removed successfully.

@@ -1,0 +1,63 @@
+2026-11-10 00:37:12,200 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:37:22,082 - INFO - Creating container for sympy__sympy-18532...
+2026-11-10 00:37:22,580 - INFO - Container for sympy__sympy-18532 created: 74452fe5d4b3d899d943c92a35fcb1e7ccb9dfbc59dde6fdec4698a4fc7c104b
+2026-11-10 00:37:22,822 - INFO - Container for sympy__sympy-18532 started: 74452fe5d4b3d899d943c92a35fcb1e7ccb9dfbc59dde6fdec4698a4fc7c104b
+2026-11-10 00:37:22,824 - INFO - Intermediate patch for sympy__sympy-18532 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-18532\patch.diff, now applying to container...
+2026-11-10 00:37:23,097 - INFO - >>>>> Applied Patch:
+Checking patch sympy/core/basic.py...
+Applied patch sympy/core/basic.py cleanly.
+
+2026-11-10 00:37:23,795 - INFO - Git diff before:
+diff --git a/sympy/core/basic.py b/sympy/core/basic.py
+index 6866648d4e..21fa00f6f3 100755
+--- a/sympy/core/basic.py
++++ b/sympy/core/basic.py
+@@ -503,12 +503,11 @@ def atoms(self, *types):
+         if types:
+             types = tuple(
+                 [t if isinstance(t, type) else type(t) for t in types])
++        nodes = preorder_traversal(self)
++        if types:
++            result = {node for node in nodes if isinstance(node, types)}
+         else:
+-            types = (Atom,)
+-        result = set()
+-        for expr in preorder_traversal(self):
+-            if isinstance(expr, types):
+-                result.add(expr)
++            result = {node for node in nodes if not node.args}
+         return result
+ 
+     @property
+2026-11-10 00:37:23,796 - INFO - Eval script for sympy__sympy-18532 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-18532\eval.sh; copying to container...
+2026-11-10 00:37:30,073 - INFO - Test runtime: 6.15 seconds
+2026-11-10 00:37:30,075 - INFO - Test output for sympy__sympy-18532 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-18532\test_output.txt
+2026-11-10 00:37:30,191 - INFO - Git diff after:
+diff --git a/sympy/core/basic.py b/sympy/core/basic.py
+index 6866648d4e..21fa00f6f3 100755
+--- a/sympy/core/basic.py
++++ b/sympy/core/basic.py
+@@ -503,12 +503,11 @@ def atoms(self, *types):
+         if types:
+             types = tuple(
+                 [t if isinstance(t, type) else type(t) for t in types])
++        nodes = preorder_traversal(self)
++        if types:
++            result = {node for node in nodes if isinstance(node, types)}
+         else:
+-            types = (Atom,)
+-        result = set()
+-        for expr in preorder_traversal(self):
+-            if isinstance(expr, types):
+-                result.add(expr)
++            result = {node for node in nodes if not node.args}
+         return result
+ 
+     @property
+2026-11-10 00:37:30,191 - INFO - Grading answer for sympy__sympy-18532...
+2026-11-10 00:37:30,211 - INFO - report: {'sympy__sympy-18532': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_sizeof', 'test_atoms'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_alignof', 'test_CommaOperator', 'test_goto_Label', 'test_PreDecrement', 'test_PostDecrement', 'test_PreIncrement', 'test_PostIncrement', 'test_struct', 'test__aresame', 'test_structure', 'test_equality', 'test_matches_basic', 'test_has', 'test_subs', 'test_subs_with_unicode_symbols', 'test_free_symbols_empty', 'test_doit', 'test_S', 'test_xreplace', 'test_preorder_traversal', 'test_sorted_args', 'test_call', 'test_rewrite', 'test_literal_evalf_is_number_is_zero_is_comparable', 'test_as_Basic', 'test_atomic', 'test_as_dummy', 'test_canonical_variables'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-18532: resolved: True
+2026-11-10 00:37:30,212 - INFO - Attempting to stop container sweb.eval.sympy__sympy-18532.lg516logs-batch-13...
+2026-11-10 00:37:45,533 - INFO - Container sweb.eval.sympy__sympy-18532.lg516logs-batch-13 stopped successfully.
+2026-11-10 00:37:45,533 - INFO - Attempting to remove container sweb.eval.sympy__sympy-18532.lg516logs-batch-13...
+2026-11-10 00:37:45,678 - INFO - Container sweb.eval.sympy__sympy-18532.lg516logs-batch-13 removed successfully.

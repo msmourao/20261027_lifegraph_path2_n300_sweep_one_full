@@ -1,0 +1,89 @@
+2026-11-09 21:20:13,904 - INFO - Image not found locally, attempting to pull...
+2026-11-09 21:20:47,687 - INFO - Creating container for django__django-15819...
+2026-11-09 21:20:48,076 - INFO - Container for django__django-15819 created: 2fcc9f12a24f0f1c7e1ae6698c4aa85d5b4aa4019b754b3228eb4842bc27ce29
+2026-11-09 21:20:48,574 - INFO - Container for django__django-15819 started: 2fcc9f12a24f0f1c7e1ae6698c4aa85d5b4aa4019b754b3228eb4842bc27ce29
+2026-11-09 21:20:48,576 - INFO - Intermediate patch for django__django-15819 written to logs\run_evaluation\lg516logs-batch-05\lifegraph-path2-sweep-one-full\django__django-15819\patch.diff, now applying to container...
+2026-11-09 21:20:49,082 - INFO - >>>>> Applied Patch:
+Checking patch django/core/management/commands/inspectdb.py...
+Applied patch django/core/management/commands/inspectdb.py cleanly.
+
+2026-11-09 21:20:51,084 - INFO - Git diff before:
+diff --git a/django/core/management/commands/inspectdb.py b/django/core/management/commands/inspectdb.py
+index f33bcbdccf..d46180cd99 100755
+--- a/django/core/management/commands/inspectdb.py
++++ b/django/core/management/commands/inspectdb.py
+@@ -127,12 +127,14 @@ class Command(BaseCommand):
+                     yield "# The error was: %s" % e
+                     continue
+ 
++                model_name = table2model(table_name)
+                 yield ""
+                 yield ""
+-                yield "class %s(models.Model):" % table2model(table_name)
+-                known_models.append(table2model(table_name))
++                yield "class %s(models.Model):" % model_name
++                known_models.append(model_name)
+                 used_column_names = []  # Holds column names used in the table so far
+                 column_to_field_name = {}  # Maps column names to names of model fields
++                used_relations = set()  # Holds foreign relations used in the table.
+                 for row in table_description:
+                     comment_notes = (
+                         []
+@@ -186,6 +188,12 @@ class Command(BaseCommand):
+                             field_type = "%s(%s" % (rel_type, rel_to)
+                         else:
+                             field_type = "%s('%s'" % (rel_type, rel_to)
++                        if rel_to in used_relations:
++                            extra_params["related_name"] = "%s_%s_set" % (
++                                model_name.lower(),
++                                att_name,
++                            )
++                        used_relations.add(rel_to)
+                     else:
+                         # Calling `get_field_type` to get the field type string and any
+                         # additional parameters and notes.
+2026-11-09 21:20:51,085 - INFO - Eval script for django__django-15819 written to logs\run_evaluation\lg516logs-batch-05\lifegraph-path2-sweep-one-full\django__django-15819\eval.sh; copying to container...
+2026-11-09 21:21:12,839 - INFO - Test runtime: 21.60 seconds
+2026-11-09 21:21:12,847 - INFO - Test output for django__django-15819 written to logs\run_evaluation\lg516logs-batch-05\lifegraph-path2-sweep-one-full\django__django-15819\test_output.txt
+2026-11-09 21:21:12,986 - INFO - Git diff after:
+diff --git a/django/core/management/commands/inspectdb.py b/django/core/management/commands/inspectdb.py
+index f33bcbdccf..d46180cd99 100755
+--- a/django/core/management/commands/inspectdb.py
++++ b/django/core/management/commands/inspectdb.py
+@@ -127,12 +127,14 @@ class Command(BaseCommand):
+                     yield "# The error was: %s" % e
+                     continue
+ 
++                model_name = table2model(table_name)
+                 yield ""
+                 yield ""
+-                yield "class %s(models.Model):" % table2model(table_name)
+-                known_models.append(table2model(table_name))
++                yield "class %s(models.Model):" % model_name
++                known_models.append(model_name)
+                 used_column_names = []  # Holds column names used in the table so far
+                 column_to_field_name = {}  # Maps column names to names of model fields
++                used_relations = set()  # Holds foreign relations used in the table.
+                 for row in table_description:
+                     comment_notes = (
+                         []
+@@ -186,6 +188,12 @@ class Command(BaseCommand):
+                             field_type = "%s(%s" % (rel_type, rel_to)
+                         else:
+                             field_type = "%s('%s'" % (rel_type, rel_to)
++                        if rel_to in used_relations:
++                            extra_params["related_name"] = "%s_%s_set" % (
++                                model_name.lower(),
++                                att_name,
++                            )
++                        used_relations.add(rel_to)
+                     else:
+                         # Calling `get_field_type` to get the field type string and any
+                         # additional parameters and notes.
+2026-11-09 21:21:12,986 - INFO - Grading answer for django__django-15819...
+2026-11-09 21:21:13,016 - INFO - report: {'django__django-15819': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_same_relations (inspectdb.tests.InspectDBTestCase)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_composite_primary_key (inspectdb.tests.InspectDBTransactionalTests)', 'inspectdb --include-views creates models for database views.', 'test_attribute_name_not_python_keyword (inspectdb.tests.InspectDBTestCase)', 'test_char_field_db_collation (inspectdb.tests.InspectDBTestCase)', 'Introspection of columns with a custom field (#21090)', 'Introspection of column names consist/start with digits (#16536/#17676)', 'Test introspection of various Django field types', 'test_foreign_key_to_field (inspectdb.tests.InspectDBTestCase)', 'Introspection errors should not crash the command, and the error should', 'test_json_field (inspectdb.tests.InspectDBTestCase)', 'By default the command generates models with `Meta.managed = False`.', 'Introspection of column names containing special characters,', 'test_stealth_table_name_filter_option (inspectdb.tests.InspectDBTestCase)', 'Introspection of table names containing special characters,', 'inspectdb can inspect a subset of tables by passing the table names as', 'test_table_with_func_unique_constraint (inspectdb.tests.InspectDBTestCase)', 'test_text_field_db_collation (inspectdb.tests.InspectDBTestCase)', 'test_unique_together_meta (inspectdb.tests.InspectDBTestCase)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15819: resolved: True
+2026-11-09 21:21:13,018 - INFO - Attempting to stop container sweb.eval.django__django-15819.lg516logs-batch-05...
+2026-11-09 21:21:28,578 - INFO - Container sweb.eval.django__django-15819.lg516logs-batch-05 stopped successfully.
+2026-11-09 21:21:28,578 - INFO - Attempting to remove container sweb.eval.django__django-15819.lg516logs-batch-05...
+2026-11-09 21:21:28,813 - INFO - Container sweb.eval.django__django-15819.lg516logs-batch-05 removed successfully.

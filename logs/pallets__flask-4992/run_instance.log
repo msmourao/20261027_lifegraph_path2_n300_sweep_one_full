@@ -1,0 +1,145 @@
+2026-11-09 22:55:53,662 - INFO - Image not found locally, attempting to pull...
+2026-11-09 22:56:46,526 - INFO - Creating container for pallets__flask-4992...
+2026-11-09 22:56:47,308 - INFO - Container for pallets__flask-4992 created: bd1821fde7755cce5177a91256082cd34ae945c9bfb97c439f2f758491e88403
+2026-11-09 22:56:47,476 - INFO - Container for pallets__flask-4992 started: bd1821fde7755cce5177a91256082cd34ae945c9bfb97c439f2f758491e88403
+2026-11-09 22:56:47,479 - INFO - Intermediate patch for pallets__flask-4992 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\pallets__flask-4992\patch.diff, now applying to container...
+2026-11-09 22:56:47,704 - INFO - >>>>> Applied Patch:
+Checking patch src/flask/config.py...
+Applied patch src/flask/config.py cleanly.
+
+2026-11-09 22:56:47,849 - INFO - Git diff before:
+diff --git a/src/flask/config.py b/src/flask/config.py
+index d4fc310f..5e48be33 100755
+--- a/src/flask/config.py
++++ b/src/flask/config.py
+@@ -234,6 +234,7 @@ class Config(dict):
+         filename: str,
+         load: t.Callable[[t.IO[t.Any]], t.Mapping],
+         silent: bool = False,
++        text: bool = True,
+     ) -> bool:
+         """Update the values in the config from a file that is loaded
+         using the ``load`` parameter. The loaded data is passed to the
+@@ -244,8 +245,8 @@ class Config(dict):
+             import json
+             app.config.from_file("config.json", load=json.load)
+ 
+-            import toml
+-            app.config.from_file("config.toml", load=toml.load)
++            import tomllib
++            app.config.from_file("config.toml", load=tomllib.load, text=False)
+ 
+         :param filename: The path to the data file. This can be an
+             absolute path or relative to the config root path.
+@@ -254,14 +255,18 @@ class Config(dict):
+         :type load: ``Callable[[Reader], Mapping]`` where ``Reader``
+             implements a ``read`` method.
+         :param silent: Ignore the file if it doesn't exist.
++        :param text: Open the file in text or binary mode.
+         :return: ``True`` if the file was loaded successfully.
+ 
++        .. versionchanged:: 2.3
++            The ``text`` parameter was added.
++
+         .. versionadded:: 2.0
+         """
+         filename = os.path.join(self.root_path, filename)
+ 
+         try:
+-            with open(filename) as f:
++            with open(filename, "r" if text else "rb") as f:
+                 obj = load(f)
+         except OSError as e:
+             if silent and e.errno in (errno.ENOENT, errno.EISDIR):
+2026-11-09 22:56:47,851 - INFO - Eval script for pallets__flask-4992 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\pallets__flask-4992\eval.sh; copying to container...
+2026-11-09 22:56:52,151 - INFO - Test runtime: 4.18 seconds
+2026-11-09 22:56:52,152 - INFO - Test output for pallets__flask-4992 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\pallets__flask-4992\test_output.txt
+2026-11-09 22:56:52,241 - INFO - Git diff after:
+diff --git a/src/flask/config.py b/src/flask/config.py
+index d4fc310f..5e48be33 100755
+--- a/src/flask/config.py
++++ b/src/flask/config.py
+@@ -234,6 +234,7 @@ class Config(dict):
+         filename: str,
+         load: t.Callable[[t.IO[t.Any]], t.Mapping],
+         silent: bool = False,
++        text: bool = True,
+     ) -> bool:
+         """Update the values in the config from a file that is loaded
+         using the ``load`` parameter. The loaded data is passed to the
+@@ -244,8 +245,8 @@ class Config(dict):
+             import json
+             app.config.from_file("config.json", load=json.load)
+ 
+-            import toml
+-            app.config.from_file("config.toml", load=toml.load)
++            import tomllib
++            app.config.from_file("config.toml", load=tomllib.load, text=False)
+ 
+         :param filename: The path to the data file. This can be an
+             absolute path or relative to the config root path.
+@@ -254,14 +255,18 @@ class Config(dict):
+         :type load: ``Callable[[Reader], Mapping]`` where ``Reader``
+             implements a ``read`` method.
+         :param silent: Ignore the file if it doesn't exist.
++        :param text: Open the file in text or binary mode.
+         :return: ``True`` if the file was loaded successfully.
+ 
++        .. versionchanged:: 2.3
++            The ``text`` parameter was added.
++
+         .. versionadded:: 2.0
+         """
+         filename = os.path.join(self.root_path, filename)
+ 
+         try:
+-            with open(filename) as f:
++            with open(filename, "r" if text else "rb") as f:
+                 obj = load(f)
+         except OSError as e:
+             if silent and e.errno in (errno.ENOENT, errno.EISDIR):
+diff --git a/tests/test_config.py b/tests/test_config.py
+index 76c5d272..580ae864 100755
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -6,7 +6,6 @@ import pytest
+ 
+ import flask
+ 
+-
+ # config keys used for the TestConfig
+ TEST_KEY = "foo"
+ SECRET_KEY = "config"
+@@ -30,13 +29,23 @@ def test_config_from_object():
+     common_object_test(app)
+ 
+ 
+-def test_config_from_file():
++def test_config_from_file_json():
+     app = flask.Flask(__name__)
+     current_dir = os.path.dirname(os.path.abspath(__file__))
+     app.config.from_file(os.path.join(current_dir, "static", "config.json"), json.load)
+     common_object_test(app)
+ 
+ 
++def test_config_from_file_toml():
++    tomllib = pytest.importorskip("tomllib", reason="tomllib added in 3.11")
++    app = flask.Flask(__name__)
++    current_dir = os.path.dirname(os.path.abspath(__file__))
++    app.config.from_file(
++        os.path.join(current_dir, "static", "config.toml"), tomllib.load, text=False
++    )
++    common_object_test(app)
++
++
+ def test_from_prefixed_env(monkeypatch):
+     monkeypatch.setenv("FLASK_STRING", "value")
+     monkeypatch.setenv("FLASK_BOOL", "true")
+2026-11-09 22:56:52,241 - INFO - Git diff changed after running eval script
+2026-11-09 22:56:52,241 - INFO - Grading answer for pallets__flask-4992...
+2026-11-09 22:56:52,254 - INFO - report: {'pallets__flask-4992': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_config.py::test_config_from_file_toml'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_config.py::test_config_from_pyfile', 'tests/test_config.py::test_config_from_object', 'tests/test_config.py::test_config_from_file_json', 'tests/test_config.py::test_from_prefixed_env', 'tests/test_config.py::test_from_prefixed_env_custom_prefix', 'tests/test_config.py::test_from_prefixed_env_nested', 'tests/test_config.py::test_config_from_mapping', 'tests/test_config.py::test_config_from_class', 'tests/test_config.py::test_config_from_envvar', 'tests/test_config.py::test_config_from_envvar_missing', 'tests/test_config.py::test_config_missing', 'tests/test_config.py::test_config_missing_file', 'tests/test_config.py::test_custom_config_class', 'tests/test_config.py::test_session_lifetime', 'tests/test_config.py::test_get_namespace', 'tests/test_config.py::test_from_pyfile_weird_encoding[utf-8]', 'tests/test_config.py::test_from_pyfile_weird_encoding[iso-8859-15]', 'tests/test_config.py::test_from_pyfile_weird_encoding[latin-1]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pallets__flask-4992: resolved: True
+2026-11-09 22:56:52,255 - INFO - Attempting to stop container sweb.eval.pallets__flask-4992.lg516logs-batch-07...
+2026-11-09 22:57:08,189 - INFO - Container sweb.eval.pallets__flask-4992.lg516logs-batch-07 stopped successfully.
+2026-11-09 22:57:08,189 - INFO - Attempting to remove container sweb.eval.pallets__flask-4992.lg516logs-batch-07...
+2026-11-09 22:57:08,338 - INFO - Container sweb.eval.pallets__flask-4992.lg516logs-batch-07 removed successfully.

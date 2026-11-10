@@ -1,0 +1,57 @@
+2026-11-09 23:34:42,703 - INFO - Image not found locally, attempting to pull...
+2026-11-09 23:34:56,460 - INFO - Creating container for scikit-learn__scikit-learn-13497...
+2026-11-09 23:35:00,527 - INFO - Container for scikit-learn__scikit-learn-13497 created: 91d20593039d5bdf7e4e7ce1e107017496d648f1a7a87b0f99e31fc00bd96348
+2026-11-09 23:35:01,402 - INFO - Container for scikit-learn__scikit-learn-13497 started: 91d20593039d5bdf7e4e7ce1e107017496d648f1a7a87b0f99e31fc00bd96348
+2026-11-09 23:35:01,404 - INFO - Intermediate patch for scikit-learn__scikit-learn-13497 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13497\patch.diff, now applying to container...
+2026-11-09 23:35:01,647 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/feature_selection/mutual_info_.py...
+Applied patch sklearn/feature_selection/mutual_info_.py cleanly.
+
+2026-11-09 23:35:02,032 - INFO - Git diff before:
+diff --git a/sklearn/feature_selection/mutual_info_.py b/sklearn/feature_selection/mutual_info_.py
+index d5d1b7fb5..7c5ebbfc4 100755
+--- a/sklearn/feature_selection/mutual_info_.py
++++ b/sklearn/feature_selection/mutual_info_.py
+@@ -247,8 +247,11 @@ def _estimate_mi(X, y, discrete_features='auto', discrete_target=False,
+     X, y = check_X_y(X, y, accept_sparse='csc', y_numeric=not discrete_target)
+     n_samples, n_features = X.shape
+ 
+-    if discrete_features == 'auto':
+-        discrete_features = issparse(X)
++    if isinstance(discrete_features, str):
++        if discrete_features == 'auto':
++            discrete_features = issparse(X)
++        else:
++            raise ValueError('discrete_features must be "auto" when a string.')
+ 
+     if isinstance(discrete_features, bool):
+         discrete_mask = np.empty(n_features, dtype=bool)
+2026-11-09 23:35:02,035 - INFO - Eval script for scikit-learn__scikit-learn-13497 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13497\eval.sh; copying to container...
+2026-11-09 23:35:15,728 - INFO - Test runtime: 13.57 seconds
+2026-11-09 23:35:15,732 - INFO - Test output for scikit-learn__scikit-learn-13497 written to logs\run_evaluation\lg516logs-batch-09\lifegraph-path2-sweep-one-full\scikit-learn__scikit-learn-13497\test_output.txt
+2026-11-09 23:35:15,847 - INFO - Git diff after:
+diff --git a/sklearn/feature_selection/mutual_info_.py b/sklearn/feature_selection/mutual_info_.py
+index d5d1b7fb5..7c5ebbfc4 100755
+--- a/sklearn/feature_selection/mutual_info_.py
++++ b/sklearn/feature_selection/mutual_info_.py
+@@ -247,8 +247,11 @@ def _estimate_mi(X, y, discrete_features='auto', discrete_target=False,
+     X, y = check_X_y(X, y, accept_sparse='csc', y_numeric=not discrete_target)
+     n_samples, n_features = X.shape
+ 
+-    if discrete_features == 'auto':
+-        discrete_features = issparse(X)
++    if isinstance(discrete_features, str):
++        if discrete_features == 'auto':
++            discrete_features = issparse(X)
++        else:
++            raise ValueError('discrete_features must be "auto" when a string.')
+ 
+     if isinstance(discrete_features, bool):
+         discrete_mask = np.empty(n_features, dtype=bool)
+2026-11-09 23:35:15,847 - INFO - Grading answer for scikit-learn__scikit-learn-13497...
+2026-11-09 23:35:15,870 - INFO - report: {'scikit-learn__scikit-learn-13497': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/feature_selection/tests/test_mutual_info.py::test_mutual_info_options'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/feature_selection/tests/test_mutual_info.py::test_compute_mi_dd', 'sklearn/feature_selection/tests/test_mutual_info.py::test_compute_mi_cc', 'sklearn/feature_selection/tests/test_mutual_info.py::test_compute_mi_cd', 'sklearn/feature_selection/tests/test_mutual_info.py::test_compute_mi_cd_unique_label', 'sklearn/feature_selection/tests/test_mutual_info.py::test_mutual_info_classif_discrete', 'sklearn/feature_selection/tests/test_mutual_info.py::test_mutual_info_regression', 'sklearn/feature_selection/tests/test_mutual_info.py::test_mutual_info_classif_mixed'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-13497: resolved: True
+2026-11-09 23:35:15,871 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-13497.lg516logs-batch-09...
+2026-11-09 23:35:32,904 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13497.lg516logs-batch-09 stopped successfully.
+2026-11-09 23:35:32,905 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-13497.lg516logs-batch-09...
+2026-11-09 23:35:33,613 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13497.lg516logs-batch-09 removed successfully.

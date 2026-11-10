@@ -1,0 +1,46 @@
+2026-11-09 21:15:46,941 - INFO - Creating container for django__django-15388...
+2026-11-09 21:15:47,079 - INFO - Container for django__django-15388 created: 19d2fc9a595275718794fee03503a99f0bc5b6cce1a014958fcccb2ce63baa4a
+2026-11-09 21:15:47,427 - INFO - Container for django__django-15388 started: 19d2fc9a595275718794fee03503a99f0bc5b6cce1a014958fcccb2ce63baa4a
+2026-11-09 21:15:47,429 - INFO - Intermediate patch for django__django-15388 written to logs\run_evaluation\lg516logs-batch-04\lifegraph-path2-sweep-one-full\django__django-15388\patch.diff, now applying to container...
+2026-11-09 21:15:47,758 - INFO - >>>>> Applied Patch:
+Checking patch django/template/autoreload.py...
+Applied patch django/template/autoreload.py cleanly.
+
+2026-11-09 21:15:51,254 - INFO - Git diff before:
+diff --git a/django/template/autoreload.py b/django/template/autoreload.py
+index cf1b20ba95..7242d68f2d 100755
+--- a/django/template/autoreload.py
++++ b/django/template/autoreload.py
+@@ -48,6 +48,8 @@ def watch_for_template_changes(sender, **kwargs):
+ 
+ @receiver(file_changed, dispatch_uid='template_loaders_file_changed')
+ def template_changed(sender, file_path, **kwargs):
++    if file_path.suffix == '.py':
++        return
+     for template_dir in get_template_directories():
+         if template_dir in file_path.parents:
+             reset_loaders()
+2026-11-09 21:15:51,256 - INFO - Eval script for django__django-15388 written to logs\run_evaluation\lg516logs-batch-04\lifegraph-path2-sweep-one-full\django__django-15388\eval.sh; copying to container...
+2026-11-09 21:16:10,242 - INFO - Test runtime: 18.83 seconds
+2026-11-09 21:16:10,251 - INFO - Test output for django__django-15388 written to logs\run_evaluation\lg516logs-batch-04\lifegraph-path2-sweep-one-full\django__django-15388\test_output.txt
+2026-11-09 21:16:10,432 - INFO - Git diff after:
+diff --git a/django/template/autoreload.py b/django/template/autoreload.py
+index cf1b20ba95..7242d68f2d 100755
+--- a/django/template/autoreload.py
++++ b/django/template/autoreload.py
+@@ -48,6 +48,8 @@ def watch_for_template_changes(sender, **kwargs):
+ 
+ @receiver(file_changed, dispatch_uid='template_loaders_file_changed')
+ def template_changed(sender, file_path, **kwargs):
++    if file_path.suffix == '.py':
++        return
+     for template_dir in get_template_directories():
+         if template_dir in file_path.parents:
+             reset_loaders()
+2026-11-09 21:16:10,432 - INFO - Grading answer for django__django-15388...
+2026-11-09 21:16:10,472 - INFO - report: {'django__django-15388': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_non_template_changed_in_template_directory (template_tests.test_autoreloader.TemplateReloadTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_get_template_directories (template_tests.test_autoreloader.Jinja2TemplateReloadTests)', 'test_reset_all_loaders (template_tests.test_autoreloader.Jinja2TemplateReloadTests)', 'test_watch_for_template_changes (template_tests.test_autoreloader.Jinja2TemplateReloadTests)', 'test_get_template_directories (template_tests.test_autoreloader.TemplateReloadTests)', 'test_non_template_changed (template_tests.test_autoreloader.TemplateReloadTests)', 'test_reset_all_loaders (template_tests.test_autoreloader.TemplateReloadTests)', 'test_template_changed (template_tests.test_autoreloader.TemplateReloadTests)', 'test_template_dirs_normalized_to_paths (template_tests.test_autoreloader.TemplateReloadTests)', 'test_watch_for_template_changes (template_tests.test_autoreloader.TemplateReloadTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15388: resolved: True
+2026-11-09 21:16:10,474 - INFO - Attempting to stop container sweb.eval.django__django-15388.lg516logs-batch-04...
+2026-11-09 21:16:25,949 - INFO - Container sweb.eval.django__django-15388.lg516logs-batch-04 stopped successfully.
+2026-11-09 21:16:25,950 - INFO - Attempting to remove container sweb.eval.django__django-15388.lg516logs-batch-04...
+2026-11-09 21:16:26,105 - INFO - Container sweb.eval.django__django-15388.lg516logs-batch-04 removed successfully.

@@ -1,0 +1,49 @@
+2026-11-10 00:25:10,115 - INFO - Image not found locally, attempting to pull...
+2026-11-10 00:25:15,757 - INFO - Creating container for sympy__sympy-15346...
+2026-11-10 00:25:16,114 - INFO - Container for sympy__sympy-15346 created: 09b061a934dda08220b80be1bd7df5d11ab77502ad4eccf8f89cfef277fa8dac
+2026-11-10 00:25:16,395 - INFO - Container for sympy__sympy-15346 started: 09b061a934dda08220b80be1bd7df5d11ab77502ad4eccf8f89cfef277fa8dac
+2026-11-10 00:25:16,396 - INFO - Intermediate patch for sympy__sympy-15346 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15346\patch.diff, now applying to container...
+2026-11-10 00:25:16,685 - INFO - >>>>> Applied Patch:
+Checking patch sympy/simplify/trigsimp.py...
+Applied patch sympy/simplify/trigsimp.py cleanly.
+
+2026-11-10 00:25:17,350 - INFO - Git diff before:
+diff --git a/sympy/simplify/trigsimp.py b/sympy/simplify/trigsimp.py
+index 8ba346adb..032d6175c 100755
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -1143,8 +1143,8 @@ def _futrig(e, **kwargs):
+         lambda x: _eapply(factor, x, trigs),
+         TR14,  # factored powers of identities
+         [identity, lambda x: _eapply(_mexpand, x, trigs)],
+-        TRmorrie,
+         TR10i,  # sin-cos products > sin-cos of sums
++        TRmorrie,
+         [identity, TR8],  # sin-cos products -> sin-cos of sums
+         [identity, lambda x: TR2i(TR2(x))],  # tan -> sin-cos -> tan
+         [
+2026-11-10 00:25:17,351 - INFO - Eval script for sympy__sympy-15346 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15346\eval.sh; copying to container...
+2026-11-10 00:26:10,346 - INFO - Test runtime: 52.86 seconds
+2026-11-10 00:26:10,349 - INFO - Test output for sympy__sympy-15346 written to logs\run_evaluation\lg516logs-batch-12\lifegraph-path2-sweep-one-full\sympy__sympy-15346\test_output.txt
+2026-11-10 00:26:10,460 - INFO - Git diff after:
+diff --git a/sympy/simplify/trigsimp.py b/sympy/simplify/trigsimp.py
+index 8ba346adb..032d6175c 100755
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -1143,8 +1143,8 @@ def _futrig(e, **kwargs):
+         lambda x: _eapply(factor, x, trigs),
+         TR14,  # factored powers of identities
+         [identity, lambda x: _eapply(_mexpand, x, trigs)],
+-        TRmorrie,
+         TR10i,  # sin-cos products > sin-cos of sums
++        TRmorrie,
+         [identity, TR8],  # sin-cos products -> sin-cos of sums
+         [identity, lambda x: TR2i(TR2(x))],  # tan -> sin-cos -> tan
+         [
+2026-11-10 00:26:10,460 - INFO - Grading answer for sympy__sympy-15346...
+2026-11-10 00:26:10,479 - INFO - report: {'sympy__sympy-15346': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_15129_trigsimp_methods'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_trigsimp1', 'test_trigsimp1a', 'test_trigsimp2', 'test_issue_4373', 'test_trigsimp3', 'test_issue_4661', 'test_issue_4494', 'test_issue_5948', 'test_issue_4775', 'test_issue_4280', 'test_issue_3210', 'test_trigsimp_issues', 'test_trigsimp_issue_2515', 'test_trigsimp_issue_3826', 'test_trigsimp_issue_4032', 'test_trigsimp_issue_7761', 'test_trigsimp_noncommutative', 'test_hyperbolic_simp', 'test_trigsimp_groebner', 'test_issue_2827_trigsimp_methods', 'test_exptrigsimp', 'test_powsimp_on_numbers'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15346: resolved: True
+2026-11-10 00:26:10,480 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15346.lg516logs-batch-12...
+2026-11-10 00:26:25,807 - INFO - Container sweb.eval.sympy__sympy-15346.lg516logs-batch-12 stopped successfully.
+2026-11-10 00:26:25,807 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15346.lg516logs-batch-12...
+2026-11-10 00:26:25,935 - INFO - Container sweb.eval.sympy__sympy-15346.lg516logs-batch-12 removed successfully.

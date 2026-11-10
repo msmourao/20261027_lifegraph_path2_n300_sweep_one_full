@@ -1,0 +1,58 @@
+2026-11-10 00:03:27,788 - INFO - Creating container for sympy__sympy-12481...
+2026-11-10 00:03:27,967 - INFO - Container for sympy__sympy-12481 created: c58bf884352c9ff7118bbb8841c15da61e90eab0afb47e48ab44dbc687f5ddf8
+2026-11-10 00:03:28,190 - INFO - Container for sympy__sympy-12481 started: c58bf884352c9ff7118bbb8841c15da61e90eab0afb47e48ab44dbc687f5ddf8
+2026-11-10 00:03:28,192 - INFO - Intermediate patch for sympy__sympy-12481 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-12481\patch.diff, now applying to container...
+2026-11-10 00:03:28,459 - INFO - >>>>> Applied Patch:
+Checking patch sympy/combinatorics/permutations.py...
+Applied patch sympy/combinatorics/permutations.py cleanly.
+
+2026-11-10 00:03:29,443 - INFO - Git diff before:
+diff --git a/sympy/combinatorics/permutations.py b/sympy/combinatorics/permutations.py
+index 136ed5a47..4ac1c2ef3 100755
+--- a/sympy/combinatorics/permutations.py
++++ b/sympy/combinatorics/permutations.py
+@@ -895,12 +895,8 @@ def __new__(cls, *args, **kwargs):
+         # counting starts from 1.
+ 
+         temp = flatten(args)
+-        if has_dups(temp):
+-            if is_cycle:
+-                raise ValueError('there were repeated elements; to resolve '
+-                'cycles use Cycle%s.' % ''.join([str(tuple(c)) for c in args]))
+-            else:
+-                raise ValueError('there were repeated elements.')
++        if has_dups(temp) and not is_cycle:
++            raise ValueError('there were repeated elements.')
+         temp = set(temp)
+ 
+         if not is_cycle and \
+2026-11-10 00:03:29,445 - INFO - Eval script for sympy__sympy-12481 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-12481\eval.sh; copying to container...
+2026-11-10 00:03:35,096 - INFO - Test runtime: 5.53 seconds
+2026-11-10 00:03:35,098 - INFO - Test output for sympy__sympy-12481 written to logs\run_evaluation\lg516logs-batch-11\lifegraph-path2-sweep-one-full\sympy__sympy-12481\test_output.txt
+2026-11-10 00:03:35,217 - INFO - Git diff after:
+diff --git a/sympy/combinatorics/permutations.py b/sympy/combinatorics/permutations.py
+index 136ed5a47..4ac1c2ef3 100755
+--- a/sympy/combinatorics/permutations.py
++++ b/sympy/combinatorics/permutations.py
+@@ -895,12 +895,8 @@ def __new__(cls, *args, **kwargs):
+         # counting starts from 1.
+ 
+         temp = flatten(args)
+-        if has_dups(temp):
+-            if is_cycle:
+-                raise ValueError('there were repeated elements; to resolve '
+-                'cycles use Cycle%s.' % ''.join([str(tuple(c)) for c in args]))
+-            else:
+-                raise ValueError('there were repeated elements.')
++        if has_dups(temp) and not is_cycle:
++            raise ValueError('there were repeated elements.')
+         temp = set(temp)
+ 
+         if not is_cycle and \
+2026-11-10 00:03:35,217 - INFO - Grading answer for sympy__sympy-12481...
+2026-11-10 00:03:35,251 - INFO - report: {'sympy__sympy-12481': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_args'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Permutation', 'test_josephus', 'test_ranking', 'test_mul', 'test_Cycle', 'test_from_sequence', 'test_printing_cyclic'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-12481: resolved: True
+2026-11-10 00:03:35,253 - INFO - Attempting to stop container sweb.eval.sympy__sympy-12481.lg516logs-batch-11...
+2026-11-10 00:03:50,824 - INFO - Container sweb.eval.sympy__sympy-12481.lg516logs-batch-11 stopped successfully.
+2026-11-10 00:03:50,825 - INFO - Attempting to remove container sweb.eval.sympy__sympy-12481.lg516logs-batch-11...
+2026-11-10 00:03:51,098 - INFO - Container sweb.eval.sympy__sympy-12481.lg516logs-batch-11 removed successfully.

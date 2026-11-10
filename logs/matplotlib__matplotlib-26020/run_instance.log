@@ -1,0 +1,91 @@
+2026-11-09 22:49:20,947 - INFO - Image not found locally, attempting to pull...
+2026-11-09 22:51:07,472 - INFO - Creating container for matplotlib__matplotlib-26020...
+2026-11-09 22:51:23,125 - INFO - Container for matplotlib__matplotlib-26020 created: 2bdbc63d2ee5d99458a6bb53c26d39bf2ce3d3e4916621b5b0906377d09b86fb
+2026-11-09 22:51:23,923 - INFO - Container for matplotlib__matplotlib-26020 started: 2bdbc63d2ee5d99458a6bb53c26d39bf2ce3d3e4916621b5b0906377d09b86fb
+2026-11-09 22:51:23,924 - INFO - Intermediate patch for matplotlib__matplotlib-26020 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\matplotlib__matplotlib-26020\patch.diff, now applying to container...
+2026-11-09 22:51:24,150 - INFO - >>>>> Applied Patch:
+Checking patch lib/mpl_toolkits/axes_grid1/axes_grid.py...
+Applied patch lib/mpl_toolkits/axes_grid1/axes_grid.py cleanly.
+
+2026-11-09 22:51:25,611 - INFO - Git diff before:
+diff --git a/lib/mpl_toolkits/axes_grid1/axes_grid.py b/lib/mpl_toolkits/axes_grid1/axes_grid.py
+index 2b1b1d3200..8b947a5836 100755
+--- a/lib/mpl_toolkits/axes_grid1/axes_grid.py
++++ b/lib/mpl_toolkits/axes_grid1/axes_grid.py
+@@ -1,5 +1,6 @@
+ from numbers import Number
+ import functools
++from types import MethodType
+ 
+ import numpy as np
+ 
+@@ -7,14 +8,20 @@ from matplotlib import _api, cbook
+ from matplotlib.gridspec import SubplotSpec
+ 
+ from .axes_divider import Size, SubplotDivider, Divider
+-from .mpl_axes import Axes
++from .mpl_axes import Axes, SimpleAxisArtist
+ 
+ 
+ def _tick_only(ax, bottom_on, left_on):
+     bottom_off = not bottom_on
+     left_off = not left_on
+-    ax.axis["bottom"].toggle(ticklabels=bottom_off, label=bottom_off)
+-    ax.axis["left"].toggle(ticklabels=left_off, label=left_off)
++    if isinstance(ax.axis, MethodType):
++        bottom = SimpleAxisArtist(ax.xaxis, 1, ax.spines["bottom"])
++        left = SimpleAxisArtist(ax.yaxis, 1, ax.spines["left"])
++    else:
++        bottom = ax.axis["bottom"]
++        left = ax.axis["left"]
++    bottom.toggle(ticklabels=bottom_off, label=bottom_off)
++    left.toggle(ticklabels=left_off, label=left_off)
+ 
+ 
+ class CbarAxesBase:
+2026-11-09 22:51:25,613 - INFO - Eval script for matplotlib__matplotlib-26020 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\matplotlib__matplotlib-26020\eval.sh; copying to container...
+2026-11-09 22:53:48,134 - INFO - Test runtime: 142.41 seconds
+2026-11-09 22:53:48,140 - INFO - Test output for matplotlib__matplotlib-26020 written to logs\run_evaluation\lg516logs-batch-07\lifegraph-path2-sweep-one-full\matplotlib__matplotlib-26020\test_output.txt
+2026-11-09 22:53:48,228 - INFO - Git diff after:
+diff --git a/lib/mpl_toolkits/axes_grid1/axes_grid.py b/lib/mpl_toolkits/axes_grid1/axes_grid.py
+index 2b1b1d3200..8b947a5836 100755
+--- a/lib/mpl_toolkits/axes_grid1/axes_grid.py
++++ b/lib/mpl_toolkits/axes_grid1/axes_grid.py
+@@ -1,5 +1,6 @@
+ from numbers import Number
+ import functools
++from types import MethodType
+ 
+ import numpy as np
+ 
+@@ -7,14 +8,20 @@ from matplotlib import _api, cbook
+ from matplotlib.gridspec import SubplotSpec
+ 
+ from .axes_divider import Size, SubplotDivider, Divider
+-from .mpl_axes import Axes
++from .mpl_axes import Axes, SimpleAxisArtist
+ 
+ 
+ def _tick_only(ax, bottom_on, left_on):
+     bottom_off = not bottom_on
+     left_off = not left_on
+-    ax.axis["bottom"].toggle(ticklabels=bottom_off, label=bottom_off)
+-    ax.axis["left"].toggle(ticklabels=left_off, label=left_off)
++    if isinstance(ax.axis, MethodType):
++        bottom = SimpleAxisArtist(ax.xaxis, 1, ax.spines["bottom"])
++        left = SimpleAxisArtist(ax.yaxis, 1, ax.spines["left"])
++    else:
++        bottom = ax.axis["bottom"]
++        left = ax.axis["left"]
++    bottom.toggle(ticklabels=bottom_off, label=bottom_off)
++    left.toggle(ticklabels=left_off, label=left_off)
+ 
+ 
+ class CbarAxesBase:
+2026-11-09 22:53:48,228 - INFO - Grading answer for matplotlib__matplotlib-26020...
+2026-11-09 22:53:48,282 - INFO - report: {'matplotlib__matplotlib-26020': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_with_axes_class_not_overriding_axis'], 'failure': []}, 'PASS_TO_PASS': {'success': ['lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_divider_append_axes', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_twin_axes_empty_and_removed[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_axesgrid_colorbar_log_smoketest', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_inset_colorbar_tight_layout_smoketest', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_inset_locator[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_inset_axes[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_inset_axes_complete', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_fill_facecolor[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_zooming_with_inverted_axes[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_anchored_direction_arrows[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_anchored_direction_arrows_many_args[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_axes_locatable_position', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_image_grid_each_left_label_mode_all[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_image_grid_single_bottom[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_image_grid_label_mode_deprecation_warning', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_image_grid[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_gettightbbox', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[gca-gca-big]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[gca-gca-small]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[host-host-big]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[host-host-small]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[host-parasite-big]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[host-parasite-small]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[parasite-host-big]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[parasite-host-small]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[parasite-parasite-big]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_picking_callbacks_overlap[parasite-parasite-small]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_anchored_artists[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_hbox_divider', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_vbox_divider', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_axes_class_tuple', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_axes_lists', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_axes_position[row]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_axes_position[column]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_errors[rect0-None-TypeError-Incorrect', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_errors[111--1-ValueError-ngrids', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_grid_errors[111-7-ValueError-ngrids', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_divider_errors[None-TypeError-anchor', "lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_divider_errors[CC-ValueError-'CC'", 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_divider_errors[anchor2-TypeError-anchor', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_mark_inset_unstales_viewlim[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_auto_adjustable', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_rgb_axes[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_insetposition[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_imagegrid_cbar_mode_edge[png]', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_imagegrid', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_removal', 'lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py::test_anchored_locator_base_call[png]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for matplotlib__matplotlib-26020: resolved: True
+2026-11-09 22:53:48,283 - INFO - Attempting to stop container sweb.eval.matplotlib__matplotlib-26020.lg516logs-batch-07...
+2026-11-09 22:54:03,559 - INFO - Container sweb.eval.matplotlib__matplotlib-26020.lg516logs-batch-07 stopped successfully.
+2026-11-09 22:54:03,559 - INFO - Attempting to remove container sweb.eval.matplotlib__matplotlib-26020.lg516logs-batch-07...
+2026-11-09 22:54:03,657 - INFO - Container sweb.eval.matplotlib__matplotlib-26020.lg516logs-batch-07 removed successfully.

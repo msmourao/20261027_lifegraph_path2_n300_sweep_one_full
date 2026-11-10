@@ -1,0 +1,42 @@
+2026-11-09 20:38:45,474 - INFO - Creating container for django__django-12113...
+2026-11-09 20:38:45,726 - INFO - Container for django__django-12113 created: eb86364ccf9fcfac0edc6e18d10935870c050272fa51446e46ca986b3959a78f
+2026-11-09 20:38:46,123 - INFO - Container for django__django-12113 started: eb86364ccf9fcfac0edc6e18d10935870c050272fa51446e46ca986b3959a78f
+2026-11-09 20:38:46,124 - INFO - Intermediate patch for django__django-12113 written to logs\run_evaluation\lg516logs-batch-01\lifegraph-path2-sweep-one-full\django__django-12113\patch.diff, now applying to container...
+2026-11-09 20:38:46,529 - INFO - >>>>> Applied Patch:
+Checking patch django/db/backends/sqlite3/creation.py...
+Applied patch django/db/backends/sqlite3/creation.py cleanly.
+
+2026-11-09 20:38:55,034 - INFO - Git diff before:
+diff --git a/django/db/backends/sqlite3/creation.py b/django/db/backends/sqlite3/creation.py
+index d97052f52d..f3bb8dd3b2 100755
+--- a/django/db/backends/sqlite3/creation.py
++++ b/django/db/backends/sqlite3/creation.py
+@@ -98,4 +98,6 @@ class DatabaseCreation(BaseDatabaseCreation):
+         sig = [self.connection.settings_dict['NAME']]
+         if self.is_in_memory_db(test_database_name):
+             sig.append(self.connection.alias)
++        else:
++            sig.append(test_database_name)
+         return tuple(sig)
+2026-11-09 20:38:55,035 - INFO - Eval script for django__django-12113 written to logs\run_evaluation\lg516logs-batch-01\lifegraph-path2-sweep-one-full\django__django-12113\eval.sh; copying to container...
+2026-11-09 20:39:20,096 - INFO - Test runtime: 24.73 seconds
+2026-11-09 20:39:20,104 - INFO - Test output for django__django-12113 written to logs\run_evaluation\lg516logs-batch-01\lifegraph-path2-sweep-one-full\django__django-12113\test_output.txt
+2026-11-09 20:39:20,266 - INFO - Git diff after:
+diff --git a/django/db/backends/sqlite3/creation.py b/django/db/backends/sqlite3/creation.py
+index d97052f52d..f3bb8dd3b2 100755
+--- a/django/db/backends/sqlite3/creation.py
++++ b/django/db/backends/sqlite3/creation.py
+@@ -98,4 +98,6 @@ class DatabaseCreation(BaseDatabaseCreation):
+         sig = [self.connection.settings_dict['NAME']]
+         if self.is_in_memory_db(test_database_name):
+             sig.append(self.connection.alias)
++        else:
++            sig.append(test_database_name)
+         return tuple(sig)
+2026-11-09 20:39:20,266 - INFO - Grading answer for django__django-12113...
+2026-11-09 20:39:20,301 - INFO - report: {'django__django-12113': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_custom_test_name (backends.sqlite.test_creation.TestDbSignatureTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12113: resolved: True
+2026-11-09 20:39:20,302 - INFO - Attempting to stop container sweb.eval.django__django-12113.lg516logs-batch-01...
+2026-11-09 20:39:35,716 - INFO - Container sweb.eval.django__django-12113.lg516logs-batch-01 stopped successfully.
+2026-11-09 20:39:35,717 - INFO - Attempting to remove container sweb.eval.django__django-12113.lg516logs-batch-01...
+2026-11-09 20:39:35,854 - INFO - Container sweb.eval.django__django-12113.lg516logs-batch-01 removed successfully.

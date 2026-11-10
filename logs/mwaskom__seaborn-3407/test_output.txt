@@ -1,0 +1,2482 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   seaborn/axisgrid.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 5b447f283e4acf37e8519f333a8e4c26d296d35d
+Author: SWE-bench <setup@swebench.com>
+Date:   Sat Aug 15 07:22:11 2026 +0000
+
+    SWE-bench
+
+diff --git a/.github/CONTRIBUTING.md b/.github/CONTRIBUTING.md
+old mode 100644
+new mode 100755
+diff --git a/.github/dependabot.yml b/.github/dependabot.yml
+old mode 100644
+new mode 100755
+diff --git a/.github/workflows/ci.yaml b/.github/workflows/ci.yaml
+old mode 100644
+new mode 100755
+diff --git a/.gitignore b/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
+old mode 100644
+new mode 100755
+diff --git a/CITATION.cff b/CITATION.cff
+old mode 100644
+new mode 100755
+diff --git a/LICENSE.md b/LICENSE.md
+old mode 100644
+new mode 100755
+diff --git a/Makefile b/Makefile
+old mode 100644
+new mode 100755
+diff --git a/README.md b/README.md
+old mode 100644
+new mode 100755
+diff --git a/SECURITY.md b/SECURITY.md
+old mode 100644
+new mode 100755
+diff --git a/ci/cache_datasets.py b/ci/cache_datasets.py
+old mode 100644
+new mode 100755
+diff --git a/ci/check_gallery.py b/ci/check_gallery.py
+old mode 100644
+new mode 100755
+diff --git a/ci/deps_pinned.txt b/ci/deps_pinned.txt
+old mode 100644
+new mode 100755
+diff --git a/ci/getmsfonts.sh b/ci/getmsfonts.sh
+old mode 100644
+new mode 100755
+diff --git a/doc/.gitignore b/doc/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/doc/Makefile b/doc/Makefile
+old mode 100644
+new mode 100755
+diff --git a/doc/README.md b/doc/README.md
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/FacetGrid.ipynb b/doc/_docstrings/FacetGrid.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/JointGrid.ipynb b/doc/_docstrings/JointGrid.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/Makefile b/doc/_docstrings/Makefile
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/PairGrid.ipynb b/doc/_docstrings/PairGrid.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/axes_style.ipynb b/doc/_docstrings/axes_style.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/barplot.ipynb b/doc/_docstrings/barplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/blend_palette.ipynb b/doc/_docstrings/blend_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/boxenplot.ipynb b/doc/_docstrings/boxenplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/boxplot.ipynb b/doc/_docstrings/boxplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/catplot.ipynb b/doc/_docstrings/catplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/clustermap.ipynb b/doc/_docstrings/clustermap.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/color_palette.ipynb b/doc/_docstrings/color_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/countplot.ipynb b/doc/_docstrings/countplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/cubehelix_palette.ipynb b/doc/_docstrings/cubehelix_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/dark_palette.ipynb b/doc/_docstrings/dark_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/displot.ipynb b/doc/_docstrings/displot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/diverging_palette.ipynb b/doc/_docstrings/diverging_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/ecdfplot.ipynb b/doc/_docstrings/ecdfplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/heatmap.ipynb b/doc/_docstrings/heatmap.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/histplot.ipynb b/doc/_docstrings/histplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/hls_palette.ipynb b/doc/_docstrings/hls_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/husl_palette.ipynb b/doc/_docstrings/husl_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/jointplot.ipynb b/doc/_docstrings/jointplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/kdeplot.ipynb b/doc/_docstrings/kdeplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/light_palette.ipynb b/doc/_docstrings/light_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/lineplot.ipynb b/doc/_docstrings/lineplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/lmplot.ipynb b/doc/_docstrings/lmplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/move_legend.ipynb b/doc/_docstrings/move_legend.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/mpl_palette.ipynb b/doc/_docstrings/mpl_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Agg.ipynb b/doc/_docstrings/objects.Agg.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Area.ipynb b/doc/_docstrings/objects.Area.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Band.ipynb b/doc/_docstrings/objects.Band.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Bar.ipynb b/doc/_docstrings/objects.Bar.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Bars.ipynb b/doc/_docstrings/objects.Bars.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Count.ipynb b/doc/_docstrings/objects.Count.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dash.ipynb b/doc/_docstrings/objects.Dash.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dodge.ipynb b/doc/_docstrings/objects.Dodge.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dot.ipynb b/doc/_docstrings/objects.Dot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dots.ipynb b/doc/_docstrings/objects.Dots.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Est.ipynb b/doc/_docstrings/objects.Est.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Hist.ipynb b/doc/_docstrings/objects.Hist.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Jitter.ipynb b/doc/_docstrings/objects.Jitter.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.KDE.ipynb b/doc/_docstrings/objects.KDE.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Line.ipynb b/doc/_docstrings/objects.Line.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Lines.ipynb b/doc/_docstrings/objects.Lines.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Norm.ipynb b/doc/_docstrings/objects.Norm.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Path.ipynb b/doc/_docstrings/objects.Path.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Paths.ipynb b/doc/_docstrings/objects.Paths.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Perc.ipynb b/doc/_docstrings/objects.Perc.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.add.ipynb b/doc/_docstrings/objects.Plot.add.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.config.ipynb b/doc/_docstrings/objects.Plot.config.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.facet.ipynb b/doc/_docstrings/objects.Plot.facet.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.label.ipynb b/doc/_docstrings/objects.Plot.label.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.layout.ipynb b/doc/_docstrings/objects.Plot.layout.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.limit.ipynb b/doc/_docstrings/objects.Plot.limit.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.on.ipynb b/doc/_docstrings/objects.Plot.on.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.pair.ipynb b/doc/_docstrings/objects.Plot.pair.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.scale.ipynb b/doc/_docstrings/objects.Plot.scale.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.share.ipynb b/doc/_docstrings/objects.Plot.share.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.theme.ipynb b/doc/_docstrings/objects.Plot.theme.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Range.ipynb b/doc/_docstrings/objects.Range.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Shift.ipynb b/doc/_docstrings/objects.Shift.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Stack.ipynb b/doc/_docstrings/objects.Stack.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Text.ipynb b/doc/_docstrings/objects.Text.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/pairplot.ipynb b/doc/_docstrings/pairplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/plotting_context.ipynb b/doc/_docstrings/plotting_context.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/pointplot.ipynb b/doc/_docstrings/pointplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/regplot.ipynb b/doc/_docstrings/regplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/relplot.ipynb b/doc/_docstrings/relplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/residplot.ipynb b/doc/_docstrings/residplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/rugplot.ipynb b/doc/_docstrings/rugplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/scatterplot.ipynb b/doc/_docstrings/scatterplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/set_context.ipynb b/doc/_docstrings/set_context.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/set_style.ipynb b/doc/_docstrings/set_style.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/set_theme.ipynb b/doc/_docstrings/set_theme.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/stripplot.ipynb b/doc/_docstrings/stripplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/swarmplot.ipynb b/doc/_docstrings/swarmplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/violinplot.ipynb b/doc/_docstrings/violinplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/copybutton.js b/doc/_static/copybutton.js
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/css/custom.css b/doc/_static/css/custom.css
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/favicon_old.ico b/doc/_static/favicon_old.ico
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-darkbg.png b/doc/_static/logo-mark-darkbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-darkbg.svg b/doc/_static/logo-mark-darkbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-lightbg.png b/doc/_static/logo-mark-lightbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-lightbg.svg b/doc/_static/logo-mark-lightbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-whitebg.png b/doc/_static/logo-mark-whitebg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-darkbg.png b/doc/_static/logo-tall-darkbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-darkbg.svg b/doc/_static/logo-tall-darkbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-lightbg.png b/doc/_static/logo-tall-lightbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-lightbg.svg b/doc/_static/logo-tall-lightbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-whitebg.png b/doc/_static/logo-tall-whitebg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-darkbg.png b/doc/_static/logo-wide-darkbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-darkbg.svg b/doc/_static/logo-wide-darkbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-lightbg.png b/doc/_static/logo-wide-lightbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-lightbg.svg b/doc/_static/logo-wide-lightbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-whitebg.png b/doc/_static/logo-wide-whitebg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/base.rst b/doc/_templates/autosummary/base.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/class.rst b/doc/_templates/autosummary/class.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/object.rst b/doc/_templates/autosummary/object.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/plot.rst b/doc/_templates/autosummary/plot.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/scale.rst b/doc/_templates/autosummary/scale.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/layout.html b/doc/_templates/layout.html
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/version.html b/doc/_templates/version.html
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/Makefile b/doc/_tutorial/Makefile
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/aesthetics.ipynb b/doc/_tutorial/aesthetics.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/axis_grids.ipynb b/doc/_tutorial/axis_grids.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/categorical.ipynb b/doc/_tutorial/categorical.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/color_palettes.ipynb b/doc/_tutorial/color_palettes.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/data_structure.ipynb b/doc/_tutorial/data_structure.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/distributions.ipynb b/doc/_tutorial/distributions.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/error_bars.ipynb b/doc/_tutorial/error_bars.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/function_overview.ipynb b/doc/_tutorial/function_overview.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/introduction.ipynb b/doc/_tutorial/introduction.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/objects_interface.ipynb b/doc/_tutorial/objects_interface.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/properties.ipynb b/doc/_tutorial/properties.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/regression.ipynb b/doc/_tutorial/regression.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/relational.ipynb b/doc/_tutorial/relational.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/api.rst b/doc/api.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/citing.rst b/doc/citing.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/conf.py b/doc/conf.py
+old mode 100644
+new mode 100755
+diff --git a/doc/example_thumbs/.gitkeep b/doc/example_thumbs/.gitkeep
+old mode 100644
+new mode 100755
+diff --git a/doc/faq.rst b/doc/faq.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/index.rst b/doc/index.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/installing.rst b/doc/installing.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/make.bat b/doc/make.bat
+old mode 100644
+new mode 100755
+diff --git a/doc/matplotlibrc b/doc/matplotlibrc
+old mode 100644
+new mode 100755
+diff --git a/doc/sphinxext/gallery_generator.py b/doc/sphinxext/gallery_generator.py
+old mode 100644
+new mode 100755
+diff --git a/doc/sphinxext/tutorial_builder.py b/doc/sphinxext/tutorial_builder.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tools/extract_examples.py b/doc/tools/extract_examples.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tools/generate_logos.py b/doc/tools/generate_logos.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tools/set_nb_kernels.py b/doc/tools/set_nb_kernels.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tutorial.yaml b/doc/tutorial.yaml
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/index.rst b/doc/whatsnew/index.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.10.0.rst b/doc/whatsnew/v0.10.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.10.1.rst b/doc/whatsnew/v0.10.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.11.0.rst b/doc/whatsnew/v0.11.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.11.1.rst b/doc/whatsnew/v0.11.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.11.2.rst b/doc/whatsnew/v0.11.2.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.12.0.rst b/doc/whatsnew/v0.12.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.12.1.rst b/doc/whatsnew/v0.12.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.12.2.rst b/doc/whatsnew/v0.12.2.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.13.0.rst b/doc/whatsnew/v0.13.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.2.0.rst b/doc/whatsnew/v0.2.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.2.1.rst b/doc/whatsnew/v0.2.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.3.0.rst b/doc/whatsnew/v0.3.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.3.1.rst b/doc/whatsnew/v0.3.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.4.0.rst b/doc/whatsnew/v0.4.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.5.0.rst b/doc/whatsnew/v0.5.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.5.1.rst b/doc/whatsnew/v0.5.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.6.0.rst b/doc/whatsnew/v0.6.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.7.0.rst b/doc/whatsnew/v0.7.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.7.1.rst b/doc/whatsnew/v0.7.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.8.0.rst b/doc/whatsnew/v0.8.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.8.1.rst b/doc/whatsnew/v0.8.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.9.0.rst b/doc/whatsnew/v0.9.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.9.1.rst b/doc/whatsnew/v0.9.1.rst
+old mode 100644
+new mode 100755
+diff --git a/examples/.gitignore b/examples/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/examples/anscombes_quartet.py b/examples/anscombes_quartet.py
+old mode 100644
+new mode 100755
+diff --git a/examples/different_scatter_variables.py b/examples/different_scatter_variables.py
+old mode 100644
+new mode 100755
+diff --git a/examples/errorband_lineplots.py b/examples/errorband_lineplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/faceted_histogram.py b/examples/faceted_histogram.py
+old mode 100644
+new mode 100755
+diff --git a/examples/faceted_lineplot.py b/examples/faceted_lineplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/grouped_barplot.py b/examples/grouped_barplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/grouped_boxplot.py b/examples/grouped_boxplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/grouped_violinplots.py b/examples/grouped_violinplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/heat_scatter.py b/examples/heat_scatter.py
+old mode 100644
+new mode 100755
+diff --git a/examples/hexbin_marginals.py b/examples/hexbin_marginals.py
+old mode 100644
+new mode 100755
+diff --git a/examples/histogram_stacked.py b/examples/histogram_stacked.py
+old mode 100644
+new mode 100755
+diff --git a/examples/horizontal_boxplot.py b/examples/horizontal_boxplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/jitter_stripplot.py b/examples/jitter_stripplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/joint_histogram.py b/examples/joint_histogram.py
+old mode 100644
+new mode 100755
+diff --git a/examples/joint_kde.py b/examples/joint_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/kde_ridgeplot.py b/examples/kde_ridgeplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/large_distributions.py b/examples/large_distributions.py
+old mode 100644
+new mode 100755
+diff --git a/examples/layered_bivariate_plot.py b/examples/layered_bivariate_plot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/logistic_regression.py b/examples/logistic_regression.py
+old mode 100644
+new mode 100755
+diff --git a/examples/many_facets.py b/examples/many_facets.py
+old mode 100644
+new mode 100755
+diff --git a/examples/many_pairwise_correlations.py b/examples/many_pairwise_correlations.py
+old mode 100644
+new mode 100755
+diff --git a/examples/marginal_ticks.py b/examples/marginal_ticks.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_bivariate_kde.py b/examples/multiple_bivariate_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_conditional_kde.py b/examples/multiple_conditional_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_ecdf.py b/examples/multiple_ecdf.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_regression.py b/examples/multiple_regression.py
+old mode 100644
+new mode 100755
+diff --git a/examples/pair_grid_with_kde.py b/examples/pair_grid_with_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/paired_pointplots.py b/examples/paired_pointplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/pairgrid_dotplot.py b/examples/pairgrid_dotplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/palette_choices.py b/examples/palette_choices.py
+old mode 100644
+new mode 100755
+diff --git a/examples/palette_generation.py b/examples/palette_generation.py
+old mode 100644
+new mode 100755
+diff --git a/examples/part_whole_bars.py b/examples/part_whole_bars.py
+old mode 100644
+new mode 100755
+diff --git a/examples/pointplot_anova.py b/examples/pointplot_anova.py
+old mode 100644
+new mode 100755
+diff --git a/examples/radial_facets.py b/examples/radial_facets.py
+old mode 100644
+new mode 100755
+diff --git a/examples/regression_marginals.py b/examples/regression_marginals.py
+old mode 100644
+new mode 100755
+diff --git a/examples/residplot.py b/examples/residplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatter_bubbles.py b/examples/scatter_bubbles.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatterplot_categorical.py b/examples/scatterplot_categorical.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatterplot_matrix.py b/examples/scatterplot_matrix.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatterplot_sizes.py b/examples/scatterplot_sizes.py
+old mode 100644
+new mode 100755
+diff --git a/examples/simple_violinplots.py b/examples/simple_violinplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/smooth_bivariate_kde.py b/examples/smooth_bivariate_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/spreadsheet_heatmap.py b/examples/spreadsheet_heatmap.py
+old mode 100644
+new mode 100755
+diff --git a/examples/strip_regplot.py b/examples/strip_regplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/structured_heatmap.py b/examples/structured_heatmap.py
+old mode 100644
+new mode 100755
+diff --git a/examples/three_variable_histogram.py b/examples/three_variable_histogram.py
+old mode 100644
+new mode 100755
+diff --git a/examples/timeseries_facets.py b/examples/timeseries_facets.py
+old mode 100644
+new mode 100755
+diff --git a/examples/wide_data_lineplot.py b/examples/wide_data_lineplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/wide_form_violinplot.py b/examples/wide_form_violinplot.py
+old mode 100644
+new mode 100755
+diff --git a/licences/APPDIRS_LICENSE b/licences/APPDIRS_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/HUSL_LICENSE b/licences/HUSL_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/NUMPYDOC_LICENSE b/licences/NUMPYDOC_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/PACKAGING_LICENSE b/licences/PACKAGING_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/SCIPY_LICENSE b/licences/SCIPY_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/pyproject.toml b/pyproject.toml
+old mode 100644
+new mode 100755
+diff --git a/seaborn/__init__.py b/seaborn/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_compat.py b/seaborn/_compat.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/__init__.py b/seaborn/_core/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/data.py b/seaborn/_core/data.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/exceptions.py b/seaborn/_core/exceptions.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/groupby.py b/seaborn/_core/groupby.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/moves.py b/seaborn/_core/moves.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/plot.py b/seaborn/_core/plot.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/properties.py b/seaborn/_core/properties.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/rules.py b/seaborn/_core/rules.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/scales.py b/seaborn/_core/scales.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/subplots.py b/seaborn/_core/subplots.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/typing.py b/seaborn/_core/typing.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_decorators.py b/seaborn/_decorators.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_docstrings.py b/seaborn/_docstrings.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/__init__.py b/seaborn/_marks/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/area.py b/seaborn/_marks/area.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/bar.py b/seaborn/_marks/bar.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/base.py b/seaborn/_marks/base.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/dot.py b/seaborn/_marks/dot.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/line.py b/seaborn/_marks/line.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/text.py b/seaborn/_marks/text.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_oldcore.py b/seaborn/_oldcore.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_statistics.py b/seaborn/_statistics.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/__init__.py b/seaborn/_stats/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/aggregation.py b/seaborn/_stats/aggregation.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/base.py b/seaborn/_stats/base.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/counting.py b/seaborn/_stats/counting.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/density.py b/seaborn/_stats/density.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/order.py b/seaborn/_stats/order.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_testing.py b/seaborn/_testing.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/algorithms.py b/seaborn/algorithms.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/axisgrid.py b/seaborn/axisgrid.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/categorical.py b/seaborn/categorical.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/cm.py b/seaborn/cm.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/colors/__init__.py b/seaborn/colors/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/colors/crayons.py b/seaborn/colors/crayons.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/colors/xkcd_rgb.py b/seaborn/colors/xkcd_rgb.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/distributions.py b/seaborn/distributions.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/__init__.py b/seaborn/external/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/appdirs.py b/seaborn/external/appdirs.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/docscrape.py b/seaborn/external/docscrape.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/husl.py b/seaborn/external/husl.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/kde.py b/seaborn/external/kde.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/version.py b/seaborn/external/version.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/matrix.py b/seaborn/matrix.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/miscplot.py b/seaborn/miscplot.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/objects.py b/seaborn/objects.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/palettes.py b/seaborn/palettes.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/rcmod.py b/seaborn/rcmod.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/regression.py b/seaborn/regression.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/relational.py b/seaborn/relational.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/utils.py b/seaborn/utils.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/widgets.py b/seaborn/widgets.py
+old mode 100644
+new mode 100755
+diff --git a/setup.cfg b/setup.cfg
+old mode 100644
+new mode 100755
+diff --git a/tests/__init__.py b/tests/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/__init__.py b/tests/_core/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_data.py b/tests/_core/test_data.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_groupby.py b/tests/_core/test_groupby.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_moves.py b/tests/_core/test_moves.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_plot.py b/tests/_core/test_plot.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_properties.py b/tests/_core/test_properties.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_rules.py b/tests/_core/test_rules.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_scales.py b/tests/_core/test_scales.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_subplots.py b/tests/_core/test_subplots.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/__init__.py b/tests/_marks/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_area.py b/tests/_marks/test_area.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_bar.py b/tests/_marks/test_bar.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_base.py b/tests/_marks/test_base.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_dot.py b/tests/_marks/test_dot.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_line.py b/tests/_marks/test_line.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_text.py b/tests/_marks/test_text.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/__init__.py b/tests/_stats/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_aggregation.py b/tests/_stats/test_aggregation.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_counting.py b/tests/_stats/test_counting.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_density.py b/tests/_stats/test_density.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_order.py b/tests/_stats/test_order.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_regression.py b/tests/_stats/test_regression.py
+old mode 100644
+new mode 100755
+diff --git a/tests/conftest.py b/tests/conftest.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_algorithms.py b/tests/test_algorithms.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_axisgrid.py b/tests/test_axisgrid.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_categorical.py b/tests/test_categorical.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_core.py b/tests/test_core.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_decorators.py b/tests/test_decorators.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_distributions.py b/tests/test_distributions.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_docstrings.py b/tests/test_docstrings.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_matrix.py b/tests/test_matrix.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_miscplot.py b/tests/test_miscplot.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_objects.py b/tests/test_objects.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_palettes.py b/tests/test_palettes.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_rcmod.py b/tests/test_rcmod.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_regression.py b/tests/test_regression.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_relational.py b/tests/test_relational.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_statistics.py b/tests/test_statistics.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+old mode 100644
+new mode 100755
++ git -c core.fileMode=false diff 515286e02be3e4c0ff2ef4addb34a53c4a676ee4
+diff --git a/.github/CONTRIBUTING.md b/.github/CONTRIBUTING.md
+old mode 100644
+new mode 100755
+diff --git a/.github/dependabot.yml b/.github/dependabot.yml
+old mode 100644
+new mode 100755
+diff --git a/.github/workflows/ci.yaml b/.github/workflows/ci.yaml
+old mode 100644
+new mode 100755
+diff --git a/.gitignore b/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
+old mode 100644
+new mode 100755
+diff --git a/CITATION.cff b/CITATION.cff
+old mode 100644
+new mode 100755
+diff --git a/LICENSE.md b/LICENSE.md
+old mode 100644
+new mode 100755
+diff --git a/Makefile b/Makefile
+old mode 100644
+new mode 100755
+diff --git a/README.md b/README.md
+old mode 100644
+new mode 100755
+diff --git a/SECURITY.md b/SECURITY.md
+old mode 100644
+new mode 100755
+diff --git a/ci/cache_datasets.py b/ci/cache_datasets.py
+old mode 100644
+new mode 100755
+diff --git a/ci/check_gallery.py b/ci/check_gallery.py
+old mode 100644
+new mode 100755
+diff --git a/ci/deps_pinned.txt b/ci/deps_pinned.txt
+old mode 100644
+new mode 100755
+diff --git a/ci/getmsfonts.sh b/ci/getmsfonts.sh
+old mode 100644
+new mode 100755
+diff --git a/doc/.gitignore b/doc/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/doc/Makefile b/doc/Makefile
+old mode 100644
+new mode 100755
+diff --git a/doc/README.md b/doc/README.md
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/FacetGrid.ipynb b/doc/_docstrings/FacetGrid.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/JointGrid.ipynb b/doc/_docstrings/JointGrid.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/Makefile b/doc/_docstrings/Makefile
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/PairGrid.ipynb b/doc/_docstrings/PairGrid.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/axes_style.ipynb b/doc/_docstrings/axes_style.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/barplot.ipynb b/doc/_docstrings/barplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/blend_palette.ipynb b/doc/_docstrings/blend_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/boxenplot.ipynb b/doc/_docstrings/boxenplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/boxplot.ipynb b/doc/_docstrings/boxplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/catplot.ipynb b/doc/_docstrings/catplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/clustermap.ipynb b/doc/_docstrings/clustermap.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/color_palette.ipynb b/doc/_docstrings/color_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/countplot.ipynb b/doc/_docstrings/countplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/cubehelix_palette.ipynb b/doc/_docstrings/cubehelix_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/dark_palette.ipynb b/doc/_docstrings/dark_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/displot.ipynb b/doc/_docstrings/displot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/diverging_palette.ipynb b/doc/_docstrings/diverging_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/ecdfplot.ipynb b/doc/_docstrings/ecdfplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/heatmap.ipynb b/doc/_docstrings/heatmap.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/histplot.ipynb b/doc/_docstrings/histplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/hls_palette.ipynb b/doc/_docstrings/hls_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/husl_palette.ipynb b/doc/_docstrings/husl_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/jointplot.ipynb b/doc/_docstrings/jointplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/kdeplot.ipynb b/doc/_docstrings/kdeplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/light_palette.ipynb b/doc/_docstrings/light_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/lineplot.ipynb b/doc/_docstrings/lineplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/lmplot.ipynb b/doc/_docstrings/lmplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/move_legend.ipynb b/doc/_docstrings/move_legend.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/mpl_palette.ipynb b/doc/_docstrings/mpl_palette.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Agg.ipynb b/doc/_docstrings/objects.Agg.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Area.ipynb b/doc/_docstrings/objects.Area.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Band.ipynb b/doc/_docstrings/objects.Band.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Bar.ipynb b/doc/_docstrings/objects.Bar.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Bars.ipynb b/doc/_docstrings/objects.Bars.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Count.ipynb b/doc/_docstrings/objects.Count.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dash.ipynb b/doc/_docstrings/objects.Dash.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dodge.ipynb b/doc/_docstrings/objects.Dodge.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dot.ipynb b/doc/_docstrings/objects.Dot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Dots.ipynb b/doc/_docstrings/objects.Dots.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Est.ipynb b/doc/_docstrings/objects.Est.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Hist.ipynb b/doc/_docstrings/objects.Hist.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Jitter.ipynb b/doc/_docstrings/objects.Jitter.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.KDE.ipynb b/doc/_docstrings/objects.KDE.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Line.ipynb b/doc/_docstrings/objects.Line.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Lines.ipynb b/doc/_docstrings/objects.Lines.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Norm.ipynb b/doc/_docstrings/objects.Norm.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Path.ipynb b/doc/_docstrings/objects.Path.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Paths.ipynb b/doc/_docstrings/objects.Paths.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Perc.ipynb b/doc/_docstrings/objects.Perc.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.add.ipynb b/doc/_docstrings/objects.Plot.add.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.config.ipynb b/doc/_docstrings/objects.Plot.config.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.facet.ipynb b/doc/_docstrings/objects.Plot.facet.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.label.ipynb b/doc/_docstrings/objects.Plot.label.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.layout.ipynb b/doc/_docstrings/objects.Plot.layout.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.limit.ipynb b/doc/_docstrings/objects.Plot.limit.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.on.ipynb b/doc/_docstrings/objects.Plot.on.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.pair.ipynb b/doc/_docstrings/objects.Plot.pair.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.scale.ipynb b/doc/_docstrings/objects.Plot.scale.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.share.ipynb b/doc/_docstrings/objects.Plot.share.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Plot.theme.ipynb b/doc/_docstrings/objects.Plot.theme.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Range.ipynb b/doc/_docstrings/objects.Range.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Shift.ipynb b/doc/_docstrings/objects.Shift.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Stack.ipynb b/doc/_docstrings/objects.Stack.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/objects.Text.ipynb b/doc/_docstrings/objects.Text.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/pairplot.ipynb b/doc/_docstrings/pairplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/plotting_context.ipynb b/doc/_docstrings/plotting_context.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/pointplot.ipynb b/doc/_docstrings/pointplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/regplot.ipynb b/doc/_docstrings/regplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/relplot.ipynb b/doc/_docstrings/relplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/residplot.ipynb b/doc/_docstrings/residplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/rugplot.ipynb b/doc/_docstrings/rugplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/scatterplot.ipynb b/doc/_docstrings/scatterplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/set_context.ipynb b/doc/_docstrings/set_context.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/set_style.ipynb b/doc/_docstrings/set_style.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/set_theme.ipynb b/doc/_docstrings/set_theme.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/stripplot.ipynb b/doc/_docstrings/stripplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/swarmplot.ipynb b/doc/_docstrings/swarmplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_docstrings/violinplot.ipynb b/doc/_docstrings/violinplot.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/copybutton.js b/doc/_static/copybutton.js
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/css/custom.css b/doc/_static/css/custom.css
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/favicon_old.ico b/doc/_static/favicon_old.ico
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-darkbg.png b/doc/_static/logo-mark-darkbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-darkbg.svg b/doc/_static/logo-mark-darkbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-lightbg.png b/doc/_static/logo-mark-lightbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-lightbg.svg b/doc/_static/logo-mark-lightbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-mark-whitebg.png b/doc/_static/logo-mark-whitebg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-darkbg.png b/doc/_static/logo-tall-darkbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-darkbg.svg b/doc/_static/logo-tall-darkbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-lightbg.png b/doc/_static/logo-tall-lightbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-lightbg.svg b/doc/_static/logo-tall-lightbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-tall-whitebg.png b/doc/_static/logo-tall-whitebg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-darkbg.png b/doc/_static/logo-wide-darkbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-darkbg.svg b/doc/_static/logo-wide-darkbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-lightbg.png b/doc/_static/logo-wide-lightbg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-lightbg.svg b/doc/_static/logo-wide-lightbg.svg
+old mode 100644
+new mode 100755
+diff --git a/doc/_static/logo-wide-whitebg.png b/doc/_static/logo-wide-whitebg.png
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/base.rst b/doc/_templates/autosummary/base.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/class.rst b/doc/_templates/autosummary/class.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/object.rst b/doc/_templates/autosummary/object.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/plot.rst b/doc/_templates/autosummary/plot.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/autosummary/scale.rst b/doc/_templates/autosummary/scale.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/layout.html b/doc/_templates/layout.html
+old mode 100644
+new mode 100755
+diff --git a/doc/_templates/version.html b/doc/_templates/version.html
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/Makefile b/doc/_tutorial/Makefile
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/aesthetics.ipynb b/doc/_tutorial/aesthetics.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/axis_grids.ipynb b/doc/_tutorial/axis_grids.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/categorical.ipynb b/doc/_tutorial/categorical.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/color_palettes.ipynb b/doc/_tutorial/color_palettes.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/data_structure.ipynb b/doc/_tutorial/data_structure.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/distributions.ipynb b/doc/_tutorial/distributions.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/error_bars.ipynb b/doc/_tutorial/error_bars.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/function_overview.ipynb b/doc/_tutorial/function_overview.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/introduction.ipynb b/doc/_tutorial/introduction.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/objects_interface.ipynb b/doc/_tutorial/objects_interface.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/properties.ipynb b/doc/_tutorial/properties.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/regression.ipynb b/doc/_tutorial/regression.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/_tutorial/relational.ipynb b/doc/_tutorial/relational.ipynb
+old mode 100644
+new mode 100755
+diff --git a/doc/api.rst b/doc/api.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/citing.rst b/doc/citing.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/conf.py b/doc/conf.py
+old mode 100644
+new mode 100755
+diff --git a/doc/example_thumbs/.gitkeep b/doc/example_thumbs/.gitkeep
+old mode 100644
+new mode 100755
+diff --git a/doc/faq.rst b/doc/faq.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/index.rst b/doc/index.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/installing.rst b/doc/installing.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/make.bat b/doc/make.bat
+old mode 100644
+new mode 100755
+diff --git a/doc/matplotlibrc b/doc/matplotlibrc
+old mode 100644
+new mode 100755
+diff --git a/doc/sphinxext/gallery_generator.py b/doc/sphinxext/gallery_generator.py
+old mode 100644
+new mode 100755
+diff --git a/doc/sphinxext/tutorial_builder.py b/doc/sphinxext/tutorial_builder.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tools/extract_examples.py b/doc/tools/extract_examples.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tools/generate_logos.py b/doc/tools/generate_logos.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tools/set_nb_kernels.py b/doc/tools/set_nb_kernels.py
+old mode 100644
+new mode 100755
+diff --git a/doc/tutorial.yaml b/doc/tutorial.yaml
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/index.rst b/doc/whatsnew/index.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.10.0.rst b/doc/whatsnew/v0.10.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.10.1.rst b/doc/whatsnew/v0.10.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.11.0.rst b/doc/whatsnew/v0.11.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.11.1.rst b/doc/whatsnew/v0.11.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.11.2.rst b/doc/whatsnew/v0.11.2.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.12.0.rst b/doc/whatsnew/v0.12.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.12.1.rst b/doc/whatsnew/v0.12.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.12.2.rst b/doc/whatsnew/v0.12.2.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.13.0.rst b/doc/whatsnew/v0.13.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.2.0.rst b/doc/whatsnew/v0.2.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.2.1.rst b/doc/whatsnew/v0.2.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.3.0.rst b/doc/whatsnew/v0.3.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.3.1.rst b/doc/whatsnew/v0.3.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.4.0.rst b/doc/whatsnew/v0.4.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.5.0.rst b/doc/whatsnew/v0.5.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.5.1.rst b/doc/whatsnew/v0.5.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.6.0.rst b/doc/whatsnew/v0.6.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.7.0.rst b/doc/whatsnew/v0.7.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.7.1.rst b/doc/whatsnew/v0.7.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.8.0.rst b/doc/whatsnew/v0.8.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.8.1.rst b/doc/whatsnew/v0.8.1.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.9.0.rst b/doc/whatsnew/v0.9.0.rst
+old mode 100644
+new mode 100755
+diff --git a/doc/whatsnew/v0.9.1.rst b/doc/whatsnew/v0.9.1.rst
+old mode 100644
+new mode 100755
+diff --git a/examples/.gitignore b/examples/.gitignore
+old mode 100644
+new mode 100755
+diff --git a/examples/anscombes_quartet.py b/examples/anscombes_quartet.py
+old mode 100644
+new mode 100755
+diff --git a/examples/different_scatter_variables.py b/examples/different_scatter_variables.py
+old mode 100644
+new mode 100755
+diff --git a/examples/errorband_lineplots.py b/examples/errorband_lineplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/faceted_histogram.py b/examples/faceted_histogram.py
+old mode 100644
+new mode 100755
+diff --git a/examples/faceted_lineplot.py b/examples/faceted_lineplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/grouped_barplot.py b/examples/grouped_barplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/grouped_boxplot.py b/examples/grouped_boxplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/grouped_violinplots.py b/examples/grouped_violinplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/heat_scatter.py b/examples/heat_scatter.py
+old mode 100644
+new mode 100755
+diff --git a/examples/hexbin_marginals.py b/examples/hexbin_marginals.py
+old mode 100644
+new mode 100755
+diff --git a/examples/histogram_stacked.py b/examples/histogram_stacked.py
+old mode 100644
+new mode 100755
+diff --git a/examples/horizontal_boxplot.py b/examples/horizontal_boxplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/jitter_stripplot.py b/examples/jitter_stripplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/joint_histogram.py b/examples/joint_histogram.py
+old mode 100644
+new mode 100755
+diff --git a/examples/joint_kde.py b/examples/joint_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/kde_ridgeplot.py b/examples/kde_ridgeplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/large_distributions.py b/examples/large_distributions.py
+old mode 100644
+new mode 100755
+diff --git a/examples/layered_bivariate_plot.py b/examples/layered_bivariate_plot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/logistic_regression.py b/examples/logistic_regression.py
+old mode 100644
+new mode 100755
+diff --git a/examples/many_facets.py b/examples/many_facets.py
+old mode 100644
+new mode 100755
+diff --git a/examples/many_pairwise_correlations.py b/examples/many_pairwise_correlations.py
+old mode 100644
+new mode 100755
+diff --git a/examples/marginal_ticks.py b/examples/marginal_ticks.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_bivariate_kde.py b/examples/multiple_bivariate_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_conditional_kde.py b/examples/multiple_conditional_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_ecdf.py b/examples/multiple_ecdf.py
+old mode 100644
+new mode 100755
+diff --git a/examples/multiple_regression.py b/examples/multiple_regression.py
+old mode 100644
+new mode 100755
+diff --git a/examples/pair_grid_with_kde.py b/examples/pair_grid_with_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/paired_pointplots.py b/examples/paired_pointplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/pairgrid_dotplot.py b/examples/pairgrid_dotplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/palette_choices.py b/examples/palette_choices.py
+old mode 100644
+new mode 100755
+diff --git a/examples/palette_generation.py b/examples/palette_generation.py
+old mode 100644
+new mode 100755
+diff --git a/examples/part_whole_bars.py b/examples/part_whole_bars.py
+old mode 100644
+new mode 100755
+diff --git a/examples/pointplot_anova.py b/examples/pointplot_anova.py
+old mode 100644
+new mode 100755
+diff --git a/examples/radial_facets.py b/examples/radial_facets.py
+old mode 100644
+new mode 100755
+diff --git a/examples/regression_marginals.py b/examples/regression_marginals.py
+old mode 100644
+new mode 100755
+diff --git a/examples/residplot.py b/examples/residplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatter_bubbles.py b/examples/scatter_bubbles.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatterplot_categorical.py b/examples/scatterplot_categorical.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatterplot_matrix.py b/examples/scatterplot_matrix.py
+old mode 100644
+new mode 100755
+diff --git a/examples/scatterplot_sizes.py b/examples/scatterplot_sizes.py
+old mode 100644
+new mode 100755
+diff --git a/examples/simple_violinplots.py b/examples/simple_violinplots.py
+old mode 100644
+new mode 100755
+diff --git a/examples/smooth_bivariate_kde.py b/examples/smooth_bivariate_kde.py
+old mode 100644
+new mode 100755
+diff --git a/examples/spreadsheet_heatmap.py b/examples/spreadsheet_heatmap.py
+old mode 100644
+new mode 100755
+diff --git a/examples/strip_regplot.py b/examples/strip_regplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/structured_heatmap.py b/examples/structured_heatmap.py
+old mode 100644
+new mode 100755
+diff --git a/examples/three_variable_histogram.py b/examples/three_variable_histogram.py
+old mode 100644
+new mode 100755
+diff --git a/examples/timeseries_facets.py b/examples/timeseries_facets.py
+old mode 100644
+new mode 100755
+diff --git a/examples/wide_data_lineplot.py b/examples/wide_data_lineplot.py
+old mode 100644
+new mode 100755
+diff --git a/examples/wide_form_violinplot.py b/examples/wide_form_violinplot.py
+old mode 100644
+new mode 100755
+diff --git a/licences/APPDIRS_LICENSE b/licences/APPDIRS_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/HUSL_LICENSE b/licences/HUSL_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/NUMPYDOC_LICENSE b/licences/NUMPYDOC_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/PACKAGING_LICENSE b/licences/PACKAGING_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/licences/SCIPY_LICENSE b/licences/SCIPY_LICENSE
+old mode 100644
+new mode 100755
+diff --git a/pyproject.toml b/pyproject.toml
+old mode 100644
+new mode 100755
+diff --git a/seaborn/__init__.py b/seaborn/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_compat.py b/seaborn/_compat.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/__init__.py b/seaborn/_core/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/data.py b/seaborn/_core/data.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/exceptions.py b/seaborn/_core/exceptions.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/groupby.py b/seaborn/_core/groupby.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/moves.py b/seaborn/_core/moves.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/plot.py b/seaborn/_core/plot.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/properties.py b/seaborn/_core/properties.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/rules.py b/seaborn/_core/rules.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/scales.py b/seaborn/_core/scales.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/subplots.py b/seaborn/_core/subplots.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_core/typing.py b/seaborn/_core/typing.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_decorators.py b/seaborn/_decorators.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_docstrings.py b/seaborn/_docstrings.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/__init__.py b/seaborn/_marks/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/area.py b/seaborn/_marks/area.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/bar.py b/seaborn/_marks/bar.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/base.py b/seaborn/_marks/base.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/dot.py b/seaborn/_marks/dot.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/line.py b/seaborn/_marks/line.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_marks/text.py b/seaborn/_marks/text.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_oldcore.py b/seaborn/_oldcore.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_statistics.py b/seaborn/_statistics.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/__init__.py b/seaborn/_stats/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/aggregation.py b/seaborn/_stats/aggregation.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/base.py b/seaborn/_stats/base.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/counting.py b/seaborn/_stats/counting.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/density.py b/seaborn/_stats/density.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/order.py b/seaborn/_stats/order.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/_testing.py b/seaborn/_testing.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/algorithms.py b/seaborn/algorithms.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/axisgrid.py b/seaborn/axisgrid.py
+old mode 100644
+new mode 100755
+index 75349099..5eaa7997
+--- a/seaborn/axisgrid.py
++++ b/seaborn/axisgrid.py
+@@ -1472,8 +1472,8 @@ class PairGrid(Grid):
+                 for ax in diag_axes[1:]:
+                     share_axis(diag_axes[0], ax, "y")
+ 
+-            self.diag_vars = np.array(diag_vars, np.object_)
+-            self.diag_axes = np.array(diag_axes, np.object_)
++            self.diag_vars = diag_vars
++            self.diag_axes = diag_axes
+ 
+         if "hue" not in signature(func).parameters:
+             return self._map_diag_iter_hue(func, **kwargs)
+diff --git a/seaborn/categorical.py b/seaborn/categorical.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/cm.py b/seaborn/cm.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/colors/__init__.py b/seaborn/colors/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/colors/crayons.py b/seaborn/colors/crayons.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/colors/xkcd_rgb.py b/seaborn/colors/xkcd_rgb.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/distributions.py b/seaborn/distributions.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/__init__.py b/seaborn/external/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/appdirs.py b/seaborn/external/appdirs.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/docscrape.py b/seaborn/external/docscrape.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/husl.py b/seaborn/external/husl.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/kde.py b/seaborn/external/kde.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/external/version.py b/seaborn/external/version.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/matrix.py b/seaborn/matrix.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/miscplot.py b/seaborn/miscplot.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/objects.py b/seaborn/objects.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/palettes.py b/seaborn/palettes.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/rcmod.py b/seaborn/rcmod.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/regression.py b/seaborn/regression.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/relational.py b/seaborn/relational.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/utils.py b/seaborn/utils.py
+old mode 100644
+new mode 100755
+diff --git a/seaborn/widgets.py b/seaborn/widgets.py
+old mode 100644
+new mode 100755
+diff --git a/setup.cfg b/setup.cfg
+old mode 100644
+new mode 100755
+diff --git a/tests/__init__.py b/tests/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/__init__.py b/tests/_core/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_data.py b/tests/_core/test_data.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_groupby.py b/tests/_core/test_groupby.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_moves.py b/tests/_core/test_moves.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_plot.py b/tests/_core/test_plot.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_properties.py b/tests/_core/test_properties.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_rules.py b/tests/_core/test_rules.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_scales.py b/tests/_core/test_scales.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_core/test_subplots.py b/tests/_core/test_subplots.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/__init__.py b/tests/_marks/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_area.py b/tests/_marks/test_area.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_bar.py b/tests/_marks/test_bar.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_base.py b/tests/_marks/test_base.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_dot.py b/tests/_marks/test_dot.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_line.py b/tests/_marks/test_line.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_marks/test_text.py b/tests/_marks/test_text.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/__init__.py b/tests/_stats/__init__.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_aggregation.py b/tests/_stats/test_aggregation.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_counting.py b/tests/_stats/test_counting.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_density.py b/tests/_stats/test_density.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_order.py b/tests/_stats/test_order.py
+old mode 100644
+new mode 100755
+diff --git a/tests/_stats/test_regression.py b/tests/_stats/test_regression.py
+old mode 100644
+new mode 100755
+diff --git a/tests/conftest.py b/tests/conftest.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_algorithms.py b/tests/test_algorithms.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_axisgrid.py b/tests/test_axisgrid.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_categorical.py b/tests/test_categorical.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_core.py b/tests/test_core.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_decorators.py b/tests/test_decorators.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_distributions.py b/tests/test_distributions.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_docstrings.py b/tests/test_docstrings.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_matrix.py b/tests/test_matrix.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_miscplot.py b/tests/test_miscplot.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_objects.py b/tests/test_objects.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_palettes.py b/tests/test_palettes.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_rcmod.py b/tests/test_rcmod.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_regression.py b/tests/test_regression.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_relational.py b/tests/test_relational.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_statistics.py b/tests/test_statistics.py
+old mode 100644
+new mode 100755
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+old mode 100644
+new mode 100755
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e '.[dev]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy!=1.24.0,>=1.20 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (1.25.2)
+Requirement already satisfied: pandas>=1.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (2.0.0)
+Requirement already satisfied: matplotlib!=3.6.1,>=3.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (3.7.2)
+Requirement already satisfied: pytest in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (8.3.3)
+Requirement already satisfied: pytest-cov in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (5.0.0)
+Requirement already satisfied: pytest-xdist in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (3.6.1)
+Requirement already satisfied: flake8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (7.1.1)
+Requirement already satisfied: mypy in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (1.13.0)
+Requirement already satisfied: pandas-stubs in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (2.2.2.240807)
+Requirement already satisfied: pre-commit in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (4.0.1)
+Requirement already satisfied: flit in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn==0.13.0.dev0) (3.9.0)
+Requirement already satisfied: contourpy>=1.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (1.1.0)
+Requirement already satisfied: cycler>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (4.42.1)
+Requirement already satisfied: kiwisolver>=1.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (1.4.5)
+Requirement already satisfied: packaging>=20.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (10.0.0)
+Requirement already satisfied: pyparsing<3.1,>=2.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (3.0.9)
+Requirement already satisfied: python-dateutil>=2.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (2.8.2)
+Requirement already satisfied: importlib-resources>=3.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (6.0.1)
+Requirement already satisfied: pytz>=2020.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas>=1.2->seaborn==0.13.0.dev0) (2023.3.post1)
+Requirement already satisfied: tzdata>=2022.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas>=1.2->seaborn==0.13.0.dev0) (2023.1)
+Requirement already satisfied: mccabe<0.8.0,>=0.7.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flake8->seaborn==0.13.0.dev0) (0.7.0)
+Requirement already satisfied: pycodestyle<2.13.0,>=2.12.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flake8->seaborn==0.13.0.dev0) (2.12.1)
+Requirement already satisfied: pyflakes<3.3.0,>=3.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flake8->seaborn==0.13.0.dev0) (3.2.0)
+Requirement already satisfied: flit_core>=3.9.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flit->seaborn==0.13.0.dev0) (3.9.0)
+Requirement already satisfied: requests in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flit->seaborn==0.13.0.dev0) (2.32.3)
+Requirement already satisfied: docutils in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flit->seaborn==0.13.0.dev0) (0.21.2)
+Requirement already satisfied: tomli-w in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from flit->seaborn==0.13.0.dev0) (1.1.0)
+Requirement already satisfied: typing-extensions>=4.6.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from mypy->seaborn==0.13.0.dev0) (4.12.2)
+Requirement already satisfied: mypy-extensions>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from mypy->seaborn==0.13.0.dev0) (1.0.0)
+Requirement already satisfied: tomli>=1.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from mypy->seaborn==0.13.0.dev0) (2.0.2)
+Requirement already satisfied: types-pytz>=2022.1.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pandas-stubs->seaborn==0.13.0.dev0) (2024.2.0.20241003)
+Requirement already satisfied: cfgv>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pre-commit->seaborn==0.13.0.dev0) (3.4.0)
+Requirement already satisfied: identify>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pre-commit->seaborn==0.13.0.dev0) (2.6.1)
+Requirement already satisfied: nodeenv>=0.11.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pre-commit->seaborn==0.13.0.dev0) (1.9.1)
+Requirement already satisfied: pyyaml>=5.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pre-commit->seaborn==0.13.0.dev0) (6.0.2)
+Requirement already satisfied: virtualenv>=20.10.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pre-commit->seaborn==0.13.0.dev0) (20.27.0)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->seaborn==0.13.0.dev0) (2.0.0)
+Requirement already satisfied: pluggy<2,>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->seaborn==0.13.0.dev0) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest->seaborn==0.13.0.dev0) (1.2.2)
+Requirement already satisfied: coverage>=5.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from coverage[toml]>=5.2.1->pytest-cov->seaborn==0.13.0.dev0) (7.6.4)
+Requirement already satisfied: execnet>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-xdist->seaborn==0.13.0.dev0) (2.1.1)
+Requirement already satisfied: zipp>=3.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from importlib-resources>=3.2.0->matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (3.16.2)
+Requirement already satisfied: six>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.3->seaborn==0.13.0.dev0) (1.16.0)
+Requirement already satisfied: distlib<1,>=0.3.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from virtualenv>=20.10.0->pre-commit->seaborn==0.13.0.dev0) (0.3.9)
+Requirement already satisfied: filelock<4,>=3.12.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from virtualenv>=20.10.0->pre-commit->seaborn==0.13.0.dev0) (3.16.1)
+Requirement already satisfied: platformdirs<5,>=3.9.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from virtualenv>=20.10.0->pre-commit->seaborn==0.13.0.dev0) (4.3.6)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->flit->seaborn==0.13.0.dev0) (3.4.0)
+Requirement already satisfied: idna<4,>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->flit->seaborn==0.13.0.dev0) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->flit->seaborn==0.13.0.dev0) (2.2.3)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from requests->flit->seaborn==0.13.0.dev0) (2024.8.30)
+Building wheels for collected packages: seaborn
+  Building editable for seaborn (pyproject.toml): started
+  Building editable for seaborn (pyproject.toml): finished with status 'done'
+  Created wheel for seaborn: filename=seaborn-0.13.0.dev0-py3-none-any.whl size=3911 sha256=2e1eeb9775d26aff9c6204b780f0eefa5c733d0f64ea8227b99096cefa939b50
+  Stored in directory: /tmp/pip-ephem-wheel-cache-j39yfchb/wheels/7d/66/67/70d1ee2124ccf21d601c352e25cdca10f611f7c8b3f9ffb9e4
+Successfully built seaborn
+Installing collected packages: seaborn
+  Attempting uninstall: seaborn
+    Found existing installation: seaborn 0.13.0.dev0
+    Uninstalling seaborn-0.13.0.dev0:
+      Successfully uninstalled seaborn-0.13.0.dev0
+Successfully installed seaborn-0.13.0.dev0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ git checkout 515286e02be3e4c0ff2ef4addb34a53c4a676ee4 tests/test_axisgrid.py
+Updated 1 path from d36b2e04
++ git apply -v -
+Checking patch tests/test_axisgrid.py...
+Applied patch tests/test_axisgrid.py cleanly.
++ : '>>>>> Start Test Output'
++ pytest --no-header -rA tests/test_axisgrid.py
+============================= test session starts ==============================
+collected 121 items
+
+tests/test_axisgrid.py ................................................. [ 40%]
+........................................................................ [100%]
+
+=============================== warnings summary ===============================
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data_missing_level
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data_missing_level
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data_missing_level
+tests/test_axisgrid.py::TestFacetGrid::test_legend_data_missing_level
+  /opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pandas/core/dtypes/cast.py:1429: DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
+  See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more information.  (Deprecated NumPy 1.25)
+    return np.find_common_type(types, [])
+
+tests/test_axisgrid.py: 32 warnings
+  /testbed/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+    self._figure.tight_layout(*args, **kwargs)
+
+tests/test_axisgrid.py::TestFacetGrid::test_gridspec_kws
+  /testbed/tests/test_axisgrid.py:344: UserWarning: The figure layout has changed to tight
+    g.figure.tight_layout()
+
+tests/test_axisgrid.py::TestFacetGrid::test_set_ticklabels
+tests/test_axisgrid.py::TestFacetGrid::test_categorical_warning
+tests/test_axisgrid.py::TestFacetGrid::test_categorical_warning
+  /opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pandas/core/algorithms.py:525: DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
+  See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more information.  (Deprecated NumPy 1.25)
+    common = np.find_common_type([values.dtype, comps_array.dtype], [])
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_self_data
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_self_figure
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_self_axes
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_axes_array_size
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_single_axes
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_col_wrap
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_normal_axes
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_wrapped_axes
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_axes_dict
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_figure_size
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_figure_size_with_legend
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_legend_data
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_legend_data_missing_level
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_get_boolean_legend_data
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_legend_tuples
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_legend_options
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_legendout_with_colwrap
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_legend_tight_layout
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_subplot_kws
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_gridspec_kws
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_gridspec_kws_col_wrap
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_data_generator
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_map
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_map_dataframe
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_set
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_set_titles
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_set_titles_margin_titles
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_set_ticklabels
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_set_axis_labels
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_axis_lims
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_data_orders
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_palette
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_hue_kws
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_dropna
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_categorical_column_missing_categories
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_categorical_warning
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_refline
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_apply
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_pipe
+PASSED tests/test_axisgrid.py::TestFacetGrid::test_tick_params
+PASSED tests/test_axisgrid.py::TestPairGrid::test_self_data
+PASSED tests/test_axisgrid.py::TestPairGrid::test_ignore_datelike_data
+PASSED tests/test_axisgrid.py::TestPairGrid::test_self_figure
+PASSED tests/test_axisgrid.py::TestPairGrid::test_self_axes
+PASSED tests/test_axisgrid.py::TestPairGrid::test_default_axes
+PASSED tests/test_axisgrid.py::TestPairGrid::test_specific_square_axes[vars0]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_specific_square_axes[vars1]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_remove_hue_from_default
+PASSED tests/test_axisgrid.py::TestPairGrid::test_specific_nonsquare_axes[x_vars0-y_vars0]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_specific_nonsquare_axes[x_vars1-z]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_specific_nonsquare_axes[x_vars2-y_vars2]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_corner
+PASSED tests/test_axisgrid.py::TestPairGrid::test_size
+PASSED tests/test_axisgrid.py::TestPairGrid::test_empty_grid
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_nonsquare
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_lower
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_upper
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_mixed_funcsig
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_diag
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_diag_rectangular
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_diag_color
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_diag_palette
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_diag_and_offdiag
+PASSED tests/test_axisgrid.py::TestPairGrid::test_diag_sharey
+PASSED tests/test_axisgrid.py::TestPairGrid::test_map_diag_matplotlib
+PASSED tests/test_axisgrid.py::TestPairGrid::test_palette
+PASSED tests/test_axisgrid.py::TestPairGrid::test_hue_kws
+PASSED tests/test_axisgrid.py::TestPairGrid::test_hue_order
+PASSED tests/test_axisgrid.py::TestPairGrid::test_hue_order_missing_level
+PASSED tests/test_axisgrid.py::TestPairGrid::test_hue_in_map
+PASSED tests/test_axisgrid.py::TestPairGrid::test_nondefault_index
+PASSED tests/test_axisgrid.py::TestPairGrid::test_dropna[scatterplot]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_dropna[scatter]
+PASSED tests/test_axisgrid.py::TestPairGrid::test_histplot_legend
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_reg
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_reg_hue
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_diag_kde
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_kde
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_hist
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_markers
+PASSED tests/test_axisgrid.py::TestPairGrid::test_pairplot_column_multiindex
+PASSED tests/test_axisgrid.py::TestPairGrid::test_corner_despine
+PASSED tests/test_axisgrid.py::TestPairGrid::test_corner_set
+PASSED tests/test_axisgrid.py::TestPairGrid::test_legend
+PASSED tests/test_axisgrid.py::TestPairGrid::test_tick_params
+PASSED tests/test_axisgrid.py::TestJointGrid::test_margin_grid_from_lists
+PASSED tests/test_axisgrid.py::TestJointGrid::test_margin_grid_from_arrays
+PASSED tests/test_axisgrid.py::TestJointGrid::test_margin_grid_from_series
+PASSED tests/test_axisgrid.py::TestJointGrid::test_margin_grid_from_dataframe
+PASSED tests/test_axisgrid.py::TestJointGrid::test_margin_grid_from_dataframe_bad_variable
+PASSED tests/test_axisgrid.py::TestJointGrid::test_margin_grid_axis_labels
+PASSED tests/test_axisgrid.py::TestJointGrid::test_dropna
+PASSED tests/test_axisgrid.py::TestJointGrid::test_axlims
+PASSED tests/test_axisgrid.py::TestJointGrid::test_marginal_ticks
+PASSED tests/test_axisgrid.py::TestJointGrid::test_bivariate_plot
+PASSED tests/test_axisgrid.py::TestJointGrid::test_univariate_plot
+PASSED tests/test_axisgrid.py::TestJointGrid::test_univariate_plot_distplot
+PASSED tests/test_axisgrid.py::TestJointGrid::test_univariate_plot_matplotlib
+PASSED tests/test_axisgrid.py::TestJointGrid::test_plot
+PASSED tests/test_axisgrid.py::TestJointGrid::test_space
+PASSED tests/test_axisgrid.py::TestJointGrid::test_hue[True]
+PASSED tests/test_axisgrid.py::TestJointGrid::test_hue[False]
+PASSED tests/test_axisgrid.py::TestJointGrid::test_refline
+PASSED tests/test_axisgrid.py::TestJointPlot::test_scatter
+PASSED tests/test_axisgrid.py::TestJointPlot::test_scatter_hue
+PASSED tests/test_axisgrid.py::TestJointPlot::test_reg
+PASSED tests/test_axisgrid.py::TestJointPlot::test_resid
+PASSED tests/test_axisgrid.py::TestJointPlot::test_hist
+PASSED tests/test_axisgrid.py::TestJointPlot::test_hex
+PASSED tests/test_axisgrid.py::TestJointPlot::test_kde
+PASSED tests/test_axisgrid.py::TestJointPlot::test_kde_hue
+PASSED tests/test_axisgrid.py::TestJointPlot::test_color
+PASSED tests/test_axisgrid.py::TestJointPlot::test_palette
+PASSED tests/test_axisgrid.py::TestJointPlot::test_hex_customise
+PASSED tests/test_axisgrid.py::TestJointPlot::test_bad_kind
+PASSED tests/test_axisgrid.py::TestJointPlot::test_unsupported_hue_kind
+PASSED tests/test_axisgrid.py::TestJointPlot::test_leaky_dict
+PASSED tests/test_axisgrid.py::TestJointPlot::test_distplot_kwarg_warning
+PASSED tests/test_axisgrid.py::TestJointPlot::test_ax_warning
+================= 121 passed, 43 warnings in 148.53s (0:02:28) =================
+>>>>> Test Exit Code: 0
++ SWEBENCH_TEST_EXIT_CODE=0
++ : '>>>>> End Test Output'
++ echo '>>>>> Test Exit Code: 0'
++ git checkout 515286e02be3e4c0ff2ef4addb34a53c4a676ee4 tests/test_axisgrid.py
+Updated 1 path from d36b2e04

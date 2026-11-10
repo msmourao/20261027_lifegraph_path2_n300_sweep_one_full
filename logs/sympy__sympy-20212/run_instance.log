@@ -1,0 +1,46 @@
+2026-11-10 00:41:29,517 - INFO - Creating container for sympy__sympy-20212...
+2026-11-10 00:41:29,625 - INFO - Container for sympy__sympy-20212 created: 642d875ee1cc3e52b51910233bf1e3554971165c3ece1123a1d76bfaa22aa17d
+2026-11-10 00:41:29,816 - INFO - Container for sympy__sympy-20212 started: 642d875ee1cc3e52b51910233bf1e3554971165c3ece1123a1d76bfaa22aa17d
+2026-11-10 00:41:29,817 - INFO - Intermediate patch for sympy__sympy-20212 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-20212\patch.diff, now applying to container...
+2026-11-10 00:41:30,044 - INFO - >>>>> Applied Patch:
+Checking patch sympy/core/power.py...
+Applied patch sympy/core/power.py cleanly.
+
+2026-11-10 00:41:31,114 - INFO - Git diff before:
+diff --git a/sympy/core/power.py b/sympy/core/power.py
+index 984398c760..85d1d2e892 100755
+--- a/sympy/core/power.py
++++ b/sympy/core/power.py
+@@ -291,6 +291,8 @@ def __new__(cls, b, e, evaluate=None):
+             ).warn()
+ 
+         if evaluate:
++            if b is S.Zero and e is S.NegativeInfinity:
++                return S.ComplexInfinity
+             if e is S.ComplexInfinity:
+                 return S.NaN
+             if e is S.Zero:
+2026-11-10 00:41:31,115 - INFO - Eval script for sympy__sympy-20212 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-20212\eval.sh; copying to container...
+2026-11-10 00:42:17,120 - INFO - Test runtime: 45.89 seconds
+2026-11-10 00:42:17,122 - INFO - Test output for sympy__sympy-20212 written to logs\run_evaluation\lg516logs-batch-13\lifegraph-path2-sweep-one-full\sympy__sympy-20212\test_output.txt
+2026-11-10 00:42:17,219 - INFO - Git diff after:
+diff --git a/sympy/core/power.py b/sympy/core/power.py
+index 984398c760..85d1d2e892 100755
+--- a/sympy/core/power.py
++++ b/sympy/core/power.py
+@@ -291,6 +291,8 @@ def __new__(cls, b, e, evaluate=None):
+             ).warn()
+ 
+         if evaluate:
++            if b is S.Zero and e is S.NegativeInfinity:
++                return S.ComplexInfinity
+             if e is S.ComplexInfinity:
+                 return S.NaN
+             if e is S.Zero:
+2026-11-10 00:42:17,219 - INFO - Grading answer for sympy__sympy-20212...
+2026-11-10 00:42:17,233 - INFO - report: {'sympy__sympy-20212': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_zero'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_rational', 'test_large_rational', 'test_negative_real', 'test_expand', 'test_issue_3449', 'test_issue_3866', 'test_negative_one', 'test_issue_4362', 'test_Pow_Expr_args', 'test_Pow_signs', 'test_power_with_noncommutative_mul_as_base', 'test_power_rewrite_exp', 'test_pow_as_base_exp', 'test_nseries', 'test_issue_6100_12942_4473', 'test_issue_6208', 'test_issue_6990', 'test_issue_6068', 'test_issue_6782', 'test_issue_6653', 'test_issue_6429', 'test_issue_7638', 'test_issue_8582', 'test_issue_8650', 'test_issue_13914', 'test_better_sqrt', 'test_issue_2993', 'test_issue_17450', 'test_issue_18190', 'test_issue_14815', 'test_issue_18509', 'test_issue_18762'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-20212: resolved: True
+2026-11-10 00:42:17,234 - INFO - Attempting to stop container sweb.eval.sympy__sympy-20212.lg516logs-batch-13...
+2026-11-10 00:42:32,501 - INFO - Container sweb.eval.sympy__sympy-20212.lg516logs-batch-13 stopped successfully.
+2026-11-10 00:42:32,502 - INFO - Attempting to remove container sweb.eval.sympy__sympy-20212.lg516logs-batch-13...
+2026-11-10 00:42:32,600 - INFO - Container sweb.eval.sympy__sympy-20212.lg516logs-batch-13 removed successfully.

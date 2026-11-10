@@ -1,0 +1,71 @@
+2026-11-09 21:02:52,812 - INFO - Image not found locally, attempting to pull...
+2026-11-09 21:03:10,491 - INFO - Creating container for django__django-14016...
+2026-11-09 21:03:12,842 - INFO - Container for django__django-14016 created: 7604654b5b36b28d369dc906d9a4cc45936be266bcffbcb7474749c0b6a9f54f
+2026-11-09 21:03:13,327 - INFO - Container for django__django-14016 started: 7604654b5b36b28d369dc906d9a4cc45936be266bcffbcb7474749c0b6a9f54f
+2026-11-09 21:03:13,329 - INFO - Intermediate patch for django__django-14016 written to logs\run_evaluation\lg516logs-batch-03\lifegraph-path2-sweep-one-full\django__django-14016\patch.diff, now applying to container...
+2026-11-09 21:03:13,875 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/query_utils.py...
+Applied patch django/db/models/query_utils.py cleanly.
+
+2026-11-09 21:03:17,127 - INFO - Git diff before:
+diff --git a/django/db/models/query_utils.py b/django/db/models/query_utils.py
+index c2623f099f..833fa66b01 100755
+--- a/django/db/models/query_utils.py
++++ b/django/db/models/query_utils.py
+@@ -46,10 +46,18 @@ class Q(tree.Node):
+ 
+         # If the other Q() is empty, ignore it and just use `self`.
+         if not other:
+-            return copy.deepcopy(self)
++            clone = self.__class__()
++            clone.connector = self.connector
++            clone.negated = self.negated
++            clone.children = self.children[:]
++            return clone
+         # Or if this Q is empty, ignore it and just use `other`.
+         elif not self:
+-            return copy.deepcopy(other)
++            clone = other.__class__()
++            clone.connector = other.connector
++            clone.negated = other.negated
++            clone.children = other.children[:]
++            return clone
+ 
+         obj = type(self)()
+         obj.connector = conn
+2026-11-09 21:03:17,130 - INFO - Eval script for django__django-14016 written to logs\run_evaluation\lg516logs-batch-03\lifegraph-path2-sweep-one-full\django__django-14016\eval.sh; copying to container...
+2026-11-09 21:03:39,052 - INFO - Test runtime: 21.76 seconds
+2026-11-09 21:03:39,061 - INFO - Test output for django__django-14016 written to logs\run_evaluation\lg516logs-batch-03\lifegraph-path2-sweep-one-full\django__django-14016\test_output.txt
+2026-11-09 21:03:39,218 - INFO - Git diff after:
+diff --git a/django/db/models/query_utils.py b/django/db/models/query_utils.py
+index c2623f099f..833fa66b01 100755
+--- a/django/db/models/query_utils.py
++++ b/django/db/models/query_utils.py
+@@ -46,10 +46,18 @@ class Q(tree.Node):
+ 
+         # If the other Q() is empty, ignore it and just use `self`.
+         if not other:
+-            return copy.deepcopy(self)
++            clone = self.__class__()
++            clone.connector = self.connector
++            clone.negated = self.negated
++            clone.children = self.children[:]
++            return clone
+         # Or if this Q is empty, ignore it and just use `other`.
+         elif not self:
+-            return copy.deepcopy(other)
++            clone = other.__class__()
++            clone.connector = other.connector
++            clone.negated = other.negated
++            clone.children = other.children[:]
++            return clone
+ 
+         obj = type(self)()
+         obj.connector = conn
+2026-11-09 21:03:39,218 - INFO - Grading answer for django__django-14016...
+2026-11-09 21:03:39,312 - INFO - report: {'django__django-14016': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_combine_and_empty (queries.test_q.QTests)', 'test_combine_or_empty (queries.test_q.QTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_combine_and_both_empty (queries.test_q.QTests)', 'test_combine_not_q_object (queries.test_q.QTests)', 'test_combine_or_both_empty (queries.test_q.QTests)', 'test_deconstruct (queries.test_q.QTests)', 'test_deconstruct_and (queries.test_q.QTests)', 'test_deconstruct_multiple_kwargs (queries.test_q.QTests)', 'test_deconstruct_negated (queries.test_q.QTests)', 'test_deconstruct_nested (queries.test_q.QTests)', 'test_deconstruct_or (queries.test_q.QTests)', 'test_reconstruct (queries.test_q.QTests)', 'test_reconstruct_and (queries.test_q.QTests)', 'test_reconstruct_negated (queries.test_q.QTests)', 'test_reconstruct_or (queries.test_q.QTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14016: resolved: True
+2026-11-09 21:03:39,316 - INFO - Attempting to stop container sweb.eval.django__django-14016.lg516logs-batch-03...
+2026-11-09 21:03:55,592 - INFO - Container sweb.eval.django__django-14016.lg516logs-batch-03 stopped successfully.
+2026-11-09 21:03:55,592 - INFO - Attempting to remove container sweb.eval.django__django-14016.lg516logs-batch-03...
+2026-11-09 21:03:55,867 - INFO - Container sweb.eval.django__django-14016.lg516logs-batch-03 removed successfully.
