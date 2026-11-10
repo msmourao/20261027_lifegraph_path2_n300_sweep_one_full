@@ -1064,8 +1064,8 @@ Processing /testbed
 Building wheels for collected packages: requests
   Building wheel for requests (setup.py): started
   Building wheel for requests (setup.py): finished with status 'done'
-  Created wheel for requests: filename=requests-0.14.0-py3-none-any.whl size=364881 sha256=0b8fc99c0914dbe2d245b947b32dc4cde10c3c2a516b3fe9deacc016fd3e5fac
-  Stored in directory: /tmp/pip-ephem-wheel-cache-zlvw5at6/wheels/7d/66/67/70d1ee2124ccf21d601c352e25cdca10f611f7c8b3f9ffb9e4
+  Created wheel for requests: filename=requests-0.14.0-py3-none-any.whl size=364881 sha256=68144dd244ddd99685bcdbdf33fa4f09ad270c9ef1c39e66c98c3d66476672a3
+  Stored in directory: /tmp/pip-ephem-wheel-cache-f30aqvli/wheels/7d/66/67/70d1ee2124ccf21d601c352e25cdca10f611f7c8b3f9ffb9e4
 Successfully built requests
 Installing collected packages: requests
   Attempting uninstall: requests
@@ -1086,7 +1086,7 @@ platform linux -- Python 3.9.20, pytest-7.4.4, pluggy-1.0.0
 rootdir: /testbed
 collected 76 items
 
-tests/test_requests.py ..FF..........F.........F........................ [ 64%]
+tests/test_requests.py ..FF............................................. [ 64%]
 .......FF.....F.F..........                                              [100%]
 
 =================================== FAILURES ===================================
@@ -1127,9 +1127,9 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     if not fn(cookie, request):
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <http.cookiejar.DefaultCookiePolicy object at 0x70f1862343d0>
-cookie = Cookie(version=0, name='stale_after', value='never', port=None, port_specified=False, domain='httpbin.org', domain_spe... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
-request = <requests.cookies.MockRequest object at 0x70f1862348e0>
+self = <http.cookiejar.DefaultCookiePolicy object at 0x76ef11a2d3d0>
+cookie = Cookie(version=0, name='stale_after', value='never', port=None, port_specified=False, domain='host.docker.internal', d... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
+request = <requests.cookies.MockRequest object at 0x76ef11a2d8e0>
 
     def set_ok_verifiability(self, cookie, request):
 >       if request.unverifiable and is_third_party(request):
@@ -1173,84 +1173,15 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     if not fn(cookie, request):
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <http.cookiejar.DefaultCookiePolicy object at 0x70f1860165e0>
-cookie = Cookie(version=0, name='stale_after', value='never', port=None, port_specified=False, domain='httpbin.org', domain_spe... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
-request = <requests.cookies.MockRequest object at 0x70f1860160a0>
+self = <http.cookiejar.DefaultCookiePolicy object at 0x76ef117ca6a0>
+cookie = Cookie(version=0, name='stale_after', value='never', port=None, port_specified=False, domain='host.docker.internal', d... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
+request = <requests.cookies.MockRequest object at 0x76ef117ca040>
 
     def set_ok_verifiability(self, cookie, request):
 >       if request.unverifiable and is_third_party(request):
 E       AttributeError: 'MockRequest' object has no attribute 'unverifiable'
 
 /opt/miniconda3/envs/testbed/lib/python3.9/http/cookiejar.py:977: AttributeError
-____________ RequestsTestSuite.test_POSTBIN_GET_POST_FILES_STRINGS _____________
-
-self = <test_requests.RequestsTestSuite testMethod=test_POSTBIN_GET_POST_FILES_STRINGS>
-
-    def test_POSTBIN_GET_POST_FILES_STRINGS(self):
-    
-        for service in SERVICES:
-    
-            url = service('post')
-    
-            post1 = post(url, files={'fname.txt': 'fdata'})
-            self.assertEqual(post1.status_code, 200)
-    
-            post2 = post(url, files={'fname.txt': 'fdata',
-                    'fname2.txt': 'more fdata'})
-            self.assertEqual(post2.status_code, 200)
-    
-            post3 = post(url, files={'fname.txt': 'fdata',
-                    'fname2.txt': open(__file__, 'rb')})
-            self.assertEqual(post3.status_code, 200)
-    
-            post4 = post(url, files={'fname.txt': 'fdata'})
-            self.assertEqual(post4.status_code, 200)
-    
-            post5 = post(url, files={'file': ('file.txt', 'more fdata')})
-            self.assertEqual(post5.status_code, 200)
-    
-            # Dirty hack to tide us over until 3.3.
-            # TODO: Remove this hack when Python 3.3 is released.
-            if (sys.version_info[0] == 2):
-                fdata = '\xc3\xa9'.decode('utf-8')
-            else:
-                fdata = '\xe9'
-    
-            post6 = post(url, files={'fname.txt': fdata})
-            self.assertEqual(post6.status_code, 200)
-    
-            post7 = post(url, files={'fname.txt': 'fdata to verify'})
-            rbody = json.loads(post7.text)
-            self.assertTrue(rbody.get('files', None))
-            self.assertTrue(rbody['files'].get('fname.txt', None))
-            self.assertEqual(rbody['files']['fname.txt'], 'fdata to verify')
-    
-            post8 = post(url, files=[('fname.txt', 'fdata')])
-            self.assertEqual(post8.status_code, 200)
-            resp_body = post8.json
-            self.assertTrue(resp_body.get('files', None))
-            self.assertTrue(resp_body['files'].get('fname.txt', None))
-            self.assertEqual(resp_body['files']['fname.txt'], 'fdata')
-    
-            post9 = post(url, files=[('fname.txt', fdata)])
->           self.assertEqual(post9.status_code, 200)
-E           AssertionError: 429 != 200
-
-tests/test_requests.py:411: AssertionError
-____________ RequestsTestSuite.test_connection_keepalive_and_close _____________
-
-self = <test_requests.RequestsTestSuite testMethod=test_connection_keepalive_and_close>
-
-    def test_connection_keepalive_and_close(self):
-        """Test that we send 'Connection: close' when keep_alive is disabled."""
-        # keep-alive should be on by default
-        r1 = requests.get(httpbin('get'))
-        # XXX due to proxying issues, test the header sent back by httpbin, rather than
-        # the header reported in its message body. See kennethreitz/httpbin#46
->       self.assertEqual(r1.headers['Connection'].lower(), 'keep-alive')
-E       AttributeError: 'NoneType' object has no attribute 'lower'
-
-tests/test_requests.py:1059: AttributeError
 ______ RequestsTestSuite.test_session_cookies_with_return_response_false _______
 
 self = <test_requests.RequestsTestSuite testMethod=test_session_cookies_with_return_response_false>
@@ -1278,9 +1209,9 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     if not fn(cookie, request):
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <http.cookiejar.DefaultCookiePolicy object at 0x70f185ee28b0>
-cookie = Cookie(version=0, name='k', value='v', port=None, port_specified=False, domain='httpbin.org', domain_specified=False, ... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
-request = <requests.cookies.MockRequest object at 0x70f185ee2d90>
+self = <http.cookiejar.DefaultCookiePolicy object at 0x76ef117da820>
+cookie = Cookie(version=0, name='k', value='v', port=None, port_specified=False, domain='host.docker.internal', domain_specifie... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
+request = <requests.cookies.MockRequest object at 0x76ef116c7100>
 
     def set_ok_verifiability(self, cookie, request):
 >       if request.unverifiable and is_third_party(request):
@@ -1323,9 +1254,9 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     if not fn(cookie, request):
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <http.cookiejar.DefaultCookiePolicy object at 0x70f1861ad670>
+self = <http.cookiejar.DefaultCookiePolicy object at 0x76ef117ca640>
 cookie = Cookie(version=0, name='kenneth', value='reitz', port=None, port_specified=False, domain='', domain_specified=False, d...True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={'HttpOnly': None}, rfc2109=False)
-request = <requests.cookies.MockRequest object at 0x70f1861ad7c0>
+request = <requests.cookies.MockRequest object at 0x76ef117ca4c0>
 
     def return_ok_verifiability(self, cookie, request):
 >       if request.unverifiable and is_third_party(request):
@@ -1376,9 +1307,9 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     if not fn(cookie, request):
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <http.cookiejar.DefaultCookiePolicy object at 0x70f185e1e310>
-cookie = Cookie(version=0, name='k', value='v', port=None, port_specified=False, domain='httpbin.org', domain_specified=False, ... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
-request = <requests.cookies.MockRequest object at 0x70f185e1e730>
+self = <http.cookiejar.DefaultCookiePolicy object at 0x76ef11674d00>
+cookie = Cookie(version=0, name='k', value='v', port=None, port_specified=False, domain='host.docker.internal', domain_specifie... path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={}, rfc2109=False)
+request = <requests.cookies.MockRequest object at 0x76ef114ba700>
 
     def set_ok_verifiability(self, cookie, request):
 >       if request.unverifiable and is_third_party(request):
@@ -1405,6 +1336,7 @@ PASSED tests/test_requests.py::RequestsTestSuite::test_HTTP_200_OK_PUT
 PASSED tests/test_requests.py::RequestsTestSuite::test_HTTP_302_ALLOW_REDIRECT_GET
 PASSED tests/test_requests.py::RequestsTestSuite::test_HTTP_302_GET
 PASSED tests/test_requests.py::RequestsTestSuite::test_POSTBIN_GET_POST_FILES
+PASSED tests/test_requests.py::RequestsTestSuite::test_POSTBIN_GET_POST_FILES_STRINGS
 PASSED tests/test_requests.py::RequestsTestSuite::test_POSTBIN_GET_POST_FILES_WITH_HEADERS
 PASSED tests/test_requests.py::RequestsTestSuite::test_POSTBIN_GET_POST_FILES_WITH_PARAMS
 PASSED tests/test_requests.py::RequestsTestSuite::test_accept_objects_with_string_representations_as_urls
@@ -1414,6 +1346,7 @@ PASSED tests/test_requests.py::RequestsTestSuite::test_cached_response
 PASSED tests/test_requests.py::RequestsTestSuite::test_can_have_none_in_header_values
 PASSED tests/test_requests.py::RequestsTestSuite::test_connection_error
 PASSED tests/test_requests.py::RequestsTestSuite::test_connection_error_with_safe_mode
+PASSED tests/test_requests.py::RequestsTestSuite::test_connection_keepalive_and_close
 PASSED tests/test_requests.py::RequestsTestSuite::test_danger_mode_redirects
 PASSED tests/test_requests.py::RequestsTestSuite::test_decompress_gzip
 PASSED tests/test_requests.py::RequestsTestSuite::test_default_status_raising
@@ -1463,16 +1396,14 @@ PASSED tests/test_requests.py::RequestsTestSuite::test_useful_exception_for_inva
 PASSED tests/test_requests.py::RequestsTestSuite::test_user_agent_transfers
 FAILED tests/test_requests.py::RequestsTestSuite::test_DIGESTAUTH_HTTP_200_OK_GET
 FAILED tests/test_requests.py::RequestsTestSuite::test_DIGESTAUTH_WRONG_HTTP_401_GET
-FAILED tests/test_requests.py::RequestsTestSuite::test_POSTBIN_GET_POST_FILES_STRINGS
-FAILED tests/test_requests.py::RequestsTestSuite::test_connection_keepalive_and_close
 FAILED tests/test_requests.py::RequestsTestSuite::test_session_cookies_with_return_response_false
 FAILED tests/test_requests.py::RequestsTestSuite::test_session_persistent_cookies
 FAILED tests/test_requests.py::RequestsTestSuite::test_str_data_content_type
 FAILED tests/test_requests.py::RequestsTestSuite::test_unpickled_session_requests
-=================== 8 failed, 68 passed, 1 warning in 34.20s ===================
+=================== 6 failed, 70 passed, 1 warning in 37.80s ===================
+>>>>> Test Exit Code: 1
 + SWEBENCH_TEST_EXIT_CODE=1
 + : '>>>>> End Test Output'
 + echo '>>>>> Test Exit Code: 1'
 + git checkout a0df2cbb10419037d11d04352b3175405ab52941 tests/test_requests.py
->>>>> Test Exit Code: 1
 Updated 1 path from a840744
